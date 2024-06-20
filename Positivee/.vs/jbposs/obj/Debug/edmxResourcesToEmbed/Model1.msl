@@ -1,0 +1,145 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="DBJBPOSModelStoreContainer" CdmEntityContainer="jbposEntities">
+    <EntitySetMapping Name="categoria">
+      <EntityTypeMapping TypeName="DBJBPOSModel.categoria">
+        <MappingFragment StoreEntitySet="categoria">
+          <ScalarProperty Name="id_categoria" ColumnName="id_categoria" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="fecha_eliminado" ColumnName="fecha_eliminado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="cliente">
+      <EntityTypeMapping TypeName="DBJBPOSModel.cliente">
+        <MappingFragment StoreEntitySet="cliente">
+          <ScalarProperty Name="id_cliente" ColumnName="id_cliente" />
+          <ScalarProperty Name="id_provincia" ColumnName="id_provincia" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="apellido" ColumnName="apellido" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="domicilio" ColumnName="domicilio" />
+          <ScalarProperty Name="telefono" ColumnName="telefono" />
+          <ScalarProperty Name="dni" ColumnName="dni" />
+          <ScalarProperty Name="fecha_eliminado" ColumnName="fecha_eliminado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="detalleVenta">
+      <EntityTypeMapping TypeName="DBJBPOSModel.detalleVenta">
+        <MappingFragment StoreEntitySet="detalleVenta">
+          <ScalarProperty Name="id_detalle_venta" ColumnName="id_detalle_venta" />
+          <ScalarProperty Name="id_venta" ColumnName="id_venta" />
+          <ScalarProperty Name="id_producto" ColumnName="id_producto" />
+          <ScalarProperty Name="cantidad" ColumnName="cantidad" />
+          <ScalarProperty Name="subtotal" ColumnName="subtotal" />
+          <ScalarProperty Name="fecha_eliminado" ColumnName="fecha_eliminado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="permiso">
+      <EntityTypeMapping TypeName="DBJBPOSModel.permiso">
+        <MappingFragment StoreEntitySet="permiso">
+          <ScalarProperty Name="id_permiso" ColumnName="id_permiso" />
+          <ScalarProperty Name="id_rol" ColumnName="id_rol" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+          <ScalarProperty Name="nombreMenu" ColumnName="nombreMenu" />
+          <ScalarProperty Name="fecha_eliminado" ColumnName="fecha_eliminado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="producto">
+      <EntityTypeMapping TypeName="DBJBPOSModel.producto">
+        <MappingFragment StoreEntitySet="producto">
+          <ScalarProperty Name="id_producto" ColumnName="id_producto" />
+          <ScalarProperty Name="id_categoria" ColumnName="id_categoria" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+          <ScalarProperty Name="precio" ColumnName="precio" />
+          <ScalarProperty Name="stock" ColumnName="stock" />
+          <ScalarProperty Name="titulo" ColumnName="titulo" />
+          <ScalarProperty Name="codigo" ColumnName="codigo" />
+          <ScalarProperty Name="fecha_eliminado" ColumnName="fecha_eliminado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="provincia">
+      <EntityTypeMapping TypeName="DBJBPOSModel.provincia">
+        <MappingFragment StoreEntitySet="provincia">
+          <ScalarProperty Name="id_provincia" ColumnName="id_provincia" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="rol">
+      <EntityTypeMapping TypeName="DBJBPOSModel.rol">
+        <MappingFragment StoreEntitySet="rol">
+          <ScalarProperty Name="id_rol" ColumnName="id_rol" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+          <ScalarProperty Name="fecha_eliminado" ColumnName="fecha_eliminado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="usuario">
+      <EntityTypeMapping TypeName="DBJBPOSModel.usuario">
+        <MappingFragment StoreEntitySet="usuario">
+          <ScalarProperty Name="id_usuario" ColumnName="id_usuario" />
+          <ScalarProperty Name="id_provincia" ColumnName="id_provincia" />
+          <ScalarProperty Name="id_rol" ColumnName="id_rol" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="apellido" ColumnName="apellido" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="domicilio" ColumnName="domicilio" />
+          <ScalarProperty Name="telefono" ColumnName="telefono" />
+          <ScalarProperty Name="dni" ColumnName="dni" />
+          <ScalarProperty Name="nombre_usuario" ColumnName="nombre_usuario" />
+          <ScalarProperty Name="pass" ColumnName="pass" />
+          <ScalarProperty Name="fecha_eliminado" ColumnName="fecha_eliminado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="venta">
+      <EntityTypeMapping TypeName="DBJBPOSModel.venta">
+        <MappingFragment StoreEntitySet="venta">
+          <ScalarProperty Name="id_venta" ColumnName="id_venta" />
+          <ScalarProperty Name="id_vendedor" ColumnName="id_vendedor" />
+          <ScalarProperty Name="id_cliente" ColumnName="id_cliente" />
+          <ScalarProperty Name="fecha" ColumnName="fecha" />
+          <ScalarProperty Name="total_venta" ColumnName="total_venta" />
+          <ScalarProperty Name="fecha_eliminado" ColumnName="fecha_eliminado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="DBJBPOSModel.sysdiagrams">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="definition" ColumnName="definition" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="medioPago">
+      <EntityTypeMapping TypeName="DBJBPOSModel.medioPago">
+        <MappingFragment StoreEntitySet="medioPago">
+          <ScalarProperty Name="fecha_eliminacion" ColumnName="fecha_eliminacion" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+          <ScalarProperty Name="id_medioPago" ColumnName="id_medioPago" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="venta_mediopago">
+      <EntityTypeMapping TypeName="DBJBPOSModel.venta_mediopago">
+        <MappingFragment StoreEntitySet="venta_mediopago">
+          <ScalarProperty Name="fecha_creacion" ColumnName="fecha_creacion" />
+          <ScalarProperty Name="fecha_eliminado" ColumnName="fecha_eliminado" />
+          <ScalarProperty Name="monto" ColumnName="monto" />
+          <ScalarProperty Name="id_medioPago" ColumnName="id_medioPago" />
+          <ScalarProperty Name="id_venta" ColumnName="id_venta" />
+          <ScalarProperty Name="id_venta_medioPago" ColumnName="id_venta_medioPago" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

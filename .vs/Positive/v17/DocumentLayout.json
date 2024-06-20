@@ -1,0 +1,733 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\Matias\\source\\repos\\Positivee\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{1D88F742-DD3A-4AF8-92BE-DE5A52A9BB3E}|Positivee\\Positive.csproj|C:\\Users\\Matias\\source\\repos\\Positivee\\positivee\\presentacion\\menu_principal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1D88F742-DD3A-4AF8-92BE-DE5A52A9BB3E}|Positivee\\Positive.csproj|solutionrelative:positivee\\presentacion\\menu_principal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1D88F742-DD3A-4AF8-92BE-DE5A52A9BB3E}|Positivee\\Positive.csproj|c:\\users\\matias\\source\\repos\\positivee\\positivee\\modelos\\usuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1D88F742-DD3A-4AF8-92BE-DE5A52A9BB3E}|Positivee\\Positive.csproj|solutionrelative:positivee\\modelos\\usuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1D88F742-DD3A-4AF8-92BE-DE5A52A9BB3E}|Positivee\\Positive.csproj|C:\\Users\\Matias\\source\\repos\\Positivee\\positivee\\presentacion\\login.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1D88F742-DD3A-4AF8-92BE-DE5A52A9BB3E}|Positivee\\Positive.csproj|solutionrelative:positivee\\presentacion\\login.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1D88F742-DD3A-4AF8-92BE-DE5A52A9BB3E}|Positivee\\Positive.csproj|c:\\users\\matias\\source\\repos\\positivee\\positivee\\presentacion\\control.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1D88F742-DD3A-4AF8-92BE-DE5A52A9BB3E}|Positivee\\Positive.csproj|solutionrelative:positivee\\presentacion\\control.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1D88F742-DD3A-4AF8-92BE-DE5A52A9BB3E}|Positivee\\Positive.csproj|C:\\Users\\Matias\\source\\repos\\Positivee\\positivee\\presentacion\\pantalla_de_venta.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1D88F742-DD3A-4AF8-92BE-DE5A52A9BB3E}|Positivee\\Positive.csproj|solutionrelative:positivee\\presentacion\\pantalla_de_venta.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1D88F742-DD3A-4AF8-92BE-DE5A52A9BB3E}|Positivee\\Positive.csproj|C:\\Users\\Matias\\source\\repos\\Positivee\\positivee\\presentacion\\menu_principal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{1D88F742-DD3A-4AF8-92BE-DE5A52A9BB3E}|Positivee\\Positive.csproj|solutionrelative:positivee\\presentacion\\menu_principal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1D88F742-DD3A-4AF8-92BE-DE5A52A9BB3E}|Positivee\\Positive.csproj|c:\\users\\matias\\source\\repos\\positivee\\positivee\\presentacion\\lista_usuarios.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1D88F742-DD3A-4AF8-92BE-DE5A52A9BB3E}|Positivee\\Positive.csproj|solutionrelative:positivee\\presentacion\\lista_usuarios.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1D88F742-DD3A-4AF8-92BE-DE5A52A9BB3E}|Positivee\\Positive.csproj|C:\\Users\\Matias\\source\\repos\\Positivee\\positivee\\presentacion\\lista_usuarios.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{1D88F742-DD3A-4AF8-92BE-DE5A52A9BB3E}|Positivee\\Positive.csproj|solutionrelative:positivee\\presentacion\\lista_usuarios.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1D88F742-DD3A-4AF8-92BE-DE5A52A9BB3E}|Positivee\\Positive.csproj|c:\\users\\matias\\source\\repos\\positivee\\positivee\\presentacion\\eliminar_restaurar.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1D88F742-DD3A-4AF8-92BE-DE5A52A9BB3E}|Positivee\\Positive.csproj|solutionrelative:positivee\\presentacion\\eliminar_restaurar.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1D88F742-DD3A-4AF8-92BE-DE5A52A9BB3E}|Positivee\\Positive.csproj|C:\\Users\\Matias\\source\\repos\\Positivee\\positivee\\presentacion\\editar_producto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1D88F742-DD3A-4AF8-92BE-DE5A52A9BB3E}|Positivee\\Positive.csproj|solutionrelative:positivee\\presentacion\\editar_producto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1D88F742-DD3A-4AF8-92BE-DE5A52A9BB3E}|Positivee\\Positive.csproj|C:\\Users\\Matias\\source\\repos\\Positivee\\positivee\\presentacion\\editar_producto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{1D88F742-DD3A-4AF8-92BE-DE5A52A9BB3E}|Positivee\\Positive.csproj|solutionrelative:positivee\\presentacion\\editar_producto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1D88F742-DD3A-4AF8-92BE-DE5A52A9BB3E}|Positivee\\Positive.csproj|C:\\Users\\Matias\\source\\repos\\Positivee\\positivee\\presentacion\\editar_producto.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1D88F742-DD3A-4AF8-92BE-DE5A52A9BB3E}|Positivee\\Positive.csproj|solutionrelative:positivee\\presentacion\\editar_producto.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1D88F742-DD3A-4AF8-92BE-DE5A52A9BB3E}|Positivee\\Positive.csproj|C:\\Users\\Matias\\source\\repos\\Positivee\\positivee\\presentacion\\nuevo_producto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1D88F742-DD3A-4AF8-92BE-DE5A52A9BB3E}|Positivee\\Positive.csproj|solutionrelative:positivee\\presentacion\\nuevo_producto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1D88F742-DD3A-4AF8-92BE-DE5A52A9BB3E}|Positivee\\Positive.csproj|C:\\Users\\Matias\\source\\repos\\Positivee\\positivee\\presentacion\\nuevo_producto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{1D88F742-DD3A-4AF8-92BE-DE5A52A9BB3E}|Positivee\\Positive.csproj|solutionrelative:positivee\\presentacion\\nuevo_producto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1D88F742-DD3A-4AF8-92BE-DE5A52A9BB3E}|Positivee\\Positive.csproj|C:\\Users\\Matias\\source\\repos\\Positivee\\positivee\\modelos\\persona.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1D88F742-DD3A-4AF8-92BE-DE5A52A9BB3E}|Positivee\\Positive.csproj|solutionrelative:positivee\\modelos\\persona.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1D88F742-DD3A-4AF8-92BE-DE5A52A9BB3E}|Positivee\\Positive.csproj|C:\\Users\\Matias\\source\\repos\\Positivee\\positivee\\modelos\\permiso.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1D88F742-DD3A-4AF8-92BE-DE5A52A9BB3E}|Positivee\\Positive.csproj|solutionrelative:positivee\\modelos\\permiso.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1D88F742-DD3A-4AF8-92BE-DE5A52A9BB3E}|Positivee\\Positive.csproj|C:\\Users\\Matias\\source\\repos\\Positivee\\positivee\\conexion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1D88F742-DD3A-4AF8-92BE-DE5A52A9BB3E}|Positivee\\Positive.csproj|solutionrelative:positivee\\conexion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1D88F742-DD3A-4AF8-92BE-DE5A52A9BB3E}|Positivee\\Positive.csproj|C:\\Users\\Matias\\source\\repos\\Positivee\\positivee\\presentacion\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1D88F742-DD3A-4AF8-92BE-DE5A52A9BB3E}|Positivee\\Positive.csproj|solutionrelative:positivee\\presentacion\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1D88F742-DD3A-4AF8-92BE-DE5A52A9BB3E}|Positivee\\Positive.csproj|C:\\Users\\Matias\\source\\repos\\Positivee\\positivee\\presentacion\\editar_usuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1D88F742-DD3A-4AF8-92BE-DE5A52A9BB3E}|Positivee\\Positive.csproj|solutionrelative:positivee\\presentacion\\editar_usuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1D88F742-DD3A-4AF8-92BE-DE5A52A9BB3E}|Positivee\\Positive.csproj|C:\\Users\\Matias\\source\\repos\\Positivee\\positivee\\presentacion\\login.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{1D88F742-DD3A-4AF8-92BE-DE5A52A9BB3E}|Positivee\\Positive.csproj|solutionrelative:positivee\\presentacion\\login.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1D88F742-DD3A-4AF8-92BE-DE5A52A9BB3E}|Positivee\\Positive.csproj|C:\\Users\\Matias\\source\\repos\\Positivee\\positivee\\presentacion\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{1D88F742-DD3A-4AF8-92BE-DE5A52A9BB3E}|Positivee\\Positive.csproj|solutionrelative:positivee\\presentacion\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1D88F742-DD3A-4AF8-92BE-DE5A52A9BB3E}|Positivee\\Positive.csproj|C:\\Users\\Matias\\source\\repos\\Positivee\\positivee\\presentacion\\editar_usuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{1D88F742-DD3A-4AF8-92BE-DE5A52A9BB3E}|Positivee\\Positive.csproj|solutionrelative:positivee\\presentacion\\editar_usuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1D88F742-DD3A-4AF8-92BE-DE5A52A9BB3E}|Positivee\\Positive.csproj|C:\\Users\\Matias\\source\\repos\\Positivee\\positivee\\presentacion\\lista_venta.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{1D88F742-DD3A-4AF8-92BE-DE5A52A9BB3E}|Positivee\\Positive.csproj|solutionrelative:positivee\\presentacion\\lista_venta.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1D88F742-DD3A-4AF8-92BE-DE5A52A9BB3E}|Positivee\\Positive.csproj|C:\\Users\\Matias\\source\\repos\\Positivee\\positivee\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1D88F742-DD3A-4AF8-92BE-DE5A52A9BB3E}|Positivee\\Positive.csproj|solutionrelative:positivee\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1D88F742-DD3A-4AF8-92BE-DE5A52A9BB3E}|Positivee\\Positive.csproj|C:\\Users\\Matias\\source\\repos\\Positivee\\positivee\\presentacion\\seccion_usuarios.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{1D88F742-DD3A-4AF8-92BE-DE5A52A9BB3E}|Positivee\\Positive.csproj|solutionrelative:positivee\\presentacion\\seccion_usuarios.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1D88F742-DD3A-4AF8-92BE-DE5A52A9BB3E}|Positivee\\Positive.csproj|C:\\Users\\Matias\\source\\repos\\Positivee\\positivee\\presentacion\\nueva_categoria.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1D88F742-DD3A-4AF8-92BE-DE5A52A9BB3E}|Positivee\\Positive.csproj|solutionrelative:positivee\\presentacion\\nueva_categoria.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1D88F742-DD3A-4AF8-92BE-DE5A52A9BB3E}|Positivee\\Positive.csproj|C:\\Users\\Matias\\source\\repos\\Positivee\\positivee\\presentacion\\nueva_categoria.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{1D88F742-DD3A-4AF8-92BE-DE5A52A9BB3E}|Positivee\\Positive.csproj|solutionrelative:positivee\\presentacion\\nueva_categoria.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1D88F742-DD3A-4AF8-92BE-DE5A52A9BB3E}|Positivee\\Positive.csproj|C:\\Users\\Matias\\source\\repos\\Positivee\\positivee\\presentacion\\seccion_productos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1D88F742-DD3A-4AF8-92BE-DE5A52A9BB3E}|Positivee\\Positive.csproj|solutionrelative:positivee\\presentacion\\seccion_productos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1D88F742-DD3A-4AF8-92BE-DE5A52A9BB3E}|Positivee\\Positive.csproj|C:\\Users\\Matias\\source\\repos\\Positivee\\positivee\\presentacion\\seccion_productos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{1D88F742-DD3A-4AF8-92BE-DE5A52A9BB3E}|Positivee\\Positive.csproj|solutionrelative:positivee\\presentacion\\seccion_productos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1D88F742-DD3A-4AF8-92BE-DE5A52A9BB3E}|Positivee\\Positive.csproj|C:\\Users\\Matias\\source\\repos\\Positivee\\positivee\\presentacion\\cuadro_cobrar.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{1D88F742-DD3A-4AF8-92BE-DE5A52A9BB3E}|Positivee\\Positive.csproj|solutionrelative:positivee\\presentacion\\cuadro_cobrar.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1D88F742-DD3A-4AF8-92BE-DE5A52A9BB3E}|Positivee\\Positive.csproj|C:\\Users\\Matias\\source\\repos\\Positivee\\positivee\\presentacion\\nuevo_usuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{1D88F742-DD3A-4AF8-92BE-DE5A52A9BB3E}|Positivee\\Positive.csproj|solutionrelative:positivee\\presentacion\\nuevo_usuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1D88F742-DD3A-4AF8-92BE-DE5A52A9BB3E}|Positivee\\Positive.csproj|C:\\Users\\Matias\\source\\repos\\Positivee\\positivee\\presentacion\\cuadro_cobrar.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1D88F742-DD3A-4AF8-92BE-DE5A52A9BB3E}|Positivee\\Positive.csproj|solutionrelative:positivee\\presentacion\\cuadro_cobrar.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1D88F742-DD3A-4AF8-92BE-DE5A52A9BB3E}|Positivee\\Positive.csproj|C:\\Users\\Matias\\source\\repos\\Positivee\\positivee\\modelos\\venta_medio_pago.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1D88F742-DD3A-4AF8-92BE-DE5A52A9BB3E}|Positivee\\Positive.csproj|solutionrelative:positivee\\modelos\\venta_medio_pago.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1D88F742-DD3A-4AF8-92BE-DE5A52A9BB3E}|Positivee\\Positive.csproj|C:\\Users\\Matias\\source\\repos\\Positivee\\positivee\\modelos\\detalle_venta.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1D88F742-DD3A-4AF8-92BE-DE5A52A9BB3E}|Positivee\\Positive.csproj|solutionrelative:positivee\\modelos\\detalle_venta.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1D88F742-DD3A-4AF8-92BE-DE5A52A9BB3E}|Positivee\\Positive.csproj|C:\\Users\\Matias\\source\\repos\\Positivee\\positivee\\presentacion\\lista_productos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1D88F742-DD3A-4AF8-92BE-DE5A52A9BB3E}|Positivee\\Positive.csproj|solutionrelative:positivee\\presentacion\\lista_productos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1D88F742-DD3A-4AF8-92BE-DE5A52A9BB3E}|Positivee\\Positive.csproj|C:\\Users\\Matias\\source\\repos\\Positivee\\positivee\\presentacion\\lista_productos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{1D88F742-DD3A-4AF8-92BE-DE5A52A9BB3E}|Positivee\\Positive.csproj|solutionrelative:positivee\\presentacion\\lista_productos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1D88F742-DD3A-4AF8-92BE-DE5A52A9BB3E}|Positivee\\Positive.csproj|C:\\Users\\Matias\\source\\repos\\Positivee\\positivee\\modelos\\producto_venta.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1D88F742-DD3A-4AF8-92BE-DE5A52A9BB3E}|Positivee\\Positive.csproj|solutionrelative:positivee\\modelos\\producto_venta.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1D88F742-DD3A-4AF8-92BE-DE5A52A9BB3E}|Positivee\\Positive.csproj|C:\\Users\\Matias\\source\\repos\\Positivee\\positivee\\presentacion\\nuevo_usuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1D88F742-DD3A-4AF8-92BE-DE5A52A9BB3E}|Positivee\\Positive.csproj|solutionrelative:positivee\\presentacion\\nuevo_usuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1D88F742-DD3A-4AF8-92BE-DE5A52A9BB3E}|Positivee\\Positive.csproj|C:\\Users\\Matias\\source\\repos\\Positivee\\positivee\\presentacion\\seccion_usuarios.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1D88F742-DD3A-4AF8-92BE-DE5A52A9BB3E}|Positivee\\Positive.csproj|solutionrelative:positivee\\presentacion\\seccion_usuarios.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1D88F742-DD3A-4AF8-92BE-DE5A52A9BB3E}|Positivee\\Positive.csproj|C:\\Users\\Matias\\source\\repos\\Positivee\\positivee\\presentacion\\pantalla_de_venta.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{1D88F742-DD3A-4AF8-92BE-DE5A52A9BB3E}|Positivee\\Positive.csproj|solutionrelative:positivee\\presentacion\\pantalla_de_venta.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1D88F742-DD3A-4AF8-92BE-DE5A52A9BB3E}|Positivee\\Positive.csproj|C:\\Users\\Matias\\source\\repos\\Positivee\\positivee\\modelos\\venta.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1D88F742-DD3A-4AF8-92BE-DE5A52A9BB3E}|Positivee\\Positive.csproj|solutionrelative:positivee\\modelos\\venta.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1D88F742-DD3A-4AF8-92BE-DE5A52A9BB3E}|Positivee\\Positive.csproj|C:\\Users\\Matias\\source\\repos\\Positivee\\positivee\\modelos\\cliente.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1D88F742-DD3A-4AF8-92BE-DE5A52A9BB3E}|Positivee\\Positive.csproj|solutionrelative:positivee\\modelos\\cliente.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1D88F742-DD3A-4AF8-92BE-DE5A52A9BB3E}|Positivee\\Positive.csproj|C:\\Users\\Matias\\source\\repos\\Positivee\\positivee\\presentacion\\cuadro_cobrar.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1D88F742-DD3A-4AF8-92BE-DE5A52A9BB3E}|Positivee\\Positive.csproj|solutionrelative:positivee\\presentacion\\cuadro_cobrar.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1D88F742-DD3A-4AF8-92BE-DE5A52A9BB3E}|Positivee\\Positive.csproj|C:\\Users\\Matias\\source\\repos\\Positivee\\positivee\\presentacion\\pantalla_de_venta.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1D88F742-DD3A-4AF8-92BE-DE5A52A9BB3E}|Positivee\\Positive.csproj|solutionrelative:positivee\\presentacion\\pantalla_de_venta.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 6,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{eefa5220-e298-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{cce594b6-0c39-4442-ba28-10c64ac7e89f}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Usuario.cs",
+              "DocumentMoniker": "C:\\Users\\Matias\\source\\repos\\Positivee\\Positivee\\Modelos\\Usuario.cs",
+              "RelativeDocumentMoniker": "Positivee\\Modelos\\Usuario.cs",
+              "ToolTip": "C:\\Users\\Matias\\source\\repos\\Positivee\\Positivee\\Modelos\\Usuario.cs",
+              "RelativeToolTip": "Positivee\\Modelos\\Usuario.cs",
+              "ViewState": "AQIAACEAAAAAAAAAAIA/wFIAAAAEAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-20T04:49:37.285Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Lista_usuarios.cs",
+              "DocumentMoniker": "C:\\Users\\Matias\\source\\repos\\Positivee\\Positivee\\Presentacion\\Lista_usuarios.cs",
+              "RelativeDocumentMoniker": "Positivee\\Presentacion\\Lista_usuarios.cs",
+              "ToolTip": "C:\\Users\\Matias\\source\\repos\\Positivee\\Positivee\\Presentacion\\Lista_usuarios.cs",
+              "RelativeToolTip": "Positivee\\Presentacion\\Lista_usuarios.cs",
+              "ViewState": "AQIAAB8AAAAAAAAAAAAmwBMAAAAIAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-20T04:47:46.437Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Control.cs",
+              "DocumentMoniker": "C:\\Users\\Matias\\source\\repos\\Positivee\\Positivee\\Presentacion\\Control.cs",
+              "RelativeDocumentMoniker": "Positivee\\Presentacion\\Control.cs",
+              "ToolTip": "C:\\Users\\Matias\\source\\repos\\Positivee\\Positivee\\Presentacion\\Control.cs",
+              "RelativeToolTip": "Positivee\\Presentacion\\Control.cs",
+              "ViewState": "AQIAAA0AAAAAAAAAAAAWwCAAAAABAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-20T04:37:05.828Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Menu_principal.cs",
+              "DocumentMoniker": "C:\\Users\\Matias\\source\\repos\\Positivee\\Positivee\\Presentacion\\Menu_principal.cs",
+              "RelativeDocumentMoniker": "Positivee\\Presentacion\\Menu_principal.cs",
+              "ToolTip": "C:\\Users\\Matias\\source\\repos\\Positivee\\Positivee\\Presentacion\\Menu_principal.cs",
+              "RelativeToolTip": "Positivee\\Presentacion\\Menu_principal.cs",
+              "ViewState": "AQIAAI4AAAAAAAAAAAAwwBkAAAAIAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-17T14:21:41.744Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Login.cs",
+              "DocumentMoniker": "C:\\Users\\Matias\\source\\repos\\Positivee\\Positivee\\Presentacion\\Login.cs",
+              "RelativeDocumentMoniker": "Positivee\\Presentacion\\Login.cs",
+              "ToolTip": "C:\\Users\\Matias\\source\\repos\\Positivee\\Positivee\\Presentacion\\Login.cs",
+              "RelativeToolTip": "Positivee\\Presentacion\\Login.cs",
+              "ViewState": "AQIAAB0AAAAAAAAAAAAwwCgAAAAMAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-17T14:23:44.818Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Pantalla_de_venta.cs",
+              "DocumentMoniker": "C:\\Users\\Matias\\source\\repos\\Positivee\\Positivee\\Presentacion\\Pantalla_de_venta.cs",
+              "RelativeDocumentMoniker": "Positivee\\Presentacion\\Pantalla_de_venta.cs",
+              "ToolTip": "C:\\Users\\Matias\\source\\repos\\Positivee\\Positivee\\Presentacion\\Pantalla_de_venta.cs",
+              "RelativeToolTip": "Positivee\\Presentacion\\Pantalla_de_venta.cs",
+              "ViewState": "AQIAAFAAAAAAAAAAAAAkwFwAAAANAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-17T15:32:54.483Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Menu_principal.cs [Dise\u00F1o]",
+              "DocumentMoniker": "C:\\Users\\Matias\\source\\repos\\Positivee\\Positivee\\Presentacion\\Menu_principal.cs",
+              "RelativeDocumentMoniker": "Positivee\\Presentacion\\Menu_principal.cs",
+              "ToolTip": "C:\\Users\\Matias\\source\\repos\\Positivee\\Positivee\\Presentacion\\Menu_principal.cs [Dise\u00F1o]",
+              "RelativeToolTip": "Positivee\\Presentacion\\Menu_principal.cs [Dise\u00F1o]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-17T05:22:34.058Z",
+              "EditorCaption": " [Dise\u00F1o]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "Eliminar_restaurar.cs",
+              "DocumentMoniker": "C:\\Users\\Matias\\source\\repos\\Positivee\\Positivee\\Presentacion\\Eliminar_restaurar.cs",
+              "RelativeDocumentMoniker": "Positivee\\Presentacion\\Eliminar_restaurar.cs",
+              "ToolTip": "C:\\Users\\Matias\\source\\repos\\Positivee\\Positivee\\Presentacion\\Eliminar_restaurar.cs",
+              "RelativeToolTip": "Positivee\\Presentacion\\Eliminar_restaurar.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-17T05:00:19.473Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Lista_usuarios.cs [Dise\u00F1o]",
+              "DocumentMoniker": "C:\\Users\\Matias\\source\\repos\\Positivee\\Positivee\\Presentacion\\Lista_usuarios.cs",
+              "RelativeDocumentMoniker": "Positivee\\Presentacion\\Lista_usuarios.cs",
+              "ToolTip": "C:\\Users\\Matias\\source\\repos\\Positivee\\Positivee\\Presentacion\\Lista_usuarios.cs [Dise\u00F1o]",
+              "RelativeToolTip": "Positivee\\Presentacion\\Lista_usuarios.cs [Dise\u00F1o]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-19T18:04:16.072Z",
+              "EditorCaption": " [Dise\u00F1o]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "Nuevo_producto.cs",
+              "DocumentMoniker": "C:\\Users\\Matias\\source\\repos\\Positivee\\Positivee\\Presentacion\\Nuevo_producto.cs",
+              "RelativeDocumentMoniker": "Positivee\\Presentacion\\Nuevo_producto.cs",
+              "ToolTip": "C:\\Users\\Matias\\source\\repos\\Positivee\\Positivee\\Presentacion\\Nuevo_producto.cs",
+              "RelativeToolTip": "Positivee\\Presentacion\\Nuevo_producto.cs",
+              "ViewState": "AQIAADkAAAAAAAAAAAAgwGYAAAANAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-17T05:19:35.2Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "Editar_producto.cs",
+              "DocumentMoniker": "C:\\Users\\Matias\\source\\repos\\Positivee\\Positivee\\Presentacion\\Editar_producto.cs",
+              "RelativeDocumentMoniker": "Positivee\\Presentacion\\Editar_producto.cs",
+              "ToolTip": "C:\\Users\\Matias\\source\\repos\\Positivee\\Positivee\\Presentacion\\Editar_producto.cs",
+              "RelativeToolTip": "Positivee\\Presentacion\\Editar_producto.cs",
+              "ViewState": "AQIAAIoAAAAAAAAAAAAAAJMAAAApAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-17T05:40:20.239Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "Editar_producto.cs [Dise\u00F1o]",
+              "DocumentMoniker": "C:\\Users\\Matias\\source\\repos\\Positivee\\Positivee\\Presentacion\\Editar_producto.cs",
+              "RelativeDocumentMoniker": "Positivee\\Presentacion\\Editar_producto.cs",
+              "ToolTip": "C:\\Users\\Matias\\source\\repos\\Positivee\\Positivee\\Presentacion\\Editar_producto.cs [Dise\u00F1o]",
+              "RelativeToolTip": "Positivee\\Presentacion\\Editar_producto.cs [Dise\u00F1o]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-19T21:31:12.056Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "Editar_producto.Designer.cs",
+              "DocumentMoniker": "C:\\Users\\Matias\\source\\repos\\Positivee\\Positivee\\Presentacion\\Editar_producto.Designer.cs",
+              "RelativeDocumentMoniker": "Positivee\\Presentacion\\Editar_producto.Designer.cs",
+              "ToolTip": "C:\\Users\\Matias\\source\\repos\\Positivee\\Positivee\\Presentacion\\Editar_producto.Designer.cs",
+              "RelativeToolTip": "Positivee\\Presentacion\\Editar_producto.Designer.cs",
+              "ViewState": "AQIAAF4AAAAAAAAAAAAWwGwAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-19T21:33:34.57Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "Persona.cs",
+              "DocumentMoniker": "C:\\Users\\Matias\\source\\repos\\Positivee\\Positivee\\Modelos\\Persona.cs",
+              "RelativeDocumentMoniker": "Positivee\\Modelos\\Persona.cs",
+              "ToolTip": "C:\\Users\\Matias\\source\\repos\\Positivee\\Positivee\\Modelos\\Persona.cs",
+              "RelativeToolTip": "Positivee\\Modelos\\Persona.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-19T19:32:10.845Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "Login.cs [Dise\u00F1o]",
+              "DocumentMoniker": "C:\\Users\\Matias\\source\\repos\\Positivee\\Positivee\\Presentacion\\Login.cs",
+              "RelativeDocumentMoniker": "Positivee\\Presentacion\\Login.cs",
+              "ToolTip": "C:\\Users\\Matias\\source\\repos\\Positivee\\Positivee\\Presentacion\\Login.cs [Dise\u00F1o]",
+              "RelativeToolTip": "Positivee\\Presentacion\\Login.cs [Dise\u00F1o]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-19T14:03:28.35Z",
+              "EditorCaption": " [Dise\u00F1o]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "Form1.cs",
+              "DocumentMoniker": "C:\\Users\\Matias\\source\\repos\\Positivee\\Positivee\\Presentacion\\Form1.cs",
+              "RelativeDocumentMoniker": "Positivee\\Presentacion\\Form1.cs",
+              "ToolTip": "C:\\Users\\Matias\\source\\repos\\Positivee\\Positivee\\Presentacion\\Form1.cs",
+              "RelativeToolTip": "Positivee\\Presentacion\\Form1.cs",
+              "ViewState": "AQIAAE4AAAAAAAAAAAA9wF0AAABNAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-17T20:28:58.373Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "Editar_usuario.cs",
+              "DocumentMoniker": "C:\\Users\\Matias\\source\\repos\\Positivee\\Positivee\\Presentacion\\Editar_usuario.cs",
+              "RelativeDocumentMoniker": "Positivee\\Presentacion\\Editar_usuario.cs",
+              "ToolTip": "C:\\Users\\Matias\\source\\repos\\Positivee\\Positivee\\Presentacion\\Editar_usuario.cs",
+              "RelativeToolTip": "Positivee\\Presentacion\\Editar_usuario.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAABAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-17T05:40:45.618Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "Nuevo_producto.cs [Dise\u00F1o]",
+              "DocumentMoniker": "C:\\Users\\Matias\\source\\repos\\Positivee\\Positivee\\Presentacion\\Nuevo_producto.cs",
+              "RelativeDocumentMoniker": "Positivee\\Presentacion\\Nuevo_producto.cs",
+              "ToolTip": "C:\\Users\\Matias\\source\\repos\\Positivee\\Positivee\\Presentacion\\Nuevo_producto.cs [Dise\u00F1o]",
+              "RelativeToolTip": "Positivee\\Presentacion\\Nuevo_producto.cs [Dise\u00F1o]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-19T17:57:27.463Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "Form1.cs [Dise\u00F1o]",
+              "DocumentMoniker": "C:\\Users\\Matias\\source\\repos\\Positivee\\Positivee\\Presentacion\\Form1.cs",
+              "RelativeDocumentMoniker": "Positivee\\Presentacion\\Form1.cs",
+              "ToolTip": "C:\\Users\\Matias\\source\\repos\\Positivee\\Positivee\\Presentacion\\Form1.cs [Dise\u00F1o]",
+              "RelativeToolTip": "Positivee\\Presentacion\\Form1.cs [Dise\u00F1o]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-19T18:17:31.678Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "Conexion.cs",
+              "DocumentMoniker": "C:\\Users\\Matias\\source\\repos\\Positivee\\Positivee\\Conexion.cs",
+              "RelativeDocumentMoniker": "Positivee\\Conexion.cs",
+              "ToolTip": "C:\\Users\\Matias\\source\\repos\\Positivee\\Positivee\\Conexion.cs",
+              "RelativeToolTip": "Positivee\\Conexion.cs",
+              "ViewState": "AQIAABUAAAAAAAAAAAAWwCQAAAA8AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-19T14:03:32.968Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "Permiso.cs",
+              "DocumentMoniker": "C:\\Users\\Matias\\source\\repos\\Positivee\\Positivee\\Modelos\\Permiso.cs",
+              "RelativeDocumentMoniker": "Positivee\\Modelos\\Permiso.cs",
+              "ToolTip": "C:\\Users\\Matias\\source\\repos\\Positivee\\Positivee\\Modelos\\Permiso.cs",
+              "RelativeToolTip": "Positivee\\Modelos\\Permiso.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-19T19:32:03.557Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "Editar_usuario.cs [Dise\u00F1o]",
+              "DocumentMoniker": "C:\\Users\\Matias\\source\\repos\\Positivee\\Positivee\\Presentacion\\Editar_usuario.cs",
+              "RelativeDocumentMoniker": "Positivee\\Presentacion\\Editar_usuario.cs",
+              "ToolTip": "C:\\Users\\Matias\\source\\repos\\Positivee\\Positivee\\Presentacion\\Editar_usuario.cs [Dise\u00F1o]",
+              "RelativeToolTip": "Positivee\\Presentacion\\Editar_usuario.cs [Dise\u00F1o]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-19T18:25:08.13Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "Lista_venta.cs [Dise\u00F1o]",
+              "DocumentMoniker": "C:\\Users\\Matias\\source\\repos\\Positivee\\Positivee\\Presentacion\\Lista_venta.cs",
+              "RelativeDocumentMoniker": "Positivee\\Presentacion\\Lista_venta.cs",
+              "ToolTip": "C:\\Users\\Matias\\source\\repos\\Positivee\\Positivee\\Presentacion\\Lista_venta.cs [Dise\u00F1o]",
+              "RelativeToolTip": "Positivee\\Presentacion\\Lista_venta.cs [Dise\u00F1o]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-17T15:46:43.34Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\Matias\\source\\repos\\Positivee\\Positivee\\Program.cs",
+              "RelativeDocumentMoniker": "Positivee\\Program.cs",
+              "ToolTip": "C:\\Users\\Matias\\source\\repos\\Positivee\\Positivee\\Program.cs",
+              "RelativeToolTip": "Positivee\\Program.cs",
+              "ViewState": "AQIAAAYAAAAAAAAAAAAAABgAAAAMAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-19T15:19:00.141Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 25,
+              "Title": "Nueva_categoria.cs",
+              "DocumentMoniker": "C:\\Users\\Matias\\source\\repos\\Positivee\\Positivee\\Presentacion\\Nueva_categoria.cs",
+              "RelativeDocumentMoniker": "Positivee\\Presentacion\\Nueva_categoria.cs",
+              "ToolTip": "C:\\Users\\Matias\\source\\repos\\Positivee\\Positivee\\Presentacion\\Nueva_categoria.cs",
+              "RelativeToolTip": "Positivee\\Presentacion\\Nueva_categoria.cs",
+              "ViewState": "AQIAAGEBAAAAAAAAAAAMwG4BAAAbAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-19T18:00:10.251Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 26,
+              "Title": "Nueva_categoria.cs [Dise\u00F1o]",
+              "DocumentMoniker": "C:\\Users\\Matias\\source\\repos\\Positivee\\Positivee\\Presentacion\\Nueva_categoria.cs",
+              "RelativeDocumentMoniker": "Positivee\\Presentacion\\Nueva_categoria.cs",
+              "ToolTip": "C:\\Users\\Matias\\source\\repos\\Positivee\\Positivee\\Presentacion\\Nueva_categoria.cs [Dise\u00F1o]",
+              "RelativeToolTip": "Positivee\\Presentacion\\Nueva_categoria.cs [Dise\u00F1o]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-19T17:57:23.694Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 27,
+              "Title": "Seccion_productos.cs",
+              "DocumentMoniker": "C:\\Users\\Matias\\source\\repos\\Positivee\\Positivee\\Presentacion\\Seccion_productos.cs",
+              "RelativeDocumentMoniker": "Positivee\\Presentacion\\Seccion_productos.cs",
+              "ToolTip": "C:\\Users\\Matias\\source\\repos\\Positivee\\Positivee\\Presentacion\\Seccion_productos.cs",
+              "RelativeToolTip": "Positivee\\Presentacion\\Seccion_productos.cs",
+              "ViewState": "AQIAAG4AAAAAAAAAAAAWwIAAAAAcAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-17T05:01:17.9Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 24,
+              "Title": "Seccion_usuarios.cs [Dise\u00F1o]",
+              "DocumentMoniker": "C:\\Users\\Matias\\source\\repos\\Positivee\\Positivee\\Presentacion\\Seccion_usuarios.cs",
+              "RelativeDocumentMoniker": "Positivee\\Presentacion\\Seccion_usuarios.cs",
+              "ToolTip": "C:\\Users\\Matias\\source\\repos\\Positivee\\Positivee\\Presentacion\\Seccion_usuarios.cs [Dise\u00F1o]",
+              "RelativeToolTip": "Positivee\\Presentacion\\Seccion_usuarios.cs [Dise\u00F1o]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-19T14:06:00.36Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 28,
+              "Title": "Seccion_productos.cs [Dise\u00F1o]",
+              "DocumentMoniker": "C:\\Users\\Matias\\source\\repos\\Positivee\\Positivee\\Presentacion\\Seccion_productos.cs",
+              "RelativeDocumentMoniker": "Positivee\\Presentacion\\Seccion_productos.cs",
+              "ToolTip": "C:\\Users\\Matias\\source\\repos\\Positivee\\Positivee\\Presentacion\\Seccion_productos.cs [Dise\u00F1o]",
+              "RelativeToolTip": "Positivee\\Presentacion\\Seccion_productos.cs [Dise\u00F1o]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-17T05:01:15.238Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 29,
+              "Title": "Cuadro_cobrar.cs [Dise\u00F1o]",
+              "DocumentMoniker": "C:\\Users\\Matias\\source\\repos\\Positivee\\Positivee\\Presentacion\\Cuadro_cobrar.cs",
+              "RelativeDocumentMoniker": "Positivee\\Presentacion\\Cuadro_cobrar.cs",
+              "ToolTip": "C:\\Users\\Matias\\source\\repos\\Positivee\\Positivee\\Presentacion\\Cuadro_cobrar.cs [Dise\u00F1o]",
+              "RelativeToolTip": "Positivee\\Presentacion\\Cuadro_cobrar.cs [Dise\u00F1o]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-17T20:49:20.656Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 30,
+              "Title": "Nuevo_usuario.cs [Dise\u00F1o]",
+              "DocumentMoniker": "C:\\Users\\Matias\\source\\repos\\Positivee\\Positivee\\Presentacion\\Nuevo_usuario.cs",
+              "RelativeDocumentMoniker": "Positivee\\Presentacion\\Nuevo_usuario.cs",
+              "ToolTip": "C:\\Users\\Matias\\source\\repos\\Positivee\\Positivee\\Presentacion\\Nuevo_usuario.cs [Dise\u00F1o]",
+              "RelativeToolTip": "Positivee\\Presentacion\\Nuevo_usuario.cs [Dise\u00F1o]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-17T14:49:42.938Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 32,
+              "Title": "Venta_medio_pago.cs",
+              "DocumentMoniker": "C:\\Users\\Matias\\source\\repos\\Positivee\\Positivee\\Modelos\\Venta_medio_pago.cs",
+              "RelativeDocumentMoniker": "Positivee\\Modelos\\Venta_medio_pago.cs",
+              "ToolTip": "C:\\Users\\Matias\\source\\repos\\Positivee\\Positivee\\Modelos\\Venta_medio_pago.cs",
+              "RelativeToolTip": "Positivee\\Modelos\\Venta_medio_pago.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-18T00:10:06.504Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 34,
+              "Title": "Lista_productos.cs",
+              "DocumentMoniker": "C:\\Users\\Matias\\source\\repos\\Positivee\\Positivee\\Presentacion\\Lista_productos.cs",
+              "RelativeDocumentMoniker": "Positivee\\Presentacion\\Lista_productos.cs",
+              "ToolTip": "C:\\Users\\Matias\\source\\repos\\Positivee\\Positivee\\Presentacion\\Lista_productos.cs",
+              "RelativeToolTip": "Positivee\\Presentacion\\Lista_productos.cs",
+              "ViewState": "AQIAAD0AAAAAAAAAAAAuwEsAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-17T04:50:40.858Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 31,
+              "Title": "Cuadro_cobrar.cs",
+              "DocumentMoniker": "C:\\Users\\Matias\\source\\repos\\Positivee\\Positivee\\Presentacion\\Cuadro_cobrar.cs",
+              "RelativeDocumentMoniker": "Positivee\\Presentacion\\Cuadro_cobrar.cs",
+              "ToolTip": "C:\\Users\\Matias\\source\\repos\\Positivee\\Positivee\\Presentacion\\Cuadro_cobrar.cs",
+              "RelativeToolTip": "Positivee\\Presentacion\\Cuadro_cobrar.cs",
+              "ViewState": "AQIAAEwAAAAAAAAAAAAMwG4AAAAMAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-17T20:30:52.069Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 33,
+              "Title": "Detalle_venta.cs",
+              "DocumentMoniker": "C:\\Users\\Matias\\source\\repos\\Positivee\\Positivee\\Modelos\\Detalle_venta.cs",
+              "RelativeDocumentMoniker": "Positivee\\Modelos\\Detalle_venta.cs",
+              "ToolTip": "C:\\Users\\Matias\\source\\repos\\Positivee\\Positivee\\Modelos\\Detalle_venta.cs",
+              "RelativeToolTip": "Positivee\\Modelos\\Detalle_venta.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-17T19:03:28.263Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 35,
+              "Title": "Lista_productos.cs [Dise\u00F1o]",
+              "DocumentMoniker": "C:\\Users\\Matias\\source\\repos\\Positivee\\Positivee\\Presentacion\\Lista_productos.cs",
+              "RelativeDocumentMoniker": "Positivee\\Presentacion\\Lista_productos.cs",
+              "ToolTip": "C:\\Users\\Matias\\source\\repos\\Positivee\\Positivee\\Presentacion\\Lista_productos.cs [Dise\u00F1o]",
+              "RelativeToolTip": "Positivee\\Presentacion\\Lista_productos.cs [Dise\u00F1o]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-17T04:49:51.512Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 36,
+              "Title": "Producto_venta.cs",
+              "DocumentMoniker": "C:\\Users\\Matias\\source\\repos\\Positivee\\Positivee\\Modelos\\Producto_venta.cs",
+              "RelativeDocumentMoniker": "Positivee\\Modelos\\Producto_venta.cs",
+              "ToolTip": "C:\\Users\\Matias\\source\\repos\\Positivee\\Positivee\\Modelos\\Producto_venta.cs",
+              "RelativeToolTip": "Positivee\\Modelos\\Producto_venta.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-19T15:37:04.508Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 38,
+              "Title": "Seccion_usuarios.cs",
+              "DocumentMoniker": "C:\\Users\\Matias\\source\\repos\\Positivee\\Positivee\\Presentacion\\Seccion_usuarios.cs",
+              "RelativeDocumentMoniker": "Positivee\\Presentacion\\Seccion_usuarios.cs",
+              "ToolTip": "C:\\Users\\Matias\\source\\repos\\Positivee\\Positivee\\Presentacion\\Seccion_usuarios.cs",
+              "RelativeToolTip": "Positivee\\Presentacion\\Seccion_usuarios.cs",
+              "ViewState": "AQIAABYAAAAAAAAAAAAQwBoAAAA5AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-19T14:43:48.369Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 37,
+              "Title": "Nuevo_usuario.cs",
+              "DocumentMoniker": "C:\\Users\\Matias\\source\\repos\\Positivee\\Positivee\\Presentacion\\Nuevo_usuario.cs",
+              "RelativeDocumentMoniker": "Positivee\\Presentacion\\Nuevo_usuario.cs",
+              "ToolTip": "C:\\Users\\Matias\\source\\repos\\Positivee\\Positivee\\Presentacion\\Nuevo_usuario.cs",
+              "RelativeToolTip": "Positivee\\Presentacion\\Nuevo_usuario.cs",
+              "ViewState": "AQIAAMAAAAAAAAAAAAAYwNYAAAANAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-17T14:49:51.67Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 40,
+              "Title": "Venta.cs",
+              "DocumentMoniker": "C:\\Users\\Matias\\source\\repos\\Positivee\\Positivee\\Modelos\\Venta.cs",
+              "RelativeDocumentMoniker": "Positivee\\Modelos\\Venta.cs",
+              "ToolTip": "C:\\Users\\Matias\\source\\repos\\Positivee\\Positivee\\Modelos\\Venta.cs",
+              "RelativeToolTip": "Positivee\\Modelos\\Venta.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAAAPAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-18T00:52:07.558Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 39,
+              "Title": "Pantalla_de_venta.cs [Dise\u00F1o]",
+              "DocumentMoniker": "C:\\Users\\Matias\\source\\repos\\Positivee\\Positivee\\Presentacion\\Pantalla_de_venta.cs",
+              "RelativeDocumentMoniker": "Positivee\\Presentacion\\Pantalla_de_venta.cs",
+              "ToolTip": "C:\\Users\\Matias\\source\\repos\\Positivee\\Positivee\\Presentacion\\Pantalla_de_venta.cs [Dise\u00F1o]",
+              "RelativeToolTip": "Positivee\\Presentacion\\Pantalla_de_venta.cs [Dise\u00F1o]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-17T15:32:38.845Z",
+              "EditorCaption": " [Dise\u00F1o]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 41,
+              "Title": "Cliente.cs",
+              "DocumentMoniker": "C:\\Users\\Matias\\source\\repos\\Positivee\\Positivee\\Modelos\\Cliente.cs",
+              "RelativeDocumentMoniker": "Positivee\\Modelos\\Cliente.cs",
+              "ToolTip": "C:\\Users\\Matias\\source\\repos\\Positivee\\Positivee\\Modelos\\Cliente.cs",
+              "RelativeToolTip": "Positivee\\Modelos\\Cliente.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-18T00:19:27.093Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 42,
+              "Title": "Cuadro_cobrar.Designer.cs",
+              "DocumentMoniker": "C:\\Users\\Matias\\source\\repos\\Positivee\\Positivee\\Presentacion\\Cuadro_cobrar.Designer.cs",
+              "RelativeDocumentMoniker": "Positivee\\Presentacion\\Cuadro_cobrar.Designer.cs",
+              "ToolTip": "C:\\Users\\Matias\\source\\repos\\Positivee\\Positivee\\Presentacion\\Cuadro_cobrar.Designer.cs",
+              "RelativeToolTip": "Positivee\\Presentacion\\Cuadro_cobrar.Designer.cs",
+              "ViewState": "AQIAALAAAAAAAAAAAAAswLMAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-17T20:49:58.1Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 43,
+              "Title": "Pantalla_de_venta.Designer.cs",
+              "DocumentMoniker": "C:\\Users\\Matias\\source\\repos\\Positivee\\Positivee\\Presentacion\\Pantalla_de_venta.Designer.cs",
+              "RelativeDocumentMoniker": "Positivee\\Presentacion\\Pantalla_de_venta.Designer.cs",
+              "ToolTip": "C:\\Users\\Matias\\source\\repos\\Positivee\\Positivee\\Presentacion\\Pantalla_de_venta.Designer.cs",
+              "RelativeToolTip": "Positivee\\Presentacion\\Pantalla_de_venta.Designer.cs",
+              "ViewState": "AQIAAG0CAAAAAAAAAAAWwHoCAABBAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-17T17:27:51.282Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

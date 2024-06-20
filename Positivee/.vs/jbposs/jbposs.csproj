@@ -1,0 +1,480 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{06668A08-53F2-4E15-87B1-4E32F2DF5595}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>jbposs</RootNamespace>
+    <AssemblyName>jbposs</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="FontAwesome.Sharp, Version=5.15.4.0, Culture=neutral, PublicKeyToken=d16d1e4e568ec10f, processorArchitecture=MSIL">
+      <HintPath>packages\FontAwesome.Sharp.5.15.4\lib\net45\FontAwesome.Sharp.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Configuration.Install" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.DirectoryServices" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
+    <Reference Include="System.Xaml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="categoria.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="cliente.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Datos\Operaciones.cs" />
+    <Compile Include="Datos\principal.cs" />
+    <Compile Include="Datos\registroMedioPago.cs" />
+    <Compile Include="Datos\ventaProd.cs" />
+    <Compile Include="detalleVenta.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="medioPago.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model1.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="permiso.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\addCategorie.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentacion\addCategorie.Designer.cs">
+      <DependentUpon>addCategorie.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\addCustomer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentacion\addCustomer.Designer.cs">
+      <DependentUpon>addCustomer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\addProduct.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentacion\addProduct.Designer.cs">
+      <DependentUpon>addProduct.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\addRol.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentacion\addRol.Designer.cs">
+      <DependentUpon>addRol.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\chartSalesByClient.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentacion\chartSalesByClient.Designer.cs">
+      <DependentUpon>chartSalesByClient.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\chartRevenue.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentacion\chartRevenue.Designer.cs">
+      <DependentUpon>chartRevenue.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\chartSales.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentacion\chartSales.Designer.cs">
+      <DependentUpon>chartSales.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\chartProducts.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentacion\chartProducts.Designer.cs">
+      <DependentUpon>chartProducts.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\cobrar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentacion\cobrar.Designer.cs">
+      <DependentUpon>cobrar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\customersList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentacion\customersList.Designer.cs">
+      <DependentUpon>customersList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\editProduct.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentacion\editProduct.Designer.cs">
+      <DependentUpon>editProduct.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\editRol.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentacion\editRol.Designer.cs">
+      <DependentUpon>editRol.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\editCustomer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentacion\editCustomer.Designer.cs">
+      <DependentUpon>editCustomer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\editUser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentacion\editUser.Designer.cs">
+      <DependentUpon>editUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\filterCustList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentacion\filterCustList.Designer.cs">
+      <DependentUpon>filterCustList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\filterProdList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentacion\filterProdList.Designer.cs">
+      <DependentUpon>filterProdList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\filterUserList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentacion\filterUserList.Designer.cs">
+      <DependentUpon>filterUserList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\frmBackup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentacion\frmBackup.Designer.cs">
+      <DependentUpon>frmBackup.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\frmCustomers.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentacion\frmCustomers.Designer.cs">
+      <DependentUpon>frmCustomers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\frmSales.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentacion\frmSales.Designer.cs">
+      <DependentUpon>frmSales.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\frmUsers.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentacion\frmUsers.Designer.cs">
+      <DependentUpon>frmUsers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\productList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentacion\productList.Designer.cs">
+      <DependentUpon>productList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\frmMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentacion\frmMain.designer.cs">
+      <DependentUpon>frmMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\frmProducts.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentacion\frmProducts.designer.cs">
+      <DependentUpon>frmProducts.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\LoginForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentacion\LoginForm.Designer.cs">
+      <DependentUpon>LoginForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\addUser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentacion\addUser.Designer.cs">
+      <DependentUpon>addUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\reports.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentacion\reports.Designer.cs">
+      <DependentUpon>reports.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\ReportSales.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentacion\ReportSales.Designer.cs">
+      <DependentUpon>ReportSales.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\salesList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentacion\salesList.Designer.cs">
+      <DependentUpon>salesList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\screenSale.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentacion\screenSale.Designer.cs">
+      <DependentUpon>screenSale.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\searchCustomer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentacion\searchCustomer.Designer.cs">
+      <DependentUpon>searchCustomer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\showSale.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentacion\showSale.Designer.cs">
+      <DependentUpon>showSale.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\usersList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentacion\usersList.designer.cs">
+      <DependentUpon>usersList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="producto.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="provincia.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="rol.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sysdiagrams.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="usuario.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="venta.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="venta_mediopago.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentacion\addCategorie.resx">
+      <DependentUpon>addCategorie.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentacion\addCustomer.resx">
+      <DependentUpon>addCustomer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentacion\addProduct.resx">
+      <DependentUpon>addProduct.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentacion\addRol.resx">
+      <DependentUpon>addRol.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentacion\chartSalesByClient.resx">
+      <DependentUpon>chartSalesByClient.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentacion\chartRevenue.resx">
+      <DependentUpon>chartRevenue.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentacion\chartSales.resx">
+      <DependentUpon>chartSales.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentacion\chartProducts.resx">
+      <DependentUpon>chartProducts.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentacion\cobrar.resx">
+      <DependentUpon>cobrar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentacion\customersList.resx">
+      <DependentUpon>customersList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentacion\editProduct.resx">
+      <DependentUpon>editProduct.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentacion\editRol.resx">
+      <DependentUpon>editRol.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentacion\editCustomer.resx">
+      <DependentUpon>editCustomer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentacion\editUser.resx">
+      <DependentUpon>editUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentacion\filterCustList.resx">
+      <DependentUpon>filterCustList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentacion\filterProdList.resx">
+      <DependentUpon>filterProdList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentacion\filterUserList.resx">
+      <DependentUpon>filterUserList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentacion\frmBackup.resx">
+      <DependentUpon>frmBackup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentacion\frmCustomers.resx">
+      <DependentUpon>frmCustomers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentacion\frmMain.resx">
+      <DependentUpon>frmMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentacion\frmProducts.resx">
+      <DependentUpon>frmProducts.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentacion\frmSales.resx">
+      <DependentUpon>frmSales.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentacion\frmUsers.resx">
+      <DependentUpon>frmUsers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentacion\LoginForm.resx">
+      <DependentUpon>LoginForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentacion\productList.resx">
+      <DependentUpon>productList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentacion\addUser.resx">
+      <DependentUpon>addUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentacion\reports.resx">
+      <DependentUpon>reports.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentacion\ReportSales.resx">
+      <DependentUpon>ReportSales.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentacion\salesList.resx">
+      <DependentUpon>salesList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentacion\screenSale.resx">
+      <DependentUpon>screenSale.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentacion\searchCustomer.resx">
+      <DependentUpon>searchCustomer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentacion\showSale.resx">
+      <DependentUpon>showSale.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentacion\usersList.resx">
+      <DependentUpon>usersList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EntityDeploy Include="Model1.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Model1.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Model1.edmx.diagram">
+      <DependentUpon>Model1.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Model1.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Model1.Context.cs</LastGenOutput>
+      <DependentUpon>Model1.edmx</DependentUpon>
+    </Content>
+    <Content Include="Model1.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Model1.edmx</DependentUpon>
+      <LastGenOutput>Model1.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
