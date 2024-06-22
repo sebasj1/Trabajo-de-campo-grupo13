@@ -15,8 +15,7 @@ using FontAwesome.Sharp;
 public static class Control{
      public static Login login;
      private static Usuario usuarioLogueado;
-     private static Form formActivo = null;
-     private static IconMenuItem menuActivo = null;
+     
      private static Menu_principal _principal;
      private static Pantalla_de_venta screen;
     private static string _connectionString = Conexion.get_string(); 
@@ -41,28 +40,13 @@ public static class Control{
         login=p_login;
  }
 
-    public static void iconSelect(IconMenuItem menuSelected, Form form)
-        {
-           if (menuActivo != null)
-            {
-                menuActivo.BackColor = System.Drawing.Color.DeepSkyBlue;
-            }
-            menuSelected.BackColor = System.Drawing.Color.White;
-            menuActivo = menuSelected;
-            if (formActivo != null)
-            {
-                formActivo.Close();
-            }
-            form.TopLevel = false;
-            form.FormBorderStyle = FormBorderStyle.None;
-            form.Dock = DockStyle.Fill;
-            _principal.panel1.Controls.Add(form);
-            form.Show();
-            formActivo = form;
- }
- 
+    public static void cargar_menu_principal(Menu_principal p_login)
+    {
+        _principal = p_login;
+    }
 
-  private static void crear_pantalla_venta()
+
+    private static void crear_pantalla_venta()
         { screen = new Pantalla_de_venta(_principal, usuarioLogueado);
                         
         }
@@ -72,19 +56,11 @@ public static class Control{
          }
      public static void cargar_iconos_menu()
         {
-            
-            iconSelect((IconMenuItem)_principal.Usuarios, new Seccion_usuarios());
+        IEnumerable<string> Permissions = obtener_permisos();
+            //iconSelect((IconMenuItem)_principal.Usuarios, new Seccion_usuarios());
             _principal.AutoScaleMode = AutoScaleMode.Dpi;
             _principal.cargar_datos_usuario(usuarioLogueado.nombre_usuario.ToString());
-           IEnumerable<string> Permissions;
-            using (var db = new MySqlConnector.MySqlConnection(_connectionString))
-            {
-                
-                Permissions = db.Query<string>(
-                          sql: "user_permissions",
-                          param: new { p_rol = usuarioLogueado.id_rol },
-                          commandType: CommandType.StoredProcedure);
-            }
+          
             foreach (ToolStripItem item in getMenuItems())
             {
 
@@ -102,6 +78,20 @@ public static class Control{
             }
 
         }
+
+    public static IEnumerable<string> obtener_permisos()
+    {
+        IEnumerable<string> Permissions;
+        using (var db = new MySqlConnector.MySqlConnection(_connectionString))
+        {
+
+            Permissions = db.Query<string>(
+                      sql: "user_permissions",
+                      param: new { p_rol = usuarioLogueado.id_rol },
+                      commandType: CommandType.StoredProcedure);
+        }
+        return Permissions;
+    }
 
 
 public static void pantalla_venta(){
@@ -127,5 +117,8 @@ public static void pantalla_venta(){
        e.Cancel = true;
    }
         }
+
+
+    
 
 } 

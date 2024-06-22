@@ -1,5 +1,6 @@
 ﻿using Dapper;
 using FontAwesome.Sharp;
+using Google.Protobuf.Reflection;
 using Positive.Presentacion;
 using System;
 using System.Collections.Generic;
@@ -17,21 +18,20 @@ namespace Positive.Presentacion
 {
     public partial class Seccion_usuarios : Form
     {
-
-        Lista_usuarios lista ;
+            
+        Lista_usuarios lista = null;
         public Seccion_usuarios()
         {
             InitializeComponent();
-        }
-        public IconButton btnActive = null;
-        string _connectionString = Conexion.get_string();
-        string action = "";
-        private void frmUser_Load(object sender, EventArgs e)
-        {
-
-            // userEdit = new editUser(this);
             lista = new Lista_usuarios(this);
         }
+
+        
+        private void frmUser_Load(object sender, EventArgs e)
+        {
+            lista.cargar_lista();
+        }
+        public IconButton btnActive = null;
         public void iconSelect(IconButton buttonSelected, Form form)
         {
             if (btnActive != null)
@@ -49,22 +49,28 @@ namespace Positive.Presentacion
             btnActive = buttonSelected;
         }
 
+        //Nuevo usuario
         private void addUser_Click(object sender, EventArgs e)
         {
+            // Usuario nuevo_usuario=new Usuario();
            iconSelect((IconButton)sender,new Nuevo_usuario());
         }
 
+        //Muestra lista
         private void iconButton1_Click(object sender, EventArgs e)
         {
-            lista.cargar_lista("");
+            lista.cargar_lista();
+            lista.cargar_accion("");
             iconSelect((IconButton)sender, lista);
+           
         }
 
-       
+      
+
 
         private void btEditUser_Click(object sender, EventArgs e)
-       { 
-            lista.cargar_lista("edit");
+        {
+            lista.cargar_accion("edit");
             iconSelect((IconButton)sender,lista);
            
         }
@@ -72,55 +78,40 @@ namespace Positive.Presentacion
         public void recargar_lista(string p_ac )
         {
             lista.Refresh();
-            lista.cargar_lista(p_ac);
+            lista.cargar_accion(p_ac);
             iconSelect(btEditUser, lista);
         }
-        public void seleccion_editar(string p_id)
+        public void seleccion_editar(Usuario p_usuario_editar,Contacto p_contacto_editar)
         {
-               int ide= int.Parse(p_id);
-               iconSelect(btEditUser, new Editar_usuario(ide,this));
+            Editar_usuario editar_usuario = new Editar_usuario();
+            iconSelect(btEditUser, editar_usuario);
+            editar_usuario.cargar_datos(p_usuario_editar, p_contacto_editar);
+
 
         }
         //Eliminar usuario
         private void delUser_Click_1(object sender, EventArgs e)
         {
-            lista.cargar_lista("delete");
+           
+            lista.cargar_accion("delete");
             iconSelect((IconButton)sender, lista);
 
-        }
-        public void seleccion_eliminar(string p_id)
-        {
-            Eliminar_restaurar controlador = new Eliminar_restaurar();
-            DialogResult resultado = MessageBox.Show("¿Está seguro de que desea eliminar este usuario?", "Confirmar Eliminación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-
-            if (resultado == DialogResult.Yes)
-            {
-                
-                MessageBox.Show(controlador.eliminar_usuario(p_id), "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
-              
-            }
-            recargar_lista("delete");
         }
         
         private void restUser_Click(object sender, EventArgs e)
         {
-            lista.cargar_lista("restore");
+          
+            lista.cargar_accion("restore");
             iconSelect((IconButton)sender, lista);
         }
-        
-        public void seleccion_restaurar(string p_id)
-        {
-            Eliminar_restaurar controlador = new Eliminar_restaurar();
-            DialogResult resultado = MessageBox.Show("¿Está seguro de que desea restaurar a este usuario?", "Confirmar Restauración", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
-            if (resultado == DialogResult.Yes)
-            {
-
-                MessageBox.Show(controlador.restaurar_usuario(p_id), "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-            }
-            recargar_lista("restore");
+        private void rolesEd_Click(object sender, EventArgs e)
+        {/*
+            iconSelect((IconButton)sender, new editRol());
+            addRol ar = new ro();
+            ar.ShowDialog();*/
         }
+
         /*je
 public void userEdit_Click(object sender, EventArgs e)
 {
@@ -293,9 +284,7 @@ private void panelUsers_Click(object sender, EventArgs e)
 
 private void rolesEd_Click(object sender, EventArgs e)
 {
-iconSelect((IconButton)sender, new editRol());
-addRol ar = new addRol();
-ar.ShowDialog();
+ss
 }*/
     }
 }

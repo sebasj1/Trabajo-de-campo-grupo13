@@ -1,4 +1,4 @@
-﻿namespace Positivee.Presentacion
+﻿namespace Positive.Presentacion
 {
     partial class Editar_producto
     {

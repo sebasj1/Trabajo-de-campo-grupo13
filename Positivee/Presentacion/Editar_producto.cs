@@ -15,192 +15,99 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Positivee.Presentacion
+namespace Positive.Presentacion
 {
     public partial class Editar_producto : Form
     {
         string _connectionString = "Server=mysql-proyectois2.alwaysdata.net;Database=proyectois2_puntoventa;User Id=362639;Password=Pollito1q;";
-        Producto producto = new Producto();
+        Producto producto_en_editar = new Producto();
         Seccion_productos _principal;
-        public Editar_producto(int p_id, Seccion_productos p_principal)
+        public Editar_producto()
         {
             InitializeComponent();
-            _principal = p_principal;
-            FINDPROD(p_id);
         }
-        private void FINDPROD(int p_id)
-        {
-            try
+    
+
+        public void cargar_datos(Producto p_usuario_producto_editar)
             {
-                using (var db = new MySqlConnector.MySqlConnection(_connectionString))
-                {
-                    var PROD = db.QueryFirst(
-                               sql: "search_producto_id",
-                               param: new { @p_id_producto = p_id },
-                               commandType: CommandType.StoredProcedure
-                    );
-                    producto.codigo = PROD.codigo;
-                    producto.descripcion = PROD.descripcion;
-                    producto.id_categoria = PROD.id_categoria;
-                    producto.id_estado = PROD.id_estado;
-                    producto.id_producto = PROD.id_producto;
-                    producto.precio_compra = PROD.precio_compra;
-                    producto.precio_venta = PROD.precio_venta;
-                    producto.stock = PROD.stock;
-                    producto.titulo = PROD.titulo;
-
-                }
-                busca_categorias();
-                busca_estado();
-                tbCodeProd.Text = producto.codigo;
-                cbStatus.SelectedIndex = producto.id_estado - 1;
-                cbCategorie.SelectedIndex = producto.id_categoria - 1;
-
-                tbDescProd.Text = producto.descripcion;
-                tbPriceProd.Text = producto.precio_compra.ToString();
-                tbPrecV.Text = producto.precio_venta.ToString();
-                tbStockProd.Text = producto.stock.ToString();
+            producto_en_editar = p_usuario_producto_editar;
 
 
-                tbTitleProd.Text = producto.titulo;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("No se pudo cargar " + ex);
-            }
 
-        }
-
-        private void busca_categorias()
-        {
-            using (var db = new MySqlConnector.MySqlConnection(_connectionString))
-            {
-
-                var rolesQuery = db.Query<Categoria>(
-                          sql: "all_categories_d",
-                          commandType: CommandType.StoredProcedure);
+                Categoria categoria = new Categoria();
                 cbCategorie.Items.Clear();
-                cbCategorie.DataSource = rolesQuery.ToList();
+                cbCategorie.DataSource = categoria.lista_categorias();
                 cbCategorie.DisplayMember = "descripcion";
                 cbCategorie.ValueMember = "id_categoria";
                 cbCategorie.Refresh();
 
-                
-            } }
-        private void busca_estado()
-        {
-            using (var db = new MySqlConnector.MySqlConnection(_connectionString))
-            {
-                var estado = db.Query<Estado>(
-                            sql: "all_status_d",
-                            commandType: CommandType.StoredProcedure);
+             
+
 
                 cbStatus.Items.Clear();
-                cbStatus.DataSource = estado.ToList();
+                Estado tipo_estado = new Estado();
+                cbStatus.DataSource = tipo_estado.lista_estados();
                 cbStatus.DisplayMember = "descripcion";
                 cbStatus.ValueMember = "id_estado";
                 cbStatus.Refresh();
-            }
 
+
+
+                tbCodeProd.Text = producto_en_editar.codigo;
+                cbCategorie.SelectedIndex = producto_en_editar.id_categoria - 1;
+                cbStatus.SelectedIndex = producto_en_editar.id_estado - 1;
+
+
+                tbDescProd.Text = producto_en_editar.descripcion;
+                tbPrecV.Text = producto_en_editar.precio_venta.ToString();
+                tbPriceProd.Text = producto_en_editar.precio_compra.ToString();
+                tbStockProd.Text = producto_en_editar.stock.ToString();
+            tbTitleProd.Text = producto_en_editar.titulo;
+            }
            
-        }
-        private bool FINDCODPROD(string dni)
-        {
-            bool exist = false;
-            using (var db = new MySqlConnector.MySqlConnection(_connectionString))
-            {
-                var LISTEXIST = db.Query(
-                           sql: "search_producto_cod",
-                           param: new {@p_cod = dni },
-                           commandType: CommandType.StoredProcedure
-                );
-                if (LISTEXIST.Count() > 0)
-                {
-                    exist = true;
-                }
-            }
-            return exist;
-        }
-        private void guardar_cambios()
-        {
 
-            try
-            {
-
-                this.AutoValidate = System.Windows.Forms.AutoValidate.Disable;
-
-
-                if (this.ValidateChildren(ValidationConstraints.Enabled) && (tbCodeProd.Text==""|| FINDCODPROD(tbCodeProd.Text)))
-                {
-
-                    producto.titulo = tbTitleProd.Text.Trim();
-                    producto.descripcion = tbDescProd.Text;
-                    producto.id_categoria = cbCategorie.SelectedIndex + 1;
-                    producto.id_estado = cbStatus.SelectedIndex + 1;
-                    producto.precio_compra = decimal.Parse(tbPriceProd.Text);
-                    producto.precio_venta = decimal.Parse(tbPrecV.Text);
-                    producto.stock = int.Parse(tbStockProd.Text.Trim());
-                    DialogResult resp = MessageBox.Show("Se guardaran los datos del producto", "Éxito", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-
-                    if (resp == DialogResult.Yes)
-                    {
-                        GUARDAR_PRODUCTO();
-                        MessageBox.Show("Producto actualizado correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                        _principal.recargar_lista("edit");
-                        this.Dispose();
-                    }
-                }
-
-            }
-
-            catch (DbEntityValidationException ex)
-            {
-                var errorMessages = ex.EntityValidationErrors
-              .SelectMany(x => x.ValidationErrors)
-              .Select(x => x.ErrorMessage);
-
-                var fullErrorMessage = string.Join(Environment.NewLine, errorMessages);
-                MessageBox.Show($"Errores de validación:{Environment.NewLine}{fullErrorMessage}", "Error de validación", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-
-            catch (Exception ex)
-            {
-
-                MessageBox.Show("Ha ocurrido un error." + ex, "Fallo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-            }
-
-        }
+                
+       
+       
+        
 
         private void btAddProd_Click(object sender, EventArgs e)
         {
-            guardar_cambios();
-        }
-        private void GUARDAR_PRODUCTO()
-        {
+            this.AutoValidate = System.Windows.Forms.AutoValidate.Disable;
 
-            using (var db = new MySqlConnector.MySqlConnection(_connectionString))
+
+            if (this.ValidateChildren(ValidationConstraints.Enabled))
             {
-
-                var queryAdd = db.ExecuteReader(
-                                   sql: "edit_product",
-                                   param: new
-                                   {
-                                       @p_id_producto = producto.id_producto,
-                                       @p_titulo = producto.titulo,
-                                       @p_descripcion = producto.descripcion,
-                                       @p_codigo = producto.codigo,
-                                       @p_precio_compra = producto.precio_compra,
-                                       @p_precio_venta = producto.precio_venta,
-                                       @p_id_categoria = producto.id_categoria,
-                                       @p_id_estado = producto.id_estado,
-
-                                   },
-                                   commandType: CommandType.StoredProcedure);
+               
+                producto_en_editar.INSERTCONTROLEDIT(tbCodeProd.Text.Trim(),tbTitleProd.Text.Trim() ,tbDescProd.Text.Trim(), cbCategorie.SelectedIndex + 1, cbStatus.SelectedIndex + 1,
+                tbPriceProd.Text.Trim(), tbPrecV.Text.Trim(), tbStockProd.Text.Trim(),  this);
 
             }
         }
+        // private void GUARDAR_PRODUCTO()
+        // {
+
+        //     using (var db = new MySqlConnector.MySqlConnection(_connectionString))
+        //     {
+
+        //         var queryAdd = db.ExecuteReader(
+        //                            sql: "edit_product",
+        //                            param: new
+        //                            {
+        //                                @p_id_producto = producto.id_producto,
+        //                                @p_titulo = producto.titulo,
+        //                                @p_descripcion = producto.descripcion,
+        //                                @p_codigo = producto.codigo,
+        //                                @p_precio_compra = producto.precio_compra,
+        //                                @p_precio_venta = producto.precio_venta,
+        //                                @p_id_categoria = producto.id_categoria,
+        //                                @p_id_estado = producto.id_estado,
+
+        //                            },
+        //                            commandType: CommandType.StoredProcedure);
+
+        //     }
+        // }
 
         private void editar_producto_Load(object sender, EventArgs e)
         {

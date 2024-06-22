@@ -22,8 +22,8 @@ namespace Positive
             Login aa = new Login();
             us.nombre_usuario = "ss";
             us.id_rol =3;
-            Application.Run(new Login());
-          //  Application.Run(new frmMain(us,aa));
+           Application.Run(new Seccion_clientes());
+           //Application.Run(new Menu_principal());
         }
     }
 }

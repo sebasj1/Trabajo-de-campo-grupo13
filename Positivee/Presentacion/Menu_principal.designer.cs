@@ -191,6 +191,7 @@
             this.Clientes.Size = new System.Drawing.Size(125, 101);
             this.Clientes.Text = "Clientes";
             this.Clientes.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.Clientes.Click += new System.EventHandler(this.Clientes_Click);
             // 
             // Cerrar_sesion
             // 

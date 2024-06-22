@@ -14,51 +14,8 @@ namespace Positive.Presentacion
     {
         string _connectionString = "Server=mysql-proyectois2.alwaysdata.net;Database=proyectois2_puntoventa;User Id=362639;Password=Pollito1q;";
 
-        public string eliminar_usuario(string p_id)
-        {
-            string mensaje = "";
-            int id = int.Parse(p_id);
-
-            try{
-                using (var db = new MySqlConnector.MySqlConnection(_connectionString))
-                {
-
-                    var elem_eliminado = db.Execute(
-                              sql: "delete_user_id",
-                              param: new { @p_id = id },
-                              commandType: CommandType.StoredProcedure);
-                }
-                mensaje = "Eliminado correctamente";
-            }
-            catch(Exception ex)
-            {
-                mensaje = "No se pudo eliminar "+ex;
-            }
-            return mensaje;
-        }
-        public string restaurar_usuario(string p_id)
-        {
-            string mensaje = "";
-            int id = int.Parse(p_id);
-
-            try
-            {
-                using (var db = new MySqlConnector.MySqlConnection(_connectionString))
-                {
-
-                    var elem_eliminado = db.Execute(
-                              sql: "restore_user_id",
-                              param: new { @p_id = id },
-                              commandType: CommandType.StoredProcedure);
-                }
-                mensaje = "Restaurado correctamente";
-            }
-            catch (Exception ex)
-            {
-                mensaje = "No se pudo restaurar " + ex;
-            }
-            return mensaje;
-        }
+       
+      
         //productos
         public string eliminar_producto(string p_id)
         {

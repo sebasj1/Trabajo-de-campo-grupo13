@@ -111,7 +111,7 @@
             this.lblClock.Size = new System.Drawing.Size(177, 64);
             this.lblClock.TabIndex = 71;
             this.lblClock.Text = "label2";
-            this.lblClock.Click += new System.EventHandler(this.lblClock_Click);
+            //this.lblClock.Click += new System.EventHandler(this.lblClock_Click);
             // 
             // label9
             // 
@@ -138,7 +138,7 @@
             this.menuStrip1.Size = new System.Drawing.Size(1898, 109);
             this.menuStrip1.TabIndex = 69;
             this.menuStrip1.Text = "menuStrip1";
-            this.menuStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.menuStrip1_ItemClicked);
+            //this.menuStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.menuStrip1_ItemClicked);
             // 
             // tbBrow
             // 
@@ -296,7 +296,7 @@
             this.dgvPrincipal.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvPrincipal.Size = new System.Drawing.Size(1319, 660);
             this.dgvPrincipal.TabIndex = 2;
-            this.dgvPrincipal.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPrincipal_CellClick_1);
+           // this.dgvPrincipal.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPrincipal_CellClick_1);
             // 
             // panel2
             // 
@@ -528,7 +528,7 @@
             this.btOk.Text = "Cobrar         ";
             this.btOk.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btOk.UseVisualStyleBackColor = false;
-            this.btOk.Click += new System.EventHandler(this.btOk_Click_1);
+          //  this.btOk.Click += new System.EventHandler(this.btOk_Click_1);
             // 
             // iconButton1
             // 
@@ -638,7 +638,7 @@
             this.iconButton3.TabIndex = 95;
             this.iconButton3.Text = "Buscar   ";
             this.iconButton3.UseVisualStyleBackColor = false;
-            this.iconButton3.Click += new System.EventHandler(this.iconButton3_Click);
+           // this.iconButton3.Click += new System.EventHandler(this.iconButton3_Click);
             // 
             // actualizar_Click
             // 
@@ -648,7 +648,7 @@
             this.actualizar_Click.TabIndex = 95;
             this.actualizar_Click.Text = "Actualizar";
             this.actualizar_Click.UseVisualStyleBackColor = true;
-            this.actualizar_Click.Click += new System.EventHandler(this.actualizar_Click_Click);
+           // this.actualizar_Click.Click += new System.EventHandler(this.actualizar_Click_Click);
             // 
             // lbNombre
             // 

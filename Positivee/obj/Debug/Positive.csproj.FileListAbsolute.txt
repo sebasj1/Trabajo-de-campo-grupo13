@@ -61,7 +61,6 @@ C:\Users\Matias\source\repos\Positivee\Positivee\obj\Debug\Positivee.pdb
 C:\Users\Matias\source\repos\Positivee\Positivee\obj\Debug\Positivee.Presentacion.customersList.resources
 C:\Users\Matias\source\repos\Positivee\Positivee\obj\Debug\Positive.Presentacion.editar_usuario.resources
 C:\Users\Matias\source\repos\Positivee\Positivee\obj\Debug\Positive.Presentacion.Lista_productos.resources
-C:\Users\Matias\source\repos\Positivee\Positivee\obj\Debug\Positivee.Presentacion.editar_producto.resources
 C:\Users\Matias\source\repos\Positivee\Positivee\obj\Debug\Positivee.Presentacion.Lista_venta.resources
 C:\Users\Matias\source\repos\Positivee\Positivee\obj\Debug\Positive.Presentacion.Form1.resources
 C:\Users\Matias\source\repos\Positivee\Positivee\obj\Debug\Positive.Presentacion.Nueva_categoria.resources
@@ -74,3 +73,8 @@ C:\Users\Matias\source\repos\Positivee\Positivee\obj\Debug\Positive.Presentacion
 C:\Users\Matias\source\repos\Positivee\Positivee\obj\Debug\Positive.Presentacion.Lista_usuarios.resources
 C:\Users\Matias\source\repos\Positivee\Positivee\obj\Debug\Positive.Presentacion.Login.resources
 C:\Users\Matias\source\repos\Positivee\Positivee\obj\Debug\Positive.Presentacion.Pantalla_de_venta.resources
+C:\Users\Matias\source\repos\Positivee\Positivee\obj\Debug\Positive.Presentacion.Lista_clientes.resources
+C:\Users\Matias\source\repos\Positivee\Positivee\obj\Debug\Positive.Presentacion.Nuevo_cliente.resources
+C:\Users\Matias\source\repos\Positivee\Positivee\obj\Debug\Positive.Presentacion.Seccion_clientes.resources
+C:\Users\Matias\source\repos\Positivee\Positivee\obj\Debug\Positive.Presentacion.Editar_producto.resources
+C:\Users\Matias\source\repos\Positivee\Positivee\obj\Debug\Positive.Presentacion.Editar_cliente.resources

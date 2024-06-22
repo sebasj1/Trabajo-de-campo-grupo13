@@ -26,9 +26,8 @@ namespace Positive.Presentacion
         private static Menu_principal frmMainPrincipal;
         private Usuario usuarioLog;
         //private Lista_productos prodList = new Lista_productos();
-        private List<Detalle_venta> carrito = new List<Detalle_venta>();
         private List<Medio_pago> listReg = new List<Medio_pago>();
-        private List<Producto_venta> lista_prod_carrito = new List<Producto_venta>();
+
         private List<Medio_pago> medios = new List<Medio_pago>();
         private bool scV = true;
         public decimal total = 0;
@@ -38,10 +37,10 @@ namespace Positive.Presentacion
         private string nombre_cliente;
         private string apellido_cliente;
         private string numero_documento;
-        private List<Producto_venta> lista_prod = null; 
-        private Cuadro_cobrar cob ;
+        private List<dynamic> lista_prod = new List<dynamic>();
+        private Detalle_venta detalle_ventas;
+        private Cuadro_cobrar cob;
 
-        string _connectionString = "Server=mysql-proyectois2.alwaysdata.net;Database=proyectois2_puntoventa;User Id=362639;Password=Pollito1q;";
 
         public Pantalla_de_venta(Menu_principal pfrmMain, Usuario pUser)
         {
@@ -56,6 +55,8 @@ namespace Positive.Presentacion
 
         private void screenSale_Load(object sender, EventArgs e)
         {
+            Producto producto_pantalla = new Producto();
+            lista_prod = producto_pantalla.cargar_productos_venta();
             timer1.Enabled = true;
             lbTotal.Text = total.ToString();
             this.AutoScaleMode = AutoScaleMode.Dpi;
@@ -63,22 +64,12 @@ namespace Positive.Presentacion
             dgvSales.AllowUserToAddRows = false;
             dgvMedio.AllowUserToAddRows = false;
             labelUsuario.Text = "Usuario: " + usuarioLog.nombre_usuario.ToString();
-            cargar_productos_todos();
-            clientDefect();
+
+            //clientDefect();
 
 
 
         }
-        private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
-        {
-
-        }
-
-        private void lblClock_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void timer1_Tick_1(object sender, EventArgs e)
         {
             lblClock.Text = DateTime.Now.ToString("hh:mm:ss");
@@ -154,18 +145,7 @@ namespace Positive.Presentacion
             }
         }
 
-        public List<Producto_venta> cargar_productos_todos()
-        {
 
-            using (var db = new MySqlConnector.MySqlConnection(_connectionString))
-            {
-                var lista = db.Query<Producto_venta>(
-                          sql: "all_products_sale",
-                          commandType: CommandType.StoredProcedure);
-                lista_prod = lista.ToList();
-            }
-            return lista_prod;
-        }
 
         ///Pantall aprincipal
         public void filterScreen(string pText)
@@ -192,8 +172,9 @@ namespace Positive.Presentacion
 
             dgvPrincipal.RowsDefaultCellStyle.BackColor = SystemColors.InactiveCaption;
             dgvPrincipal.RowsDefaultCellStyle.ForeColor = Color.Black;
-            if (lista_prod != null) {
-                foreach (Producto_venta product in lista_prod)
+            if (lista_prod != null)
+            {
+                foreach (dynamic product in lista_prod)
                 {
                     if (pText.IsNumberType() && product.codigo.Contains(pText.Trim()) || product.titulo.ToLower().Contains(pText.ToLower().Trim()))
                     {
@@ -213,7 +194,8 @@ namespace Positive.Presentacion
                     }
 
                     dgvPrincipal.Refresh();
-                } }
+                }
+            }
         }
 
 
@@ -221,36 +203,12 @@ namespace Positive.Presentacion
 
 
 
-        private void cargar_carrito(string id_prod)
-        {
-            int id = int.Parse(id_prod);
-            Producto_venta prod = lista_prod.First(u => u.id_producto == id);
-            int i = 0;
 
-            if (!(carrito.Count(u => u.id_producto == prod.id_producto) > 0))
-            { Detalle_venta prodCarrito = new Detalle_venta();
-                prodCarrito.id_producto = prod.id_producto;
-                prodCarrito.cantidad = 1;
-                prodCarrito.subtotal = prod.precio_venta;
-
-                carrito.Add(prodCarrito);
-                lista_prod_carrito.Add(prod);
-            }
-            else
-            {
-                carrito.First(u => u.id_producto == id).cantidad += 1;
-                carrito.First(u => u.id_producto == id).subtotal += prod.precio_venta;
-                Detalle_venta indice = carrito.First(u => u.id_producto == id);
-                //sumProd(carrito.IndexOf(indice));
-            }
-            tbBrow.Text = "";
-
-        }
 
 
         public void pantallaVenta()
         {
-            screenProd = false;
+            /*screenProd = false;
             scV = true;
             DataGridViewButtonColumn min = new DataGridViewButtonColumn();
             DataGridViewButtonColumn max = new DataGridViewButtonColumn();
@@ -327,7 +285,7 @@ namespace Positive.Presentacion
                 }
                 lbTotal.Text = total.ToString();
             }
-
+            
         }
 
         private void dgvPrincipal_CellClick_1(object sender, DataGridViewCellEventArgs e)
@@ -338,7 +296,7 @@ namespace Positive.Presentacion
                 if (!scV)
                 {
                     dgvPrincipal.CurrentRow.Selected = true;
-                    cargar_carrito(dgvPrincipal.CurrentRow.Cells["ID"].Value.ToString());
+                    detalle_ventas.cargar_carrito(dgvPrincipal.CurrentRow.Cells["ID"].Value.ToString());
                     pantallaVenta();
                     tbBrow.Text = "";
                 }
@@ -424,193 +382,193 @@ namespace Positive.Presentacion
 
 
 
-        }
+        }*/
 
-        /* 
-         private void btOk_Click(object sender, EventArgs e)
-         {
-             CRUD manejador = new CRUD();
-             if (total == 0)
+            /* 
+             private void btOk_Click(object sender, EventArgs e)
              {
-                 registrar_venta();
-                 showSale comprobante = new showSale();
-                 this.Dispose();
+                 CRUD manejador = new CRUD();
+                 if (total == 0)
+                 {
+                     registrar_venta();
+                     showSale comprobante = new showSale();
+                     this.Dispose();
+                 }
+                 else
+                 {
+                     MessageBox.Show("No se alcanzo el monto total", "Pago incompleto", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                 }
              }
-             else
-             {
-                 MessageBox.Show("No se alcanzo el monto total", "Pago incompleto", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-             }
-         }
 
-        private void INSERTCONTROL()
-        {
-
-            try
+            private void INSERTCONTROL()
             {
 
-
-                if (this.ValidateChildren(ValidationConstraints.Enabled) && (!FINDCOD(tbCodeProd.Text)||tbCodeProd.Text==""))
+                try
                 {
 
-                    producto.codigo = tbCodeProd.Text.Trim();
-                    producto.titulo = tbTitleProd.Text.Trim();
-                    producto.descripcion = tbDescProd.Text;
-                    producto.id_categoria = cbCategorie.SelectedIndex+1;
-                    producto.id_estado = cbStatus.SelectedIndex+1;
-                    producto.precio_compra = decimal.Parse( tbPriceProd.Text);
-                    producto.precio_venta = decimal.Parse(tbPrecV.Text); 
-                    producto.stock = int.Parse(tbStockProd.Text.Trim());
-               
 
-                    DialogResult resp = MessageBox.Show("Se guardara el producto", "Éxito", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-
-                    if (resp == DialogResult.Yes)
+                    if (this.ValidateChildren(ValidationConstraints.Enabled) && (!FINDCOD(tbCodeProd.Text)||tbCodeProd.Text==""))
                     {
-                        INSERTELEM();
-                        MessageBox.Show("Este producto se ha guardado correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                        producto.codigo = tbCodeProd.Text.Trim();
+                        producto.titulo = tbTitleProd.Text.Trim();
+                        producto.descripcion = tbDescProd.Text;
+                        producto.id_categoria = cbCategorie.SelectedIndex+1;
+                        producto.id_estado = cbStatus.SelectedIndex+1;
+                        producto.precio_compra = decimal.Parse( tbPriceProd.Text);
+                        producto.precio_venta = decimal.Parse(tbPrecV.Text); 
+                        producto.stock = int.Parse(tbStockProd.Text.Trim());
+
+
+                        DialogResult resp = MessageBox.Show("Se guardara el producto", "Éxito", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                        if (resp == DialogResult.Yes)
+                        {
+                            INSERTELEM();
+                            MessageBox.Show("Este producto se ha guardado correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
                     }
+                }
+
+
+
+                catch (Exception ex)
+                {
+
+                    MessageBox.Show("Ha ocurrido un error." + ex, "Fallo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                }
+
+            }*/
+            /*
+            private int registrar_venta() {
+                using (var db = new MySqlConnector.MySqlConnection(_connectionString))
+                {
+                    var queryAdd = db.QueryFirst(
+                         sql: "add_sale",
+                                       param: new
+                                       {
+                                           @p_monto_total = total,
+                                           @p_id_cliente = id_cliente,
+                                           @p_id_usuario = usuarioLog.id_usuario,
+
+                                       },
+                                       commandType: CommandType.StoredProcedure);
+
+                    return queryAdd.id_venta;
                 }
             }
 
 
 
-            catch (Exception ex)
-            {
-
-                MessageBox.Show("Ha ocurrido un error." + ex, "Fallo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-            }
-
-        }*/
-        /*
-        private int registrar_venta() {
+        private void registrar_venta(List<Venta_medio_pago> v, int p){
             using (var db = new MySqlConnector.MySqlConnection(_connectionString))
             {
-                var queryAdd = db.QueryFirst(
-                     sql: "add_sale",
-                                   param: new
-                                   {
-                                       @p_monto_total = total,
-                                       @p_id_cliente = id_cliente,
-                                       @p_id_usuario = usuarioLog.id_usuario,
+                foreach (Venta_medio_pago v in listReg)
+                {
+                    var queryAdd = db.ExecuteReader(
+                         sql: "add_sale_payment",
+                                       param: new
+                                       {
+                                           @p_monto = v.monto,
+                                           @p_id_medio_pago = v.id_medio_pago,
+                                           @p_id_venta = v.id_venta,
 
-                                   },
-                                   commandType: CommandType.StoredProcedure);
+                                       },
+                                       commandType: CommandType.StoredProcedure);
 
-                return queryAdd.id_venta;
-            }
+
+                }
+            } 
         }
-    
 
+    private registrar_medio_pago(){
+        int id_venta=registrar_venta();
 
-    private void registrar_venta(List<Venta_medio_pago> v, int p){
-        using (var db = new MySqlConnector.MySqlConnection(_connectionString))
-        {
-            foreach (Venta_medio_pago v in listReg)
-            {
-                var queryAdd = db.ExecuteReader(
-                     sql: "add_sale_payment",
-                                   param: new
-                                   {
-                                       @p_monto = v.monto,
-                                       @p_id_medio_pago = v.id_medio_pago,
-                                       @p_id_venta = v.id_venta,
+        registrar_venta_medio_pago(lista_venta_medio_pago,id_venta);
 
-                                   },
-                                   commandType: CommandType.StoredProcedure);
-
-
-            }
-        } 
     }
-
-private registrar_medio_pago(){
-	int id_venta=registrar_venta();
-	
-	registrar_venta_medio_pago(lista_venta_medio_pago,id_venta);
-
-}
- private void INSERTELEM()
-        {
-
-            using (var db = new MySqlConnector.MySqlConnection(_connectionString))
+     private void INSERTELEM()
             {
 
-                var queryAdd = db.ExecuteReader(
-                                   sql: "add_product",
-                                   param: new
-                                   {
-                                       @p_titulo = producto.titulo,
-                                       p_descripcion = producto.descripcion,
-                                       p_codigo = producto.codigo,
-                                       p_precio_compra = producto.precio_venta,
-                                       p_precio_venta = producto.precio_venta,
-                                       p_id_categoria = producto.id_categoria,
-                                       p_id_estado = producto.id_estado,
+                using (var db = new MySqlConnector.MySqlConnection(_connectionString))
+                {
 
-                                   },
+                    var queryAdd = db.ExecuteReader(
+                                       sql: "add_product",
+                                       param: new
+                                       {
+                                           @p_titulo = producto.titulo,
+                                           p_descripcion = producto.descripcion,
+                                           p_codigo = producto.codigo,
+                                           p_precio_compra = producto.precio_venta,
+                                           p_precio_venta = producto.precio_venta,
+                                           p_id_categoria = producto.id_categoria,
+                                           p_id_estado = producto.id_estado,
+
+                                       },
+                                       commandType: CommandType.StoredProcedure);
+                }
+                }
+     public void registSale()
+             {
+                 venta.monto_total = total;
+                 venta.id_cliente = cliente.id_cliente;
+                 venta.id_usuario=
+                 try
+                 {
+                     using (var db = new MySqlConnector.MySqlConnection(_connectionString))
+                     {
+                         int addventa = db.ExecuteScalar<int>(
+                                   sql: "add_sale",
+                                   param: new { @p_monto_total = venta },
                                    commandType: CommandType.StoredProcedure);
-            }
-            }
- public void registSale()
-         {
-             venta.monto_total = total;
-             venta.id_cliente = cliente.id_cliente;
-             venta.id_usuario=
-             try
-             {
-                 using (var db = new MySqlConnector.MySqlConnection(_connectionString))
-                 {
-                     int addventa = db.ExecuteScalar<int>(
-                               sql: "add_sale",
-                               param: new { @p_monto_total = venta },
-                               commandType: CommandType.StoredProcedure);
-                     listReg = pListReg;
-                 int idVenta;
-                 venta vent = new venta();
-                 vent.id_cliente = clien.id_cliente;
-                 vent.id_vendedor = 1;
-                 vent.total_venta = total;
-                 vent.fecha_eliminado = null;
-                 vent.fecha = DateTime.Now;
-                 db.venta.Add(vent);
-                 db.SaveChanges();
-                 detalleVenta detSale = new detalleVenta();
-                 idVenta = vent.id_venta;
-                 detSale.id_venta = idVenta;
-                 foreach (elementoVenta eV in carrito)
-                 {
-
-                     detSale.id_producto = eV.Producto.id_producto;
-                     producto proEdStock = db.producto.FirstOrDefault(u => u.id_producto == detSale.id_producto);
-                     proEdStock.stock -= eV.Cantidad;
-                     db.Entry(proEdStock).State = System.Data.Entity.EntityState.Modified;
-                     detSale.cantidad = eV.Cantidad;
-                     detSale.subtotal = eV.Subtotal;
-                     detSale.fecha_eliminado = null;
-                     db.detalleVenta.Add(detSale);
+                         listReg = pListReg;
+                     int idVenta;
+                     venta vent = new venta();
+                     vent.id_cliente = clien.id_cliente;
+                     vent.id_vendedor = 1;
+                     vent.total_venta = total;
+                     vent.fecha_eliminado = null;
+                     vent.fecha = DateTime.Now;
+                     db.venta.Add(vent);
                      db.SaveChanges();
-                 }
-                 venta_mediopago ventaMediopago = new venta_mediopago();
-                 foreach (registroMedioPago registro in listReg)
-                 {
-                     ventaMediopago = registro.Venta_Medio;
-                     ventaMediopago.id_venta = idVenta;
-                     db.venta_mediopago.Add(ventaMediopago);
-                     db.SaveChanges();
-                 }
-                 showSale comprobante = new showSale();
-                 comprobante.chargeComprobante(idVenta.ToString());
-                 comprobante.ShowDialog();
-                 reset();
-             }
-             catch (Exception e)
-             {
-                 MessageBox.Show("No fue posible guardar la venta " + e);
-             }
-         }
-        */
+                     detalleVenta detSale = new detalleVenta();
+                     idVenta = vent.id_venta;
+                     detSale.id_venta = idVenta;
+                     foreach (elementoVenta eV in carrito)
+                     {
 
+                         detSale.id_producto = eV.Producto.id_producto;
+                         producto proEdStock = db.producto.FirstOrDefault(u => u.id_producto == detSale.id_producto);
+                         proEdStock.stock -= eV.Cantidad;
+                         db.Entry(proEdStock).State = System.Data.Entity.EntityState.Modified;
+                         detSale.cantidad = eV.Cantidad;
+                         detSale.subtotal = eV.Subtotal;
+                         detSale.fecha_eliminado = null;
+                         db.detalleVenta.Add(detSale);
+                         db.SaveChanges();
+                     }
+                     venta_mediopago ventaMediopago = new venta_mediopago();
+                     foreach (registroMedioPago registro in listReg)
+                     {
+                         ventaMediopago = registro.Venta_Medio;
+                         ventaMediopago.id_venta = idVenta;
+                         db.venta_mediopago.Add(ventaMediopago);
+                         db.SaveChanges();
+                     }
+                     showSale comprobante = new showSale();
+                     comprobante.chargeComprobante(idVenta.ToString());
+                     comprobante.ShowDialog();
+                     reset();
+                 }
+                 catch (Exception e)
+                 {
+                     MessageBox.Show("No fue posible guardar la venta " + e);
+                 }
+             }
+            
+        }
 
         private bool buscar_cliente(string p_dni)
         { bool ok = false;
@@ -1008,6 +966,7 @@ if (e.ColumnIndex == dgvSales.Columns[5].Index)
 
 }
 }*/
+        }
     }
 }
 

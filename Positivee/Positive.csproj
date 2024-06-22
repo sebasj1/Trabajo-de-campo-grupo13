@@ -141,7 +141,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Conexion.cs" />
+    <Compile Include="Modelos\Interface1.cs" />
     <Compile Include="Presentacion\Control.cs" />
+    <Compile Include="Presentacion\Editar_cliente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentacion\Editar_cliente.Designer.cs">
+      <DependentUpon>Editar_cliente.cs</DependentUpon>
+    </Compile>
     <Compile Include="Presentacion\Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -165,11 +172,23 @@
     <Compile Include="Modelos\Usuario.cs" />
     <Compile Include="Modelos\Venta.cs" />
     <Compile Include="Modelos\Venta_medio_pago.cs" />
+    <Compile Include="Presentacion\Lista_clientes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentacion\Lista_clientes.Designer.cs">
+      <DependentUpon>Lista_clientes.cs</DependentUpon>
+    </Compile>
     <Compile Include="Presentacion\Nueva_categoria.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Presentacion\Nueva_categoria.Designer.cs">
       <DependentUpon>Nueva_categoria.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\Nuevo_cliente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentacion\Nuevo_cliente.Designer.cs">
+      <DependentUpon>Nuevo_cliente.cs</DependentUpon>
     </Compile>
     <Compile Include="Presentacion\Nuevo_producto.cs">
       <SubType>Form</SubType>
@@ -211,6 +230,12 @@
     </Compile>
     <Compile Include="Presentacion\Menu_principal.designer.cs">
       <DependentUpon>Menu_principal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\Seccion_clientes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentacion\Seccion_clientes.Designer.cs">
+      <DependentUpon>Seccion_clientes.cs</DependentUpon>
     </Compile>
     <Compile Include="Presentacion\Seccion_productos.cs">
       <SubType>Form</SubType>
@@ -256,11 +281,20 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Presentacion\Editar_cliente.resx">
+      <DependentUpon>Editar_cliente.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Presentacion\Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Presentacion\Lista_clientes.resx">
+      <DependentUpon>Lista_clientes.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Presentacion\Nueva_categoria.resx">
       <DependentUpon>Nueva_categoria.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentacion\Nuevo_cliente.resx">
+      <DependentUpon>Nuevo_cliente.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Presentacion\Nuevo_producto.resx">
       <DependentUpon>Nuevo_producto.cs</DependentUpon>
@@ -282,6 +316,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Presentacion\Menu_principal.resx">
       <DependentUpon>Menu_principal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentacion\Seccion_clientes.resx">
+      <DependentUpon>Seccion_clientes.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Presentacion\Seccion_productos.resx">
       <DependentUpon>Seccion_productos.cs</DependentUpon>

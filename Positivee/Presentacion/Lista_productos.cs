@@ -14,24 +14,45 @@ using System.Windows.Forms;
 namespace Positive.Presentacion
 {
     public partial class Lista_productos : Form
-    { string _connectionString = "Server=mysql-proyectois2.alwaysdata.net;Database=proyectois2_puntoventa;User Id=362639;Password=Pollito1q;";
-        string action = "";
+    {   string action="";
         Seccion_productos _principal;
+        List<dynamic> LISTLOAD = null;
+        Producto producto_action = new Producto();
+
        
         public Lista_productos(Seccion_productos p_principal)
         {
             InitializeComponent();
             _principal = p_principal;
-            LOADPRODUCTS();
         }
        
 
         private void Lista_productos_Load(object sender, EventArgs e)
         {
+                 cbRol.Items.Clear();
+            Estado tipo_estado = new Estado();
+            cbRol.DataSource = tipo_estado.lista_estados();
+            cbRol.DisplayMember = "descripcion";
+            cbRol.ValueMember = "id_estado";
+            cbRol.Refresh();
+        }
+         public void cargar_lista()
+        {
+             LISTLOAD = producto_action.listar_productos();
+            LOADPRODUCTS();
+
 
         }
-
-        public void cargar_lista(string p_action)
+        
+          private void btRefresh_Click(object sender, EventArgs e)
+        {
+            cargar_lista();
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="p_action"></param>
+        public void cargar_accion(string p_action)
         {
             switch (p_action)
             {
@@ -66,15 +87,7 @@ namespace Positive.Presentacion
             DATAGRIDCELL.Columns.Add("Precio venta.", "Precio venta.");
             DATAGRIDCELL.Columns.Add("Categoría", "Categoría");
             DATAGRIDCELL.Columns.Add("Estado", "Estado");
-            try
-            {
-                using (var db = new MySqlConnector.MySqlConnection(_connectionString))
-                {
-                    var LISTLOAD = db.Query(
-                                  sql: "all_products",
-                                  commandType: CommandType.StoredProcedure);
-
-                    foreach (var ELEMLIST in LISTLOAD)
+            foreach (var ELEMLIST in LISTLOAD)
                     {
                         DataGridViewRow fila = new DataGridViewRow();
                         fila.CreateCells(DATAGRIDCELL, ELEMLIST.id_producto, ELEMLIST.titulo, ELEMLIST.descripcion, ELEMLIST.codigo, ELEMLIST.precio_compra, ELEMLIST.precio_venta, ELEMLIST.categoria, ELEMLIST.estado);
@@ -89,14 +102,7 @@ namespace Positive.Presentacion
                     DATAGRIDCELL.Refresh();
 
                 }
-            }
-
-            catch (Exception ex)
-            {
-                MessageBox.Show("No se pudo cargar datos" + ex);
-            }
-
-        }
+            
 
         private void DATAGRIDCELL_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -104,23 +110,21 @@ namespace Positive.Presentacion
             {
                 case "edit":
                     string id = DATAGRIDCELL.CurrentRow.Cells["ID"].Value.ToString();
-                    _principal.seleccion_editar(id);
+                    producto_action.seleccion_editar(id,_principal);
+                    cargar_lista();
                     break;
                 case "delete":
                     string id_del = DATAGRIDCELL.CurrentRow.Cells["ID"].Value.ToString();
-                    _principal.seleccion_eliminar(id_del);
+                    producto_action.eliminar_producto(id_del);cargar_lista();
                     break;
                 case "restore":
                     string id_res = DATAGRIDCELL.CurrentRow.Cells["ID"].Value.ToString();
-                    _principal.seleccion_restaurar(id_res);
+                    producto_action.restaurar_producto(id_res);cargar_lista();
                     break;
 
             }
         }
 
-        private void Lista_productos_Load_1(object sender, EventArgs e)
-        {
-
-        }
+        
     }
 }

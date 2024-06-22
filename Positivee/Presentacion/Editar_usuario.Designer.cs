@@ -107,6 +107,7 @@
             this.btClean.Text = "Limpiar        ";
             this.btClean.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btClean.UseVisualStyleBackColor = false;
+            this.btClean.Click += new System.EventHandler(this.btClean_Click);
             // 
             // btEdUser
             // 
@@ -184,7 +185,6 @@
             // 
             this.cbRol.DisplayMember = "descripcion";
             this.cbRol.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            this.cbRol.FormattingEnabled = true;
             this.cbRol.Location = new System.Drawing.Point(714, 39);
             this.cbRol.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cbRol.Name = "cbRol";

@@ -17,14 +17,18 @@ namespace Positive.Presentacion
     public partial class Seccion_productos : Form
     {
 
-        Lista_productos lista_prod;
+        Lista_productos lista = null;
         public Seccion_productos()
         {
             InitializeComponent();
+            lista = new Lista_productos(this);
         }
-        public IconButton btnActive = null;
-        string _connectionString = "Server=mysql-proyectois2.alwaysdata.net;Database=proyectois2_puntoventa;User Id=362639;Password=Pollito1q;";
-        string action = "";
+         
+         private void frmProducts_Load(object sender, EventArgs e)
+        {
+            lista.cargar_lista();
+        }
+         public IconButton btnActive = null;
         public void iconSelect(IconButton buttonSelected, Form form)
         {
             if (btnActive != null)
@@ -41,6 +45,7 @@ namespace Positive.Presentacion
             form.Show();
             btnActive = buttonSelected;
         }
+
         /// <summary>
         /// //////
         /// </summary>
@@ -51,31 +56,37 @@ namespace Positive.Presentacion
         }
         private void iconButton1_Click(object sender, EventArgs e)
         {
-            lista_prod.cargar_lista("");
-            iconSelect((IconButton)sender, lista_prod);
+            lista.cargar_lista();
+            lista.cargar_accion("");
+            iconSelect((IconButton)sender, lista);
         }
         private void listProd_Click(object sender, EventArgs e)
         {
-            lista_prod.cargar_lista("");
-            iconSelect((IconButton)sender, lista_prod);
+            lista.cargar_accion("");
+            iconSelect((IconButton)sender, lista);
         }
-
+          public void recargar_lista(string p_ac)
+        {
+            lista.Refresh();
+            lista.cargar_lista();
+            iconSelect(btProdEd, lista);
+        }
         private void btProdEd_Click(object sender, EventArgs e)
         {
 
-            lista_prod.cargar_lista("edit");
-            iconSelect((IconButton)sender, lista_prod);
+            lista.cargar_accion("edit");
+            iconSelect((IconButton)sender, lista);
         }
         private void btDelProd_Click(object sender, EventArgs e)
         {
-            lista_prod.cargar_lista("delete");
-            iconSelect((IconButton)sender, lista_prod);
+            lista.cargar_accion("delete");
+            iconSelect((IconButton)sender, lista);
 
         }
         private void btRestP_Click(object sender, EventArgs e)
         {
-            lista_prod.cargar_lista("restore");
-            iconSelect((IconButton)sender, lista_prod);
+            lista.cargar_accion("restore");
+            iconSelect((IconButton)sender, lista);
         }
 
         public void seleccion_eliminar(string p_id)
@@ -91,17 +102,13 @@ namespace Positive.Presentacion
             }
             recargar_lista("delete");
         }
-        public void recargar_lista(string p_ac)
-        {
-            lista_prod.Refresh();
-            lista_prod.cargar_lista(p_ac);
-            iconSelect(btProdEd, lista_prod);
-        }
+      
 
-        public void seleccion_editar(string p_id)
+        public void seleccion_editar(Producto p_producto_editar)
         {
-            int ide = int.Parse(p_id);
-            iconSelect(btProdEd, new Editar_producto(ide, this));
+         Editar_producto editar_producto = new Editar_producto();
+            iconSelect(btProdEd, editar_producto);
+            editar_producto.cargar_datos(p_producto_editar);
 
         }
         public void seleccion_restaurar(string p_id)
@@ -118,10 +125,7 @@ namespace Positive.Presentacion
             recargar_lista("restore");
         }
 
-        private void frmProducts_Load(object sender, EventArgs e)
-        {
-            lista_prod = new Lista_productos(this);
-        }
+      
 
         private void btEditCat_Click(object sender, EventArgs e)
         {

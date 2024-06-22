@@ -47,7 +47,7 @@
             this.DATAGRIDCELL = new System.Windows.Forms.DataGridView();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btRefresh = new FontAwesome.Sharp.IconButton();
-            this.cbRol = new System.Windows.Forms.ComboBox();
+            this.cbEstado = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.btnFilter = new FontAwesome.Sharp.IconButton();
             this.panelUsers1.SuspendLayout();
@@ -264,6 +264,7 @@
             this.rolesEd.Text = "Editar roles     ";
             this.rolesEd.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.rolesEd.UseVisualStyleBackColor = false;
+            this.rolesEd.Click += new System.EventHandler(this.rolesEd_Click);
             // 
             // btEditUser
             // 
@@ -365,7 +366,7 @@
             // 
             this.groupBox1.BackColor = System.Drawing.SystemColors.HighlightText;
             this.groupBox1.Controls.Add(this.btRefresh);
-            this.groupBox1.Controls.Add(this.cbRol);
+            this.groupBox1.Controls.Add(this.cbEstado);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.btnFilter);
             this.groupBox1.Location = new System.Drawing.Point(775, 11);
@@ -395,18 +396,18 @@
             this.btRefresh.Text = "Actualizar";
             this.btRefresh.UseVisualStyleBackColor = false;
             // 
-            // cbRol
+            // cbEstado
             // 
-            this.cbRol.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
-            this.cbRol.FormattingEnabled = true;
-            this.cbRol.IntegralHeight = false;
-            this.cbRol.ItemHeight = 26;
-            this.cbRol.Location = new System.Drawing.Point(66, 35);
-            this.cbRol.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.cbRol.Name = "cbRol";
-            this.cbRol.Size = new System.Drawing.Size(248, 34);
-            this.cbRol.TabIndex = 10;
-            this.cbRol.Text = "Todos";
+            this.cbEstado.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
+            this.cbEstado.FormattingEnabled = true;
+            this.cbEstado.IntegralHeight = false;
+            this.cbEstado.ItemHeight = 26;
+            this.cbEstado.Location = new System.Drawing.Point(66, 35);
+            this.cbEstado.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.cbEstado.Name = "cbEstado";
+            this.cbEstado.Size = new System.Drawing.Size(248, 34);
+            this.cbEstado.TabIndex = 10;
+            this.cbEstado.Text = "Todos";
             // 
             // label1
             // 
@@ -436,7 +437,7 @@
             this.btnFilter.Text = "Filtrar";
             this.btnFilter.UseVisualStyleBackColor = false;
             // 
-            // frmUsers
+            // Seccion_usuarios
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -445,7 +446,7 @@
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panelUsers1);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.Name = "frmUsers";
+            this.Name = "Seccion_usuarios";
             this.Text = "frmUser";
             this.Load += new System.EventHandler(this.frmUser_Load);
             this.panelUsers1.ResumeLayout(false);
@@ -480,7 +481,7 @@
         public System.Windows.Forms.DataGridView DATAGRIDCELL;
         private System.Windows.Forms.GroupBox groupBox1;
         private FontAwesome.Sharp.IconButton btRefresh;
-        private System.Windows.Forms.ComboBox cbRol;
+        private System.Windows.Forms.ComboBox cbEstado;
         private System.Windows.Forms.Label label1;
         private FontAwesome.Sharp.IconButton btnFilter;
     }

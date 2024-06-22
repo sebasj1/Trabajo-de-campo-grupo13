@@ -10,6 +10,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Positivee.Modelos;
 
 namespace Positive.Presentacion
 {
@@ -274,7 +275,7 @@ public void registSale(List<registroMedioPago> pListReg)
         {
             if (total == 0)
             {
-            principal.registrar_venta(lista_venta_medio_pago);
+          //  principal.registrar_venta(lista_venta_medio_pago);
 
             }
             else

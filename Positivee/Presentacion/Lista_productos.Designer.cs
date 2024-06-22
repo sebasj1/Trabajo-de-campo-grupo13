@@ -109,6 +109,7 @@
             this.btRefresh.TabIndex = 5;
             this.btRefresh.Text = "Actualizar";
             this.btRefresh.UseVisualStyleBackColor = false;
+            this.btRefresh.Click += new System.EventHandler(this.btRefresh_Click);
             // 
             // cbRol
             // 
@@ -159,7 +160,6 @@
             this.Controls.Add(this.panelUsers);
             this.Name = "Lista_productos";
             this.Text = "Lista_productos";
-            this.Load += new System.EventHandler(this.Lista_productos_Load_1);
             this.panelUsers.ResumeLayout(false);
             this.panelUsers.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DATAGRIDCELL)).EndInit();
