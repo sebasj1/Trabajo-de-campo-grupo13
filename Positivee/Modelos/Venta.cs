@@ -56,10 +56,32 @@ using System.Diagnostics.Contracts;
             { MessageBox.Show("Ha ocurrido un error." + ex, "Fallo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
-        } */
-       public void registrar_la_venta(int p_id_usuario,int p_id_cliente, decimal p_total)
-        {
 
+        } */
+        string _connectionString = Conexion.get_string();
+        public int registrar_la_venta(int p_id_usuario,int p_id_cliente, decimal p_total)
+        {
+            int id=-1;
+            try
+            {
+                using (var db = new MySqlConnector.MySqlConnection(_connectionString))
+                {
+                    int queryAdd = db.ExecuteScalar<int>(
+                         sql: "add_sale",
+                                       param: new
+                                       {
+                                           @p_monto_total = p_total,
+                                           @p_id_cliente = p_id_cliente,
+                                           @p_id_usuario = p_id_usuario
+
+                                       },
+                                       commandType: CommandType.StoredProcedure);
+
+                    id = queryAdd;
+                }
+            }
+            catch(Exception e) { MessageBox.Show("Ha ocurrido un error." + e, "Fallo", MessageBoxButtons.OK, MessageBoxIcon.Error); }
+            return id;
         }
 
     } 

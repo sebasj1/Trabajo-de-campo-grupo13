@@ -301,5 +301,89 @@ namespace Positive
             
             return mensaje;
         }
+
+        private List<dynamic> buscar_cliente_nro_doc(string p_nro_doc)
+        {
+            List<dynamic> datos_cliente = new List<dynamic>();
+           
+            try
+            {
+                using (var db = new MySqlConnector.MySqlConnection(_connectionString))
+                {
+                    var LISTEXIST = db.Query(
+                               sql: "search_client_nro_active",
+                               param: new { @p_dni = p_nro_doc },
+                               commandType: CommandType.StoredProcedure
+                    );
+                    datos_cliente = LISTEXIST.ToList();
+                }
+                
+            }
+            catch(Exception e)
+            {
+                MessageBox.Show("Error " + e);
+            }return datos_cliente;
+        }
+
+         public List<dynamic> listar_clientes_activos()
+        {
+            List<dynamic> datos_cliente = new List<dynamic>();
+
+            try
+            {
+                using (var db = new MySqlConnector.MySqlConnection(_connectionString))
+                {
+                    var LISTEXIST = db.Query(
+                               sql: "search_clients_active",
+                               param: new {  },
+                               commandType: CommandType.StoredProcedure
+                    );
+                    datos_cliente = LISTEXIST.ToList();
+                }
+
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Error " + e);
+            }
+            return datos_cliente;
+        }
+        private List<dynamic> buscar_cliente_apellido(string p_apellido)
+        {
+            List<dynamic> datos_cliente = new List<dynamic>();
+
+            try
+            {
+                using (var db = new MySqlConnector.MySqlConnection(_connectionString))
+                {
+                    var LISTEXIST = db.Query(
+                               sql: "search_client_surname",
+                               param: new { @p_apellido = p_apellido },
+                               commandType: CommandType.StoredProcedure
+                    );
+                    datos_cliente = LISTEXIST.ToList();
+                }
+
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Error " + e);
+            }
+            return datos_cliente;
+        }
+        public List<dynamic> busca_datos_cliente(string p_busca)
+        {
+            List<dynamic> datos_cliente =new  List<dynamic>();
+            int numero;
+            if (Int32.TryParse(p_busca, out numero))
+            {
+                datos_cliente=buscar_cliente_nro_doc(p_busca);
+            }
+            else
+            {
+                datos_cliente=buscar_cliente_apellido(p_busca);
+            }
+            return datos_cliente;
+        }
     }
 }

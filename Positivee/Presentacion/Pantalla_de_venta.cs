@@ -38,15 +38,19 @@ namespace Positive.Presentacion
         private string apellido_cliente;
         private string numero_documento;
         private List<dynamic> lista_prod = new List<dynamic>();
+        private List<dynamic> lista_clientes = new List<dynamic>();
         private List<dynamic> lista_prod_carrito;
         private Detalle_venta detalle_ventas = new Detalle_venta();
-        private Cuadro_cobrar cob;
+        private Cuadro_cobrar cob;Cliente cli = new Cliente();
+        Venta_medio_pago venta_medios = new Venta_medio_pago();
 
 
         public Pantalla_de_venta(Menu_principal pfrmMain, Usuario pUser)
         {
             InitializeComponent();
             usuarioLog = pUser;
+            //*
+            usuarioLog.id_usuario = 1;
             frmMainPrincipal = pfrmMain;
             //frmMainPrincipal.screenSaleShow(pfrmMain, this);
 
@@ -64,7 +68,7 @@ namespace Positive.Presentacion
             dgvSales.AllowUserToAddRows = false;
             dgvMedio.AllowUserToAddRows = false;
             labelUsuario.Text = "Usuario: " + usuarioLog.nombre_usuario.ToString();
-
+            lista_clientes = cli.listar_clientes_activos();
             //clientDefect();
 
 
@@ -104,7 +108,12 @@ namespace Positive.Presentacion
         public void registrar_venta(List<dynamic> lista_de_medios_de_pago)
         {
             Venta venta = new Venta();
-            //Venta.registrar_la_venta(usuarioLog.id_usuario,id_cliente,total);
+            int id_de_venta=venta.registrar_la_venta(usuarioLog.id_usuario,id_cliente,total);
+            if(detalle_ventas.registrar_detalle_venta(id_de_venta,lista_prod_carrito)&&
+            venta_medios.registrar_detalle_venta_medio_pago(id_de_venta, lista_de_medios_de_pago))
+            {
+                cob.Dispose();
+            }
         }
         private void btAdd_MouseMove(object sender, MouseEventArgs e)
         {
@@ -268,7 +277,6 @@ namespace Positive.Presentacion
             {
                 if (p_listado_carrito.Count() > 0)
                 {
-                    {
                         foreach (dynamic prodCar in p_listado_carrito)
                         {
 
@@ -291,7 +299,7 @@ namespace Positive.Presentacion
 
 
                         }
-                    }
+                    
 
                 }
                 else { total = 0; }
@@ -364,341 +372,399 @@ namespace Positive.Presentacion
 
         }
 
-            /* 
-             private void btOk_Click(object sender, EventArgs e)
-             {
-                 CRUD manejador = new CRUD();
-                 if (total == 0)
-                 {
-                     registrar_venta();
-                     showSale comprobante = new showSale();
-                     this.Dispose();
-                 }
-                 else
-                 {
-                     MessageBox.Show("No se alcanzo el monto total", "Pago incompleto", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                 }
-             }
-
-            private void INSERTCONTROL()
-            {
-
-                try
-                {
-
-
-                    if (this.ValidateChildren(ValidationConstraints.Enabled) && (!FINDCOD(tbCodeProd.Text)||tbCodeProd.Text==""))
-                    {
-
-                        producto.codigo = tbCodeProd.Text.Trim();
-                        producto.titulo = tbTitleProd.Text.Trim();
-                        producto.descripcion = tbDescProd.Text;
-                        producto.id_categoria = cbCategorie.SelectedIndex+1;
-                        producto.id_estado = cbStatus.SelectedIndex+1;
-                        producto.precio_compra = decimal.Parse( tbPriceProd.Text);
-                        producto.precio_venta = decimal.Parse(tbPrecV.Text); 
-                        producto.stock = int.Parse(tbStockProd.Text.Trim());
-
-
-                        DialogResult resp = MessageBox.Show("Se guardara el producto", "Éxito", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-
-                        if (resp == DialogResult.Yes)
-                        {
-                            INSERTELEM();
-                            MessageBox.Show("Este producto se ha guardado correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        }
-                    }
-                }
-
-
-
-                catch (Exception ex)
-                {
-
-                    MessageBox.Show("Ha ocurrido un error." + ex, "Fallo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-                }
-
-            }*/
-            /*
-            private int registrar_venta() {
-                using (var db = new MySqlConnector.MySqlConnection(_connectionString))
-                {
-                    var queryAdd = db.QueryFirst(
-                         sql: "add_sale",
-                                       param: new
-                                       {
-                                           @p_monto_total = total,
-                                           @p_id_cliente = id_cliente,
-                                           @p_id_usuario = usuarioLog.id_usuario,
-
-                                       },
-                                       commandType: CommandType.StoredProcedure);
-
-                    return queryAdd.id_venta;
-                }
-            }
-
-
-
-        private void registrar_venta(List<Venta_medio_pago> v, int p){
-            using (var db = new MySqlConnector.MySqlConnection(_connectionString))
-            {
-                foreach (Venta_medio_pago v in listReg)
-                {
-                    var queryAdd = db.ExecuteReader(
-                         sql: "add_sale_payment",
-                                       param: new
-                                       {
-                                           @p_monto = v.monto,
-                                           @p_id_medio_pago = v.id_medio_pago,
-                                           @p_id_venta = v.id_venta,
-
-                                       },
-                                       commandType: CommandType.StoredProcedure);
-
-
-                }
-            } 
-        }
-
-    private registrar_medio_pago(){
-        int id_venta=registrar_venta();
-
-        registrar_venta_medio_pago(lista_venta_medio_pago,id_venta);
-
-    }
-     private void INSERTELEM()
-            {
-
-                using (var db = new MySqlConnector.MySqlConnection(_connectionString))
-                {
-
-                    var queryAdd = db.ExecuteReader(
-                                       sql: "add_product",
-                                       param: new
-                                       {
-                                           @p_titulo = producto.titulo,
-                                           p_descripcion = producto.descripcion,
-                                           p_codigo = producto.codigo,
-                                           p_precio_compra = producto.precio_venta,
-                                           p_precio_venta = producto.precio_venta,
-                                           p_id_categoria = producto.id_categoria,
-                                           p_id_estado = producto.id_estado,
-
-                                       },
-                                       commandType: CommandType.StoredProcedure);
-                }
-                }
-     public void registSale()
-             {
-                 venta.monto_total = total;
-                 venta.id_cliente = cliente.id_cliente;
-                 venta.id_usuario=
-                 try
-                 {
-                     using (var db = new MySqlConnector.MySqlConnection(_connectionString))
-                     {
-                         int addventa = db.ExecuteScalar<int>(
-                                   sql: "add_sale",
-                                   param: new { @p_monto_total = venta },
-                                   commandType: CommandType.StoredProcedure);
-                         listReg = pListReg;
-                     int idVenta;
-                     venta vent = new venta();
-                     vent.id_cliente = clien.id_cliente;
-                     vent.id_vendedor = 1;
-                     vent.total_venta = total;
-                     vent.fecha_eliminado = null;
-                     vent.fecha = DateTime.Now;
-                     db.venta.Add(vent);
-                     db.SaveChanges();
-                     detalleVenta detSale = new detalleVenta();
-                     idVenta = vent.id_venta;
-                     detSale.id_venta = idVenta;
-                     foreach (elementoVenta eV in carrito)
-                     {
-
-                         detSale.id_producto = eV.Producto.id_producto;
-                         producto proEdStock = db.producto.FirstOrDefault(u => u.id_producto == detSale.id_producto);
-                         proEdStock.stock -= eV.Cantidad;
-                         db.Entry(proEdStock).State = System.Data.Entity.EntityState.Modified;
-                         detSale.cantidad = eV.Cantidad;
-                         detSale.subtotal = eV.Subtotal;
-                         detSale.fecha_eliminado = null;
-                         db.detalleVenta.Add(detSale);
-                         db.SaveChanges();
-                     }
-                     venta_mediopago ventaMediopago = new venta_mediopago();
-                     foreach (registroMedioPago registro in listReg)
-                     {
-                         ventaMediopago = registro.Venta_Medio;
-                         ventaMediopago.id_venta = idVenta;
-                         db.venta_mediopago.Add(ventaMediopago);
-                         db.SaveChanges();
-                     }
-                     showSale comprobante = new showSale();
-                     comprobante.chargeComprobante(idVenta.ToString());
-                     comprobante.ShowDialog();
-                     reset();
-                 }
-                 catch (Exception e)
-                 {
-                     MessageBox.Show("No fue posible guardar la venta " + e);
-                 }
-             }
-            
-        }
-
-        private bool buscar_cliente(string p_dni)
-        { bool ok = false;
-            
-                try {
-                    using (var db = new MySqlConnector.MySqlConnection(_connectionString))
-                    {
-                        var PROD = db.QueryFirst(
-                                  sql: "search_client_dni",
-                                   param: new { @p_dni = p_dni },
-                                   commandType: CommandType.StoredProcedure
-                        );
-                        id_cliente = PROD.id_cliente;
-                        lbNombre.Text = PROD.nombre;
-                        lbApellido.Text =  PROD.apellido;
-                        numero_documento = PROD.numero_documento;
-                        ok = true;
-                        if (PROD == null)
-                        {
-                            MessageBox.Show("No se encontro cliente ");
-                        } } }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("No se pudo cargar " + ex);
-                }
-                return ok;
-            }
-///Por ahora solo busca ya registrados
-        
- 
-        private void clientDefect()
-        {
-            if (!buscar_cliente("00000000")) {
-
-                INSERTCLIENTDEFECT();
-            } }
-
-
         private void iconButton3_Click(object sender, EventArgs e)
         {
-            if(!buscar_cliente(tbCliente.Text)){
-		INSERTCLIENTDEFECT();
-        }}
+            List<dynamic> datos_cliente = new List<dynamic>();
 
-    private void INSERTCLIENTDEFECT()
-        {
-
-            using (var db = new MySqlConnector.MySqlConnection(_connectionString))
+            Cliente client = new Cliente();
+            datos_cliente = client.busca_datos_cliente(tbCliente.Text);
+            if (datos_cliente.Count() == 0)
             {
-
-                var queryAdd = db.ExecuteReader(
-                                   sql: "add_client",
-                                   param: new
-                                   {
-                                      @p_telefono= "null",
-                                       @p_email= "null",
-                                       @p_nombre= "EVENTUAL",
-                                       @p_apellido= "",
-                                       @p_tipo_doc= 1,
-                                       @p_numero_documento= 0000000,
-                                       @p_estado= 1,
-                                      
-                                   },
-                                   commandType: CommandType.StoredProcedure);
-
+                MessageBox.Show("No se encontro el cliente.");
             }
-        }
-        private int id_venta_registrada()
-        {
-            int id =0;
-            using (var db = new MySqlConnector.MySqlConnection(_connectionString))
+            else
             {
+                dgvSales.Visible = true;
+                dgvSales.Rows.Clear();
+                dgvSales.Columns.Clear();
+                dgvSales.Columns.Add("ID", "ID");
+                dgvSales.Columns.Add("DNI", "DNI");
+                dgvSales.Columns.Add("Apellido", "Apellido");
+                dgvSales.Columns.Add("Nombre", "Nombre");
 
-                var queryAdd = db.QueryFirst(
-                                   sql: "add_sale",
-                                   param: new
-                                   {
-                                       @p_monto_total = total,
-                                       @p_id_usuario = usuarioLog.id_usuario,
-                                       @p_id_cliente = id_cliente
-                                   },
-                                   commandType: CommandType.StoredProcedure);
-                
-                id = int.Parse(queryAdd.id_venta.ToString()); 
+
+                foreach (var ELEMLIST in datos_cliente)
+                {// Cambiar el color de fondo si está eliminado
+
+                    DataGridViewRow fila = new DataGridViewRow();
+                        fila.CreateCells(dgvSales, ELEMLIST.id_cliente,tbCliente.Text, ELEMLIST.apellido, ELEMLIST.nombre
+                           );
+                    // Cambiar el color de fondo si está eliminado
+
+
+                    dgvSales.Rows.Add(fila);
+
+                    }
+
+
             }
-            return id;
         }
 
-        public void registrar_venta(List<Venta_medio_pago> p_list)
+        private void dgvC_Click(object sender, EventArgs e)
         {
-            bool ok = false;
-            try
-                {
-                    int id_venta_detalle = id_venta_registrada(); MessageBox.Show(id_venta_detalle.ToString());
-                using (var db = new MySqlConnector.MySqlConnection(_connectionString))
-                {
-                   
-
-                    foreach (Venta_medio_pago ven in p_list)
-                    {
-                        var registra_medios_de_pago = db.Execute(
-                                       sql: "add_sale_payment",
-                                       param: new
-                                       {
-                                           @p_monto = ven.monto,
-                                           @p_id_medio_pago = ven.id_medio_pago,
-                                           @p_id_venta = id_venta_detalle
-                                       },
-                                       commandType: CommandType.StoredProcedure);
-                    }
-                    
-                    foreach (Detalle_venta det in carrito)
-                    {
-                        var registra_productos = db.Execute(
-                                       sql: "add_sale_detail",
-                                       param: new
-                                       {
-                                           @p_id_producto = det.id_producto,
-                                           @p_cantidad = det.cantidad,
-                                           @p_id_venta = id_venta_detalle,
-                                           @p_subtotal = det.subtotal
-                                       },
-                                       commandType: CommandType.StoredProcedure);
-                    }
-                    cob.Dispose();
-                    reset();
-
-                }
-
-            }
-
+            dgvSales.Visible = false;
+            
                 
-                catch (Exception ex)
-                {
-                    MessageBox.Show("No se pudo cargar " + ex);
-                }
+        }
 
-            }
-        private void reset()
+        private void dgvSales_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
-            carrito.Clear();
-            total = 0;
-            dgvPrincipal.Columns.Clear();
-            dgvPrincipal.Rows.Clear();
-            clientDefect();
-            lbTotal.Text = total.ToString();
-
 
         }
-        /*
+
+        private void dgvSales_Click(object sender, EventArgs e)
+        {
+            lbApellido.Text = dgvSales.CurrentRow.Cells["Apellido"].Value.ToString();
+            lbNombre.Text = dgvSales.CurrentRow.Cells["Nombre"].Value.ToString();
+            id_cliente = int.Parse(dgvSales.CurrentRow.Cells["ID"].Value.ToString());
+            tbCliente.Text = dgvSales.CurrentRow.Cells["DNI"].Value.ToString();
+            dgvSales.Rows.Clear();
+        }
+
+        private void tbCliente_TextChanged(object sender, EventArgs e)
+        {
+          
+            if (tbCliente.Text=="") {
+                dgvSales.Rows.Clear();
+            }
+            else
+            {
+                cargar_listado_clientes(tbCliente.Text);
+
+            }
+        }
+
+        private void cargar_listado_clientes(string p)
+        {
+            dgvSales.Visible = true;
+            dgvSales.Rows.Clear();
+            dgvSales.Columns.Clear();
+            dgvSales.Columns.Add("ID", "ID");
+            dgvSales.Columns.Add("DNI", "DNI");
+            dgvSales.Columns.Add("Apellido", "Apellido");
+            dgvSales.Columns.Add("Nombre", "Nombre");
+
+
+            foreach (var ELEMLIST in lista_clientes)
+            {// Cambiar el color de fondo si está eliminado
+                if (ELEMLIST.numero_documento.Contains(p) || ELEMLIST.apellido.Contains(p))
+                {
+                    DataGridViewRow fila = new DataGridViewRow();
+                    fila.CreateCells(dgvSales, ELEMLIST.id_cliente, ELEMLIST.numero_documento, ELEMLIST.apellido, ELEMLIST.nombre
+                       );
+                dgvSales.Rows.Add(fila);
+                }
+                // Cambiar el color de fondo si está eliminado
+
+
+
+            }
+        }
+        /* 
+private void btOk_Click(object sender, EventArgs e)
+{
+CRUD manejador = new CRUD();
+if (total == 0)
+{
+registrar_venta();
+showSale comprobante = new showSale();
+this.Dispose();
+}
+else
+{
+MessageBox.Show("No se alcanzo el monto total", "Pago incompleto", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+}
+}
+
+/*
+private int registrar_venta() {
+using (var db = new MySqlConnector.MySqlConnection(_connectionString))
+{
+var queryAdd = db.QueryFirst(
+sql: "add_sale",
+        param: new
+        {
+            @p_monto_total = total,
+            @p_id_cliente = id_cliente,
+            @p_id_usuario = usuarioLog.id_usuario,
+
+        },
+        commandType: CommandType.StoredProcedure);
+
+return queryAdd.id_venta;
+}
+}
+
+
+
+private void registrar_venta(List<Venta_medio_pago> v, int p){
+using (var db = new MySqlConnector.MySqlConnection(_connectionString))
+{
+foreach (Venta_medio_pago v in listReg)
+{
+var queryAdd = db.ExecuteReader(
+sql: "add_sale_payment",
+        param: new
+        {
+            @p_monto = v.monto,
+            @p_id_medio_pago = v.id_medio_pago,
+            @p_id_venta = v.id_venta,
+
+        },
+        commandType: CommandType.StoredProcedure);
+
+
+}
+} 
+}
+
+private registrar_medio_pago(){
+int id_venta=registrar_venta();
+
+registrar_venta_medio_pago(lista_venta_medio_pago,id_venta);
+
+}
+private void INSERTELEM()
+{
+
+using (var db = new MySqlConnector.MySqlConnection(_connectionString))
+{
+
+var queryAdd = db.ExecuteReader(
+        sql: "add_product",
+        param: new
+        {
+            @p_titulo = producto.titulo,
+            p_descripcion = producto.descripcion,
+            p_codigo = producto.codigo,
+            p_precio_compra = producto.precio_venta,
+            p_precio_venta = producto.precio_venta,
+            p_id_categoria = producto.id_categoria,
+            p_id_estado = producto.id_estado,
+
+        },
+        commandType: CommandType.StoredProcedure);
+}
+}
+public void registSale()
+{
+venta.monto_total = total;
+venta.id_cliente = cliente.id_cliente;
+venta.id_usuario=
+try
+{
+using (var db = new MySqlConnector.MySqlConnection(_connectionString))
+{
+int addventa = db.ExecuteScalar<int>(
+    sql: "add_sale",
+    param: new { @p_monto_total = venta },
+    commandType: CommandType.StoredProcedure);
+listReg = pListReg;
+int idVenta;
+venta vent = new venta();
+vent.id_cliente = clien.id_cliente;
+vent.id_vendedor = 1;
+vent.total_venta = total;
+vent.fecha_eliminado = null;
+vent.fecha = DateTime.Now;
+db.venta.Add(vent);
+db.SaveChanges();
+detalleVenta detSale = new detalleVenta();
+idVenta = vent.id_venta;
+detSale.id_venta = idVenta;
+foreach (elementoVenta eV in carrito)
+{
+
+detSale.id_producto = eV.Producto.id_producto;
+producto proEdStock = db.producto.FirstOrDefault(u => u.id_producto == detSale.id_producto);
+proEdStock.stock -= eV.Cantidad;
+db.Entry(proEdStock).State = System.Data.Entity.EntityState.Modified;
+detSale.cantidad = eV.Cantidad;
+detSale.subtotal = eV.Subtotal;
+detSale.fecha_eliminado = null;
+db.detalleVenta.Add(detSale);
+db.SaveChanges();
+}
+venta_mediopago ventaMediopago = new venta_mediopago();
+foreach (registroMedioPago registro in listReg)
+{
+ventaMediopago = registro.Venta_Medio;
+ventaMediopago.id_venta = idVenta;
+db.venta_mediopago.Add(ventaMediopago);
+db.SaveChanges();
+}
+showSale comprobante = new showSale();
+comprobante.chargeComprobante(idVenta.ToString());
+comprobante.ShowDialog();
+reset();
+}
+catch (Exception e)
+{
+MessageBox.Show("No fue posible guardar la venta " + e);
+}
+}
+
+}
+
+private bool buscar_cliente(string p_dni)
+{ bool ok = false;
+
+try {
+using (var db = new MySqlConnector.MySqlConnection(_connectionString))
+{
+var PROD = db.QueryFirst(
+   sql: "search_client_dni",
+    param: new { @p_dni = p_dni },
+    commandType: CommandType.StoredProcedure
+);
+id_cliente = PROD.id_cliente;
+lbNombre.Text = PROD.nombre;
+lbApellido.Text =  PROD.apellido;
+numero_documento = PROD.numero_documento;
+ok = true;
+if (PROD == null)
+{
+MessageBox.Show("No se encontro cliente ");
+} } }
+catch (Exception ex)
+{
+MessageBox.Show("No se pudo cargar " + ex);
+}
+return ok;
+}
+///Por ahora solo busca ya registrados
+
+
+private void clientDefect()
+{
+if (!buscar_cliente("00000000")) {
+
+INSERTCLIENTDEFECT();
+} }
+
+
+private void iconButton3_Click(object sender, EventArgs e)
+{
+if(!buscar_cliente(tbCliente.Text)){
+INSERTCLIENTDEFECT();
+}}
+
+private void INSERTCLIENTDEFECT()
+{
+
+using (var db = new MySqlConnector.MySqlConnection(_connectionString))
+{
+
+var queryAdd = db.ExecuteReader(
+    sql: "add_client",
+    param: new
+    {
+       @p_telefono= "null",
+        @p_email= "null",
+        @p_nombre= "EVENTUAL",
+        @p_apellido= "",
+        @p_tipo_doc= 1,
+        @p_numero_documento= 0000000,
+        @p_estado= 1,
+
+    },
+    commandType: CommandType.StoredProcedure);
+
+}
+}
+private int id_venta_registrada()
+{
+int id =0;
+using (var db = new MySqlConnector.MySqlConnection(_connectionString))
+{
+
+var queryAdd = db.QueryFirst(
+    sql: "add_sale",
+    param: new
+    {
+        @p_monto_total = total,
+        @p_id_usuario = usuarioLog.id_usuario,
+        @p_id_cliente = id_cliente
+    },
+    commandType: CommandType.StoredProcedure);
+
+id = int.Parse(queryAdd.id_venta.ToString()); 
+}
+return id;
+}
+
+public void registrar_venta(List<Venta_medio_pago> p_list)
+{
+bool ok = false;
+try
+{
+int id_venta_detalle = id_venta_registrada(); MessageBox.Show(id_venta_detalle.ToString());
+using (var db = new MySqlConnector.MySqlConnection(_connectionString))
+{
+
+
+foreach (Venta_medio_pago ven in p_list)
+{
+var registra_medios_de_pago = db.Execute(
+        sql: "add_sale_payment",
+        param: new
+        {
+            @p_monto = ven.monto,
+            @p_id_medio_pago = ven.id_medio_pago,
+            @p_id_venta = id_venta_detalle
+        },
+        commandType: CommandType.StoredProcedure);
+}
+
+foreach (Detalle_venta det in carrito)
+{
+var registra_productos = db.Execute(
+        sql: "add_sale_detail",
+        param: new
+        {
+            @p_id_producto = det.id_producto,
+            @p_cantidad = det.cantidad,
+            @p_id_venta = id_venta_detalle,
+            @p_subtotal = det.subtotal
+        },
+        commandType: CommandType.StoredProcedure);
+}
+cob.Dispose();
+reset();
+
+}
+
+}
+
+
+catch (Exception ex)
+{
+MessageBox.Show("No se pudo cargar " + ex);
+}
+
+}
+private void reset()
+{
+carrito.Clear();
+total = 0;
+dgvPrincipal.Columns.Clear();
+dgvPrincipal.Rows.Clear();
+clientDefect();
+lbTotal.Text = total.ToString();
+
+
+}
+/*
 
 
 
@@ -710,28 +776,28 @@ cliente cl = (db.cliente.FirstOrDefault(u => u.apellido == "Eventual"));
 
 if (cl == null)
 {
-  cliente clienteDefault = new cliente();
-  List<provincia> provDef = db.provincia.ToList(); clienteDefault.id_provincia = provDef[0].id_provincia;
-  clienteDefault.apellido = "Eventual";
-  clienteDefault.nombre = "";
-  clienteDefault.domicilio = null;
-  clienteDefault.email = null;
-  clienteDefault.dni = "00000000";
-  clienteDefault.telefono = null;
-  clienteDefault.fecha_eliminado = null;
-  db.cliente.Add(clienteDefault);
-  db.SaveChanges();
-  clien = clienteDefault;
+cliente clienteDefault = new cliente();
+List<provincia> provDef = db.provincia.ToList(); clienteDefault.id_provincia = provDef[0].id_provincia;
+clienteDefault.apellido = "Eventual";
+clienteDefault.nombre = "";
+clienteDefault.domicilio = null;
+clienteDefault.email = null;
+clienteDefault.dni = "00000000";
+clienteDefault.telefono = null;
+clienteDefault.fecha_eliminado = null;
+db.cliente.Add(clienteDefault);
+db.SaveChanges();
+clien = clienteDefault;
 }
 else
 {
-  if (cl.fecha_eliminado != null)
-  {
-      cl.fecha_eliminado = null;
-      db.Entry(cl).State = System.Data.Entity.EntityState.Modified;
-      db.SaveChanges();
-  }
-  clien = cl;
+if (cl.fecha_eliminado != null)
+{
+cl.fecha_eliminado = null;
+db.Entry(cl).State = System.Data.Entity.EntityState.Modified;
+db.SaveChanges();
+}
+clien = cl;
 }
 lbDniC.Text = "DNI: " + clien.dni;
 lbApC.Text = "Apellido: " + clien.apellido;
@@ -771,11 +837,11 @@ if (e.RowIndex >= 0 && screenProd)
 {
 if (int.Parse(dgvPrincipal.Rows[e.RowIndex].Cells["Stock"].Value.ToString()) <= 0)
 {
-  dgvPrincipal.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.OrangeRed;
+dgvPrincipal.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.OrangeRed;
 }
 else
 {
-  dgvPrincipal.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.Silver;
+dgvPrincipal.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.Silver;
 }
 }
 
@@ -788,11 +854,11 @@ if (e.RowIndex >= 0 && screenProd)
 {
 if (int.Parse(dgvPrincipal.Rows[e.RowIndex].Cells["Stock"].Value.ToString()) <= 0)
 {
-  dgvPrincipal.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.Red;
+dgvPrincipal.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.Red;
 }
 else
 {
-  dgvPrincipal.Rows[e.RowIndex].DefaultCellStyle.BackColor = SystemColors.InactiveCaption;
+dgvPrincipal.Rows[e.RowIndex].DefaultCellStyle.BackColor = SystemColors.InactiveCaption;
 }
 }
 }
@@ -813,42 +879,42 @@ det.UseColumnTextForButtonValue = true;
 det.DefaultCellStyle.BackColor = Color.Red;
 using (jbposEntities db = new jbposEntities())
 {
-  dgvSales.Rows.Clear();
-  dgvSales.Columns.Clear();
-  dgvSales.Columns.Add("Número venta", "Número venta");
-  dgvSales.Columns.Add("Monto", "Monto");
-  dgvSales.Columns.Add("Cliente", "Cliente");
-  dgvSales.Columns.Add("Usuario", "Usuario");
-  dgvSales.Columns.Add("Fecha", "Fecha");
-  dgvSales.Columns.Add(det);
+dgvSales.Rows.Clear();
+dgvSales.Columns.Clear();
+dgvSales.Columns.Add("Número venta", "Número venta");
+dgvSales.Columns.Add("Monto", "Monto");
+dgvSales.Columns.Add("Cliente", "Cliente");
+dgvSales.Columns.Add("Usuario", "Usuario");
+dgvSales.Columns.Add("Fecha", "Fecha");
+dgvSales.Columns.Add(det);
 
 
 
-  try
-  {
-      foreach (var venta in db.venta)
-      {
-          if (DateTime.Compare(dtp1.Value.Date, venta.fecha.Value.Date) == 0 || DateTime.Compare(dtp2.Value.Date, venta.fecha.Value.Date) == 0)
-          {
-              cliente client = db.cliente.First(u => u.id_cliente == venta.id_cliente);
-              usuario usuari = db.usuario.First(u => u.id_usuario == venta.id_vendedor);
-              DataGridViewRow fila = new DataGridViewRow();
-              fila.CreateCells(dgvSales, venta.id_venta, "$ "+venta.total_venta, client.apellido + " " + client.nombre + ", " + client.dni, usuari.nombre_usuario, venta.fecha,"");
-              // Cambiar el color de fondo si está eliminado
-              if (venta.fecha_eliminado != null)
-              {
-                  fila.DefaultCellStyle.BackColor = Color.Red;
-                  fila.DefaultCellStyle.ForeColor = Color.White; // Puedes ajustar el color del texto según sea necesario
-              }
-              dgvSales.Rows.Add(fila);
-          }
-          dgvSales.Refresh();
-      }
-  }
-  catch (Exception ex)
-  {
-      MessageBox.Show("No se pudo cargar datos" + ex);
-  }
+try
+{
+foreach (var venta in db.venta)
+{
+if (DateTime.Compare(dtp1.Value.Date, venta.fecha.Value.Date) == 0 || DateTime.Compare(dtp2.Value.Date, venta.fecha.Value.Date) == 0)
+{
+cliente client = db.cliente.First(u => u.id_cliente == venta.id_cliente);
+usuario usuari = db.usuario.First(u => u.id_usuario == venta.id_vendedor);
+DataGridViewRow fila = new DataGridViewRow();
+fila.CreateCells(dgvSales, venta.id_venta, "$ "+venta.total_venta, client.apellido + " " + client.nombre + ", " + client.dni, usuari.nombre_usuario, venta.fecha,"");
+// Cambiar el color de fondo si está eliminado
+if (venta.fecha_eliminado != null)
+{
+fila.DefaultCellStyle.BackColor = Color.Red;
+fila.DefaultCellStyle.ForeColor = Color.White; // Puedes ajustar el color del texto según sea necesario
+}
+dgvSales.Rows.Add(fila);
+}
+dgvSales.Refresh();
+}
+}
+catch (Exception ex)
+{
+MessageBox.Show("No se pudo cargar datos" + ex);
+}
 }
 }
 }
@@ -871,28 +937,28 @@ dgvDetail.Columns.Add("Subtotal", "Subtotal");
 
 try
 {
-  foreach (detalleVenta detalle in db.detalleVenta)
-  {
-      if (detalle.id_venta == int.Parse(pNumVenta))
-      {
+foreach (detalleVenta detalle in db.detalleVenta)
+{
+if (detalle.id_venta == int.Parse(pNumVenta))
+{
 
-          producto prod = db.producto.First(u => u.id_producto == detalle.id_producto);
-          DataGridViewRow fila = new DataGridViewRow();
-          fila.CreateCells(dgvDetail, prod.codigo, prod.titulo, detalle.cantidad,"$ "+ prod.precio, "$ " + detalle.subtotal);
-          // Cambiar el color de fondo si está eliminado
-          if (detalle.fecha_eliminado != null)
-          {
-              fila.DefaultCellStyle.BackColor = Color.Red;
-              fila.DefaultCellStyle.ForeColor = Color.White; // Puedes ajustar el color del texto según sea necesario
-          }
-          dgvDetail.Rows.Add(fila);
-      }
-  }
-  dgvDetail.Refresh();
+producto prod = db.producto.First(u => u.id_producto == detalle.id_producto);
+DataGridViewRow fila = new DataGridViewRow();
+fila.CreateCells(dgvDetail, prod.codigo, prod.titulo, detalle.cantidad,"$ "+ prod.precio, "$ " + detalle.subtotal);
+// Cambiar el color de fondo si está eliminado
+if (detalle.fecha_eliminado != null)
+{
+fila.DefaultCellStyle.BackColor = Color.Red;
+fila.DefaultCellStyle.ForeColor = Color.White; // Puedes ajustar el color del texto según sea necesario
+}
+dgvDetail.Rows.Add(fila);
+}
+}
+dgvDetail.Refresh();
 }
 catch (Exception ex)
 {
-  MessageBox.Show("No se pudo cargar datos" + ex);
+MessageBox.Show("No se pudo cargar datos" + ex);
 }
 
 ///
@@ -902,27 +968,27 @@ dgvMedio.Columns.Add("Medio de pago", "Medio de pago");
 dgvMedio.Columns.Add("Pago", "Pago");
 try
 {
-  foreach (venta_mediopago vmp in db.venta_mediopago)
-  {
-      if (vmp.id_venta == int.Parse(pNumVenta))
-      {
-          medioPago medP = db.medioPago.First(u => u.id_medioPago == vmp.id_medioPago);
-          DataGridViewRow fila = new DataGridViewRow();
-          fila.CreateCells(dgvMedio, medP.descripcion, "$ " + vmp.monto);
-          // Cambiar el color de fondo si está eliminado
-          if (vmp.fecha_eliminado != null)
-          {
-              fila.DefaultCellStyle.BackColor = Color.Red;
-              fila.DefaultCellStyle.ForeColor = Color.White; // Puedes ajustar el color del texto según sea necesario
-          }
-          dgvMedio.Rows.Add(fila);
-      }
-  }
-  dgvMedio.Refresh();
+foreach (venta_mediopago vmp in db.venta_mediopago)
+{
+if (vmp.id_venta == int.Parse(pNumVenta))
+{
+medioPago medP = db.medioPago.First(u => u.id_medioPago == vmp.id_medioPago);
+DataGridViewRow fila = new DataGridViewRow();
+fila.CreateCells(dgvMedio, medP.descripcion, "$ " + vmp.monto);
+// Cambiar el color de fondo si está eliminado
+if (vmp.fecha_eliminado != null)
+{
+fila.DefaultCellStyle.BackColor = Color.Red;
+fila.DefaultCellStyle.ForeColor = Color.White; // Puedes ajustar el color del texto según sea necesario
+}
+dgvMedio.Rows.Add(fila);
+}
+}
+dgvMedio.Refresh();
 }
 catch (Exception ex)
 {
-  MessageBox.Show("No se pudo cargar datos" + ex);
+MessageBox.Show("No se pudo cargar datos" + ex);
 }
 
 }
@@ -941,12 +1007,12 @@ if (e != null)
 dgvSales.CurrentRow.Selected = true;
 if (e.ColumnIndex == dgvSales.Columns[5].Index)
 {
-  showDetails(dgvSales.CurrentRow.Cells["Número venta"].Value.ToString());
+showDetails(dgvSales.CurrentRow.Cells["Número venta"].Value.ToString());
 }
 
 }
 }*/
-        
+
     }
 }
 

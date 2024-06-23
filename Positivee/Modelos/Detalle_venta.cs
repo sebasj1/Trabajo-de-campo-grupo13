@@ -33,6 +33,7 @@ namespace Positive
             lista_prod = producto_para_cargar_todos.cargar_productos_todos();
         }
         */
+        string _connectionString = Conexion.get_string();
         public List<dynamic> cargar_carrito(string p_id_prod, string p_titulo, string p_precio, string p_stock)
         {
             int c_id = int.Parse(p_id_prod);
@@ -122,6 +123,41 @@ namespace Positive
                 lista_prod_carrito.Remove(lista_prod_carrito[pProd]);
                 
             }return lista_prod_carrito;
+        }
+
+        public bool registrar_detalle_venta(int p_id_venta,List<dynamic> p_lista)
+        {
+            bool ok = false;
+            try
+            {
+                using (var db = new MySqlConnector.MySqlConnection(_connectionString))
+                {
+                    foreach (dynamic prod in p_lista)
+                    {
+                        int id_p = prod.id_producto;
+                        int cantidad_de_p=prod.cantidad; 
+
+                        decimal subtotal_de_prod=prod.subtotal;
+                        
+                        var queryAdd = db.Execute(
+                             sql: "add_sale_detail",
+                                           param: new
+                                           {
+                                               @p_id_producto= id_p,
+                                               @p_cantidad= cantidad_de_p,
+                                               @p_id_venta= p_id_venta,
+                                               @p_subtotal= subtotal_de_prod
+
+
+                                           },
+                                           commandType: CommandType.StoredProcedure);
+
+                        ok = true;
+                    }
+                }
+            }
+            catch (Exception e) { MessageBox.Show("Ha ocurrido un error." + e, "Fallo", MessageBoxButtons.OK, MessageBoxIcon.Error); }
+            return ok;
         }
     }
 }

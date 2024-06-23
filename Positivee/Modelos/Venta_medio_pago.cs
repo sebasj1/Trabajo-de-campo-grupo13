@@ -27,6 +27,7 @@ namespace Positive
         public decimal restante = 0;
 
         List<dynamic> lista_vmp = new List<dynamic>();
+        string _connectionString = Conexion.get_string();
         public List<dynamic> calcular(decimal p_total, string p_tbMonto, string p_mp, string p_desc_mp)
         {
             decimal total = p_total;//500
@@ -124,6 +125,35 @@ namespace Positive
                 return p_index;
             }
         }
-      
+        public bool registrar_detalle_venta_medio_pago(int p_id_venta, List<dynamic> p_lista)
+        {
+            bool ok = false; try
+            { using (var db = new MySqlConnector.MySqlConnection(_connectionString))
+                {
+                    foreach (dynamic prod in p_lista)
+                    {
+                        int id_mp = prod.id_medio_pago;
+                        decimal p_monto = prod.monto;
+
+                        var queryAdd = db.Execute(
+                             sql: "add_sale_payment",
+                                           param: new
+                                           {
+                                               @p_monto = p_monto,
+                                               @p_id_medio_pago = id_mp,
+                                               @p_id_venta = p_id_venta
+
+
+                                           },
+                                           commandType: CommandType.StoredProcedure);
+
+
+                    }ok = true;
+                }
+            }
+            catch (Exception e) { MessageBox.Show("Ha ocurrido un error." + e, "Fallo", MessageBoxButtons.OK, MessageBoxIcon.Error); }
+            return ok;
+        }
+
     }
 }
