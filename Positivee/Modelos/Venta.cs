@@ -16,6 +16,7 @@ using System.Diagnostics.Contracts;
 
     namespace Positive{
    using Org.BouncyCastle.Asn1.X509;
+    using Savage.Data;
     using System;
     using System.Collections.Generic;
     
@@ -25,7 +26,7 @@ using System.Diagnostics.Contracts;
         public int id_venta { get; set; }
         public Time hora { get; set; }
         public DateTime fecha { get; set; }
-        public Nullable<decimal> monto_total { get; set; }
+        public decimal monto_total { get; set; }
         public int id_usuario { get; set; }
         public int id_cliente { get; set; }
 
@@ -56,7 +57,10 @@ using System.Diagnostics.Contracts;
             }
 
         } */
-   
+       public void registrar_la_venta(int p_id_usuario,int p_id_cliente, decimal p_total)
+        {
+
+        }
 
     } 
 }

@@ -32,60 +32,38 @@ namespace Positive
         string action = "";
         Contacto contacto = new Contacto();
 
-        public void INSERTCONTROL(int p_id_estado,
-                         string p_nombre, string p_apellido, string p_numero_documento,
-                             int p_id_tipo_documento, string p_telefono, string p_email, Nuevo_cliente p_nuevo_cliente)
+        public void INSERTCONTROL(int cbStatus, string TBNombre, string textboxApellido,
+        string tbDNI, int cbTDoc, string tbTel, string tbEmail,Nuevo_cliente p_edit)
         {
-            try
+
+            if (!FINDDNI(tbDNI))
             {
-                if (!FINDDNI(p_numero_documento))
+
+                id_estado = cbStatus;
+                nombre = TBNombre;
+                apellido = textboxApellido;
+                numero_documento = tbDNI;
+                id_tipo_documento = cbTDoc;
+                contacto.telefono = tbTel;
+                contacto.email = tbEmail;
+                if (GUARDAR_CLIENTE())
                 {
-                    if (crear_cliente(p_id_estado,
-                         p_nombre, p_apellido, p_numero_documento,
-                             p_id_tipo_documento, p_telefono, p_email,
-                              p_nuevo_cliente))
-                    {
-                        DialogResult resp = MessageBox.Show("Se guardara el usuario", "Éxito", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                        if (resp == DialogResult.Yes)
-                        {
-                            INSERTELEM();
-                            MessageBox.Show("Este cliente se ha guardado correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                        }
-
-                    }
-
-
+                    p_edit.exito();
                 }
                 else
                 {
-                    MessageBox.Show("Este cliente ya se ha registrado anteriormente.", "Fallo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    p_edit.fallo();
                 }
+
+
             }
-            catch (Exception ex)
+            else
             {
-                MessageBox.Show("Ha ocurrido un error." + ex, "Fallo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                p_edit.nro_ya_encontrado();
             }
+
         }
-        
-        private bool crear_cliente(int p_id_estado,
-                        string p_nombre, string p_apellido, string p_numero_documento,
-                        int p_id_tipo_documento, string p_telefono, string p_email, Nuevo_cliente p_nuevo_cliente)
-        {
-            bool ok=false;
-            if (p_nuevo_cliente.ValidateChildren(ValidationConstraints.Enabled))
-            {
-                
-                id_estado= p_id_estado;
-                nombre = p_nombre;
-                apellido = p_apellido;
-                numero_documento = p_numero_documento;
-                id_tipo_documento = p_id_tipo_documento;
-                contacto.telefono = p_telefono;
-                contacto.email = p_email;
-                ok=true;}
-                return ok;
-        }
+     
 
          private bool FINDDNI(string dni)
         {
@@ -104,30 +82,39 @@ namespace Positive
             }
             return exist;
         }
-private void INSERTELEM()
+    private bool GUARDAR_CLIENTE()
         {
-            
-            using (var db = new MySqlConnector.MySqlConnection(_connectionString))
-            {
+            bool ok = false;
+            try { 
+                using (var db = new MySqlConnector.MySqlConnection(_connectionString))
+                {
+                    var queryAdd = db.Execute(
+                                sql: "add_client",
+                                param: new
+                                {
+                                    @p_email = contacto.email,
+                                    @p_telefono = contacto.telefono,
+                                    @p_nombre = nombre,
+                                    @p_apellido = apellido,
+                                    @p_tipo_doc = id_tipo_documento,
+                                    @p_numero_documento = numero_documento,
 
-                var queryAdd = db.ExecuteReader(
-                                   sql: "add_client",
-                                   param: new
-                                   {
-                                       @p_email = contacto.email,
-                                       @p_telefono = contacto.telefono,
-                                       @p_nombre = nombre,
-                                       @p_apellido = apellido,
-                                       @p_tipo_doc = id_tipo_documento,
-                                       @p_numero_documento = numero_documento,
-                                      
-                                      
-                                          @p_id_estado = id_estado,
-                                   },
-                                   commandType: CommandType.StoredProcedure);
-             
+
+                                    @p_id_estado = id_estado,
+                                },
+                                    commandType: CommandType.StoredProcedure);
+                    ok = true;
+                }
+
             }
+            catch(Exception e)
+            {
+                MessageBox.Show("Error inesperado" + e);
+            }
+            return ok;
         }
+
+
         public List<dynamic> listar_clientes()
         {
 
@@ -180,9 +167,10 @@ private void INSERTELEM()
                     contacto.email = USER.email;
                 }
                 Editar_cliente edit_cliente = new Editar_cliente();
-                p_menu.mostrar_menu_editar(edit_cliente);
                 edit_cliente.cargar_datos(nombre,apellido, id_tipo_documento, numero_documento,
                     contacto.telefono, contacto.email, id_cliente, id_estado, id_persona, id_contacto);
+                p_menu.mostrar_menu_editar(edit_cliente);
+                
                
                
             }
@@ -209,7 +197,7 @@ private void INSERTELEM()
                 id_contacto = p_id_contacto;
                 contacto.telefono = tbTel;
                 contacto.email = tbEmail;
-                if (GUARDAR_CLIENTE())
+                if (GUARDAR_CLIENTE_EDITADO())
                 {
                     p_edit.exito();
                 }
@@ -226,7 +214,7 @@ private void INSERTELEM()
             }
             
         }
-  private bool GUARDAR_CLIENTE()
+  private bool GUARDAR_CLIENTE_EDITADO()
     { bool ok = false;
 
             try { using (var db = new MySqlConnector.MySqlConnection(_connectionString))
@@ -255,7 +243,7 @@ private void INSERTELEM()
             }
             catch(Exception e)
             {
-                
+                MessageBox.Show("Error inesperado" + e);
             }
             return ok;
     }  

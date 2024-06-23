@@ -17,7 +17,7 @@ namespace Positive.Presentacion
     public partial class Nuevo_producto : Form
     { 
         private  string _connectionString =Conexion.get_string();
-                Producto producto = new Producto();
+                
         Categoria categoria = new Categoria();
         public Nuevo_producto()
         {
@@ -26,13 +26,53 @@ namespace Positive.Presentacion
 
         private void addProduct_Load(object sender, EventArgs e)
         {
-            buscar_categorias();
-            buscar_estado(); 
+           
             tbPriceProd.Text = "0";
             tbPrecV.Text = "0";
-            tbStockProd.Text = "0";
-        }
+            tbStockProd.Text = "0"; 
 
+            cbCategorie.Items.Clear();
+            Categoria catego = new Categoria();
+            cbCategorie.DataSource = catego.lista_categorias();
+            cbCategorie.DisplayMember = "descripcion";
+            cbCategorie.ValueMember = "id_categoria";
+            cbCategorie.Refresh();
+
+            cbStatus.Items.Clear();
+            Estado tipo_estado = new Estado();
+            cbStatus.DataSource = tipo_estado.lista_estados();
+            cbStatus.DisplayMember = "descripcion";
+            cbStatus.ValueMember = "id_estado";
+            cbStatus.Refresh();
+        }
+        private void btAddProd_Click_1(object sender, EventArgs e)
+        {
+            this.AutoValidate = System.Windows.Forms.AutoValidate.Disable;
+            if (this.ValidateChildren(ValidationConstraints.Enabled))
+            {
+                DialogResult resp = MessageBox.Show("Se guardara el cliente", "Éxito", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (resp == DialogResult.Yes)
+                {
+                    Producto producto = new Producto();
+                    Cliente cliente = new Cliente();
+                    producto.INSERTCONTROL(tbCodeProd.Text.Trim(), tbTitleProd.Text.Trim(), tbDescProd.Text, cbCategorie.SelectedValue.ToString(), cbStatus.SelectedValue.ToString()
+                           , tbPriceProd.Text, tbPrecV.Text, tbStockProd.Text.Trim(), this);
+                }
+            }
+           
+        }
+        public void exito()
+        {
+            MessageBox.Show("Se ha guardado correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+        public void fallo()
+        {
+            MessageBox.Show("No se pudo realizar la actualización.", "Fallo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+        public void cod_ya_registrado()
+        {
+            MessageBox.Show("Este codigo de producto ya está registrado.", "Fallo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
 
         private void btAdd_MouseMove(object sender, MouseEventArgs e)
         {
@@ -58,143 +98,10 @@ namespace Positive.Presentacion
 
 
 
-        private void buscar_categorias()  //Carga los datos del dropdown estado
-        {
-            try
-            {
-
-                using (var db = new MySqlConnector.MySqlConnection(_connectionString))
-                {
-                    var CategoriaQuery = db.Query<Categoria>(
-                                  sql: "all_categories_d",
-                                  commandType: CommandType.StoredProcedure);
-
-                    cbCategorie.Items.Clear();
-                    cbCategorie.DataSource = CategoriaQuery.ToList();
-                    cbCategorie.DisplayMember = "descripcion";
-                    cbCategorie.ValueMember = "id_categoria";
-                    cbCategorie.Refresh();
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("No se pudo cargar " + ex);
-            } }
-
-        private void buscar_estado()  //Carga los datos del dropdown estado
-        {
-            try
-            {
-                using (var db = new MySqlConnector.MySqlConnection(_connectionString))
-                {
-                    var estado = db.Query<Estado>(
-                               sql: "all_status_d",
-                               commandType: CommandType.StoredProcedure);
-
-                        cbStatus.Items.Clear();
-                        cbStatus.DataSource = estado.ToList();
-                        cbStatus.DisplayMember = "descripcion";
-                        cbStatus.ValueMember = "id_estado";
-                        cbStatus.Refresh();
-
-
-                }
-               
-            }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("No se pudo cargar " + ex);
-                }
-
-            }
 
 
 
 
-        private bool FINDCOD(string p_cod)
-        {
-            bool exist = false;
-            using (var db = new MySqlConnector.MySqlConnection(_connectionString))
-            {
-                var LISTEXIST = db.Query(
-                           sql: "search_producto_cod",
-                           param: new { p_cod = p_cod },
-                           commandType: CommandType.StoredProcedure
-                );
-                if (LISTEXIST.Count() > 0)
-                {
-                    exist = true;
-                }
-            }
-            return exist;
-        }
-        private void INSERTCONTROL()
-        {
-
-            try
-            {
-
-
-                if (this.ValidateChildren(ValidationConstraints.Enabled) && (!FINDCOD(tbCodeProd.Text)||tbCodeProd.Text==""))
-                {
-
-                    producto.codigo = tbCodeProd.Text.Trim();
-                    producto.titulo = tbTitleProd.Text.Trim();
-                    producto.descripcion = tbDescProd.Text;
-                    producto.id_categoria = cbCategorie.SelectedIndex+1;
-                    producto.id_estado = cbStatus.SelectedIndex+1;
-                    producto.precio_compra = decimal.Parse( tbPriceProd.Text);
-                    producto.precio_venta = decimal.Parse(tbPrecV.Text); 
-                    producto.stock = int.Parse(tbStockProd.Text.Trim());
-               
-
-                    DialogResult resp = MessageBox.Show("Se guardara el producto", "Éxito", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-
-                    if (resp == DialogResult.Yes)
-                    {
-                        INSERTELEM();
-                        MessageBox.Show("Este producto se ha guardado correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }
-                }
-            }
-
-
-
-            catch (Exception ex)
-            {
-
-                MessageBox.Show("Ha ocurrido un error." + ex, "Fallo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-            }
-
-        }
-
-
-
-        private void INSERTELEM()
-        {
-
-            using (var db = new MySqlConnector.MySqlConnection(_connectionString))
-            {
-
-                var queryAdd = db.ExecuteReader(
-                                   sql: "add_product",
-                                   param: new
-                                   {
-                                       @p_titulo = producto.titulo,
-                                       p_descripcion = producto.descripcion,
-                                       p_codigo = producto.codigo,
-                                       p_precio_compra = producto.precio_venta,
-                                       p_precio_venta = producto.precio_venta,
-                                       p_id_categoria = producto.id_categoria,
-                                       p_id_estado = producto.id_estado,
-                                       p_stock = producto.stock
-
-                                   },
-                                   commandType: CommandType.StoredProcedure);
-
-            }
-        }
 
         private void btClean_Click(object sender, EventArgs e)
         {
@@ -271,10 +178,7 @@ namespace Positive.Presentacion
         {
             errorProvider1.SetError(tbStockProd, "");
         }
-       
-        private void btAddProd_Click_1(object sender, EventArgs e)
-        {
-            INSERTCONTROL();
-        }
+
+        
     }
 }

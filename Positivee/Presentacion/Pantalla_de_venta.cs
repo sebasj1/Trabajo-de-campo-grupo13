@@ -38,7 +38,8 @@ namespace Positive.Presentacion
         private string apellido_cliente;
         private string numero_documento;
         private List<dynamic> lista_prod = new List<dynamic>();
-        private Detalle_venta detalle_ventas;
+        private List<dynamic> lista_prod_carrito;
+        private Detalle_venta detalle_ventas = new Detalle_venta();
         private Cuadro_cobrar cob;
 
 
@@ -50,7 +51,6 @@ namespace Positive.Presentacion
             //frmMainPrincipal.screenSaleShow(pfrmMain, this);
 
         }
-
 
 
         private void screenSale_Load(object sender, EventArgs e)
@@ -100,6 +100,12 @@ namespace Positive.Presentacion
             }
         }
 
+
+        public void registrar_venta(List<dynamic> lista_de_medios_de_pago)
+        {
+            Venta venta = new Venta();
+            //Venta.registrar_la_venta(usuarioLog.id_usuario,id_cliente,total);
+        }
         private void btAdd_MouseMove(object sender, MouseEventArgs e)
         {
             btOk.BackColor = System.Drawing.Color.FromArgb(37, 88, 175);
@@ -134,7 +140,7 @@ namespace Positive.Presentacion
         {
             if (tbBrow.Text == "")
             {
-                pantallaVenta();
+                pantallaVenta(lista_prod_carrito);
 
             }
             else
@@ -206,9 +212,9 @@ namespace Positive.Presentacion
 
 
 
-        public void pantallaVenta()
+        public void pantallaVenta(List<dynamic> p_listado_carrito)
         {
-            /*screenProd = false;
+            screenProd = false;
             scV = true;
             DataGridViewButtonColumn min = new DataGridViewButtonColumn();
             DataGridViewButtonColumn max = new DataGridViewButtonColumn();
@@ -258,55 +264,67 @@ namespace Positive.Presentacion
             dgvPrincipal.RowsDefaultCellStyle.BackColor = SystemColors.Highlight;
             dgvPrincipal.RowsDefaultCellStyle.ForeColor = SystemColors.HighlightText;
             dgvPrincipal.Columns["Cantidad"].ReadOnly = false;
-            if (carrito.Count() > 0)
+            if (p_listado_carrito != null)
             {
-                foreach (Detalle_venta prodCar in carrito)
+                if (p_listado_carrito.Count() > 0)
                 {
-                    Producto_venta prod = lista_prod_carrito.First(u => u.id_producto == prodCar.id_producto);
-                    if (carrito.Count() > 0)
                     {
-                        total += prodCar.subtotal;
-                        DataGridViewRow fila = new DataGridViewRow();
-                        fila.CreateCells(dgvPrincipal, prod.id_producto, prod.titulo, "", prodCar.cantidad, "", "$ " + prod.precio_venta, "$ " + prodCar.subtotal, "");
-
-                        fila.Height = 70;
-                        if (prodCar.cantidad > prod.stock)
+                        foreach (dynamic prodCar in p_listado_carrito)
                         {
-                            fila.DefaultCellStyle.BackColor = Color.Red;
-                            fila.DefaultCellStyle.SelectionBackColor = Color.OrangeRed;
-                            fila.DefaultCellStyle.ForeColor = Color.White; // Puedes ajustar el color del texto según sea necesario
+
+
+                            total += prodCar.subtotal;
+                            DataGridViewRow fila = new DataGridViewRow();
+                            fila.CreateCells(dgvPrincipal, prodCar.id_producto, prodCar.titulo, "", prodCar.cantidad, "", "$ " + prodCar.precio, "$ " + prodCar.subtotal, "");
+
+                            fila.Height = 70;
+                            if (prodCar.cantidad > prodCar.stock)
+                            {
+                                fila.DefaultCellStyle.BackColor = Color.Red;
+                                fila.DefaultCellStyle.SelectionBackColor = Color.OrangeRed;
+                                fila.DefaultCellStyle.ForeColor = Color.White; // Puedes ajustar el color del texto según sea necesario
+                            }
+                            dgvPrincipal.Rows.Add(fila); dgvPrincipal.Columns[0].SortMode = DataGridViewColumnSortMode.NotSortable;
+
+
+                            dgvPrincipal.Rows[0].Selected = false;
+
+
                         }
-                        dgvPrincipal.Rows.Add(fila); dgvPrincipal.Columns[0].SortMode = DataGridViewColumnSortMode.NotSortable;
-
-
-                        dgvPrincipal.Rows[0].Selected = false;
-
                     }
+
                 }
-                lbTotal.Text = total.ToString();
-            }
-            
+                else { total = 0; }
+            } lbTotal.Text = total.ToString();
         }
 
         private void dgvPrincipal_CellClick_1(object sender, DataGridViewCellEventArgs e)
         {
-            if (e != null)
+            if (e != null&&e.RowIndex!=-1)
             {
 
                 if (!scV)
                 {
                     dgvPrincipal.CurrentRow.Selected = true;
-                    detalle_ventas.cargar_carrito(dgvPrincipal.CurrentRow.Cells["ID"].Value.ToString());
-                    pantallaVenta();
+                    string idd = dgvPrincipal.CurrentRow.Cells["ID"].Value.ToString();
+                    string ti = dgvPrincipal.CurrentRow.Cells["Titulo"].Value.ToString();
+                    string pre = dgvPrincipal.CurrentRow.Cells["Precio"].Value.ToString();
+                    string st = dgvPrincipal.CurrentRow.Cells["Stock"].Value.ToString();
+
+                    lista_prod_carrito = detalle_ventas.cargar_carrito(idd, ti, pre, st);
+
+                    pantallaVenta(lista_prod_carrito);
                     tbBrow.Text = "";
                 }
                 else if (e.ColumnIndex == dgvPrincipal.Columns[2].Index && scV)
                 {
-                    restProd(dgvPrincipal.CurrentRow.Index);
+                    lista_prod_carrito = detalle_ventas.restProd(dgvPrincipal.CurrentRow.Index);
+                    pantallaVenta(lista_prod_carrito);
                 }
                 else if (e.ColumnIndex == dgvPrincipal.Columns[4].Index && scV)
                 {
-                    sumProd(dgvPrincipal.CurrentRow.Index);
+                    lista_prod_carrito = detalle_ventas.sumProd(dgvPrincipal.CurrentRow.Index);
+                    pantallaVenta(lista_prod_carrito);
                 }
                 else if (e.ColumnIndex == dgvPrincipal.Columns[7].Index && scV)
                 {
@@ -315,58 +333,22 @@ namespace Positive.Presentacion
 
                     if (resultado == DialogResult.Yes)
                     {
-                        delProd(dgvPrincipal.CurrentRow.Index);
+                        lista_prod_carrito = detalle_ventas.delProd(dgvPrincipal.CurrentRow.Index);
+                        pantallaVenta(lista_prod_carrito);
                     }
                 }
 
+
             }
         }
-
         private void actualizar_Click_Click(object sender, EventArgs e)
         {
-            cargar_productos_todos();
+            Producto producto_pantalla = new Producto();
+            lista_prod = producto_pantalla.cargar_productos_venta();
         }
 
 
-
-
-
-        private void sumProd(int pProd)
-        {
-            carrito[pProd].cantidad += 1;
-            decimal subt = lista_prod_carrito.First(u => u.id_producto == carrito[pProd].id_producto).precio_venta;
-            carrito[pProd].subtotal += subt; ;
-            dgvPrincipal.Rows.Clear();
-            pantallaVenta();
-            //total += subt;
-            lbTotal.Text = total.ToString();
-            dgvPrincipal.Rows[0].Selected = false;
-            dgvPrincipal.Rows[pProd].Selected = true;
-
-
-        }
-        private void restProd(int pProd)
-        {
-
-
-            if (carrito[pProd].cantidad > 1)
-            {
-                carrito[pProd].cantidad -= 1;
-                decimal subt = lista_prod_carrito.First(u => u.id_producto == carrito[pProd].id_producto).precio_venta;
-                carrito[pProd].subtotal -= subt; total -= subt;
-                dgvPrincipal.Rows.Clear();
-                pantallaVenta();
-                lbTotal.Text = total.ToString();
-
-            } }
-
-        private void delProd(int pProd)
-        {
-            carrito.Remove(carrito[pProd]);
-            dgvPrincipal.Rows.Clear();
-            pantallaVenta();
-            lbTotal.Text = total.ToString();
-        }
+      
         private void btOk_Click_1(object sender, EventArgs e)
         {
             if (total != 0)
@@ -380,9 +362,7 @@ namespace Positive.Presentacion
                 MessageBox.Show("No se han cargado productos");
             }
 
-
-
-        }*/
+        }
 
             /* 
              private void btOk_Click(object sender, EventArgs e)
@@ -966,7 +946,7 @@ if (e.ColumnIndex == dgvSales.Columns[5].Index)
 
 }
 }*/
-        }
+        
     }
 }
 

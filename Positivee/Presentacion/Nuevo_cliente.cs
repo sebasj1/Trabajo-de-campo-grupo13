@@ -39,30 +39,29 @@ namespace Positive.Presentacion
 
         private void btAddUser_Click(object sender, EventArgs e)
         {
-            
-            cliente.INSERTCONTROL(cbStatus.SelectedIndex + 1,
-                TBNombre.Text.Trim(), textboxApellido.Text.Trim(), tbDNI.Text.Trim(), cbTDoc.SelectedIndex + 1, tbTel.Text.Trim(),
-             tbEmail.Text.Trim(), this);
+            DialogResult resp = MessageBox.Show("Se guardara el cliente", "Éxito", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (resp == DialogResult.Yes)
+            {
+                Cliente cliente = new Cliente();
+                cliente.INSERTCONTROL(cbStatus.SelectedIndex + 1,
+                    TBNombre.Text.Trim(), textboxApellido.Text.Trim(), tbDNI.Text.Trim(), cbTDoc.SelectedIndex + 1, tbTel.Text.Trim(),
+                 tbEmail.Text.Trim(), this);
+            }
         }
-
-        public void confirmacion()
+        public void exito()
         {
-           
+            MessageBox.Show("Se ha guardado correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
             clean();
         }
-        public void negacion()
+        public void fallo()
         {
-            MessageBox.Show("Este cliente ya se ha registrado anteriormente.", "Fallo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show("No se pudo realizar la actualización.", "Fallo", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
-
-
+        public void nro_ya_encontrado()
+        {
+            MessageBox.Show("Este numero de documento ya está registrado.", "Fallo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
         
-
-
-
-
-
-
 
 
         private void btAdd_MouseMove(object sender, MouseEventArgs e)

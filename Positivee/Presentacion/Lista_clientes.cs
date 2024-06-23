@@ -115,26 +115,18 @@ namespace Positive.Presentacion
                         ELEMLIST.telefono, ELEMLIST.email, ELEMLIST.estado);
                     // Cambiar el color de fondo si está eliminado
 
-                    if (ELEMLIST.estado == "INACTIVO" || ELEMLIST.estado == "inactivo")
-                    {
-                        fila.DefaultCellStyle.BackColor = Color.Red;
-                        fila.DefaultCellStyle.ForeColor = Color.White; // Puedes ajustar el color del texto según sea necesario
-                    }
+                 
                     DATAGRIDCELL.Rows.Add(fila);
                 }
-                if (p_tipo == 2 && ELEMLIST.estado == "INACTIVO")
+                if (p_tipo == 2 && ELEMLIST.estado.ToUpper() == "INACTIVO")
                 {
                     DataGridViewRow fila = new DataGridViewRow();
                     fila.CreateCells(DATAGRIDCELL, ELEMLIST.id_cliente, ELEMLIST.nombre, ELEMLIST.apellido,
                         ELEMLIST.tipo_doc, ELEMLIST.numero_documento,
                         ELEMLIST.telefono, ELEMLIST.email, ELEMLIST.estado);
-                    // Cambiar el color de fondo si está eliminado
-
-                    if (ELEMLIST.estado == "INACTIVO" || ELEMLIST.estado == "inactivo")
-                    {
-                        fila.DefaultCellStyle.BackColor = Color.Red;
+                      fila.DefaultCellStyle.BackColor = Color.Red;
                         fila.DefaultCellStyle.ForeColor = Color.White; // Puedes ajustar el color del texto según sea necesario
-                    }
+                   
                     DATAGRIDCELL.Rows.Add(fila);
                 }
             }

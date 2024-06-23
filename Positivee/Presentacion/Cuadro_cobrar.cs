@@ -16,16 +16,16 @@ namespace Positive.Presentacion
 {
     public partial class Cuadro_cobrar : Form
     {
-        string _connectionString = "Server=mysql-proyectois2.alwaysdata.net;Database=proyectois2_puntoventa;User Id=362639;Password=Pollito1q;";
-
+       
         Pantalla_de_venta principal;
         private decimal total;
         private decimal montoInicial;
-        private List<Venta_medio_pago> lista_venta_medio_pago = new List<Venta_medio_pago>();
+        private List<dynamic> lista_venta_medio_pago = new List<dynamic>();
         private List<Medio_pago> lista_medio_pago = new List<Medio_pago>();
         private Venta venta = new Venta();
         private decimal vuelto = 0; 
         List<Medio_pago> medio;
+        Venta_medio_pago det=new Venta_medio_pago();
         public Cuadro_cobrar(Pantalla_de_venta frmPrin)
         {
             InitializeComponent();
@@ -59,10 +59,8 @@ namespace Positive.Presentacion
                 {
             foreach (var rMdP in lista_venta_medio_pago)
             {
-               
-
                     DataGridViewRow fila = new DataGridViewRow();
-                    fila.CreateCells(dgvMP,medio.First(u=>u.id_medio_pago==rMdP.id_medio_pago).descripcion, "$ " + rMdP.monto);
+                    fila.CreateCells(dgvMP,rMdP.descripcion, "$ " + rMdP.monto);
 
                     fila.Height = 40;
 
@@ -73,7 +71,9 @@ namespace Positive.Presentacion
 
                 }
             }
-            tbMonto.Text = total.ToString();
+           
+            lbVuelto.Text = det.obtener_vuelto().ToString();
+            tbMonto.Text = det.obtener_restante().ToString();
         }
 
         private void cobrar_Load(object sender, EventArgs e)
@@ -85,17 +85,9 @@ namespace Positive.Presentacion
             lbVuelto.Text = vuelto.ToString();
 
             dgvMP.AllowUserToAddRows = false;
-            using (var db = new MySqlConnector.MySqlConnection(_connectionString))
-            {
-                var LISTLOAD = db.Query<Medio_pago>(
-                              sql: "all_payment_method",
-                              commandType: CommandType.StoredProcedure);
-                medio = LISTLOAD.ToList();
 
-            }
-
-
-            cbMedioP.DataSource = medio;
+            Medio_pago mdp = new Medio_pago();
+            cbMedioP.DataSource = mdp.lista_medio_pagos();
             cbMedioP.DisplayMember = "descripcion";
             cbMedioP.ValueMember = "id_medio_pago";
             cbMedioP.Refresh();
@@ -114,46 +106,9 @@ namespace Positive.Presentacion
         }
         private void addPago()
         {
-            if (total > 0) {
-                decimal cuantoPaga = decimal.Parse(tbMonto.Text);
-                decimal restantePago;
-                Venta_medio_pago regMP = new Venta_medio_pago();
-
-                regMP.id_medio_pago = cbMedioP.SelectedIndex + 1;
-
-                restantePago = total - cuantoPaga;
-                if (restantePago >= 0)
-                {
-                    tbMonto.Text = restantePago.ToString();
-                    total = restantePago;
-                    regMP.monto = cuantoPaga;
-                }
-                else
-                {
-                    regMP.monto = total;
-                    if (medio.First(u => u.id_medio_pago == regMP.id_medio_pago).descripcion.ToLower().Trim() == "efectivo")
-                    {
-                        lbVuelto.Text = "Vuelto: $ " + restantePago * -1;
-                    }
-                    total = 0;
-                }
-                if (!(lista_venta_medio_pago.Count(u => u.id_medio_pago == regMP.id_medio_pago) > 0))
-                {
-                    lista_venta_medio_pago.Add(regMP);
-                } 
-                else
-                {
-
-                    lista_venta_medio_pago.First(u => u.id_medio_pago == regMP.id_medio_pago).monto += regMP.monto;
-
-                }
-              
-            }
-            else
-            {
-                MessageBox.Show("Ya se alcanzó el monto a cubrir");
-
-            }
+           
+            lista_venta_medio_pago=det.calcular(total,tbMonto.Text,cbMedioP.SelectedValue.ToString(), cbMedioP.Text.ToString());
+           total= det.obtener_restante();
             chargeDgv();
         }
         private void tbMonto_TextChanged(object sender, EventArgs e)
@@ -168,7 +123,42 @@ namespace Positive.Presentacion
             }
         }
 
+        private void iconButton1_Click_1(object sender, EventArgs e)
+        {
 
+            addPago(); chargeDgv();
+        }
+        private void dgvMP_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void btOk_Click(object sender, EventArgs e)
+        {
+            if (total == 0)
+            {
+                Venta venta = new Venta();
+                principal.registrar_venta(det.obtener_lista_de_medios_de_pago());
+          //  principal.registrar_venta(lista_venta_medio_pago);
+
+            }
+            else
+            {
+
+                MessageBox.Show("Todavia no se alcanzo el monto total");
+            }
+        }
+
+        private void dgvMP_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
+        {
+
+            if (e != null && e.ColumnIndex == dgvMP.Columns[2].Index)
+            {
+                det.quitar_forma_pago(dgvMP.CurrentRow.Index); total = det.obtener_restante();
+                chargeDgv();
+            }
+
+        }
         /*
         
 public void registSale(List<registroMedioPago> pListReg)
@@ -257,47 +247,7 @@ public void registSale(List<registroMedioPago> pListReg)
                     }
 
             }*/
-        private void iconButton1_Click_1(object sender, EventArgs e)
-        {
-            addPago();chargeDgv();
-        }
-        private void dgvMP_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-           
-        }
-        private void restFormPago(int ind)
-        {
-            total += lista_venta_medio_pago[ind].monto;
-            lista_venta_medio_pago.Remove(lista_venta_medio_pago[ind]);
-            dgvMP.Rows.Clear(); chargeDgv();
-        }
-        private void btOk_Click(object sender, EventArgs e)
-        {
-            if (total == 0)
-            {
-          //  principal.registrar_venta(lista_venta_medio_pago);
 
-            }
-            else
-            {
-
-                MessageBox.Show("Todavia no se alcanzo el monto total");
-            }
-        }
-
-        private void dgvMP_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
-        {
-
-            if (e != null)
-            {
-                MessageBox.Show(dgvMP.CurrentRow.Index.ToString());
-                if (e.ColumnIndex == dgvMP.Columns[2].Index)
-                {
-
-                    restFormPago(dgvMP.CurrentRow.Index);
-                }
-            }
-        }  
     }
 }
 

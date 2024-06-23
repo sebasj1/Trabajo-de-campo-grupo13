@@ -32,31 +32,96 @@ namespace Positive
             Producto producto_para_cargar_todos = new Producto();
             lista_prod = producto_para_cargar_todos.cargar_productos_todos();
         }
-
-        private void cargar_carrito(string id_prod)
+        */
+        public List<dynamic> cargar_carrito(string p_id_prod, string p_titulo, string p_precio, string p_stock)
         {
-            int id = int.Parse(id_prod);
-            dynamic prod = lista_prod.First(u => u.id_producto == id);
-            int i = 0;
+            int c_id = int.Parse(p_id_prod);
+            decimal c_precio = decimal.Parse(p_precio);
+            int c_stock = int.Parse(p_stock);
+            
+            
 
-            if (!(carrito.Count(u => u.id_producto == prod.id_producto) > 0))
-            {
-                id_producto = prod.id_producto;
-                cantidad = 1;
-                subtotal = prod.precio_venta;
-
-                carrito.Add(prodCarrito);
+            if (!(lista_prod_carrito.Count(u => u.id_producto == c_id) > 0))
+            {dynamic prod=new {id_producto=c_id,titulo= p_titulo, precio= c_precio, subtotal= c_precio, cantidad=1,stock= c_stock };
+                
+               
                 lista_prod_carrito.Add(prod);
             }
             else
-            {
-                carrito.First(u => u.id_producto == id).cantidad += 1;
-                carrito.First(u => u.id_producto == id).subtotal += prod.precio_venta;
-                Detalle_venta indice = carrito.First(u => u.id_producto == id);
+            { dynamic prod1 = lista_prod_carrito.First(u => u.id_producto == c_id);
+                 dynamic prod= new {
+                     id_producto = prod1.id_producto, 
+                     titulo = prod1.titulo,
+                     precio = prod1.precio, 
+                     subtotal =prod1.subtotal+ c_precio, 
+                     cantidad = prod1.cantidad+1, 
+                     stock = prod1.stock
+                 };
+                lista_prod_carrito[lista_prod_carrito.FindIndex(u => u.id_producto == c_id)] = prod;
+                
+               //lista_prod_carrito.First(u => u.id_producto == c_id).subtotal += c_precio;
+                
                 //sumProd(carrito.IndexOf(indice));
             }
+            return lista_prod_carrito;
+
+        }
+
+        public List<dynamic> restProd(int pProd)
+        {
+
+            if (pProd>= 0)
+            {
+                if (lista_prod_carrito[pProd].cantidad > 1)
+                {
+                    dynamic prod1 = lista_prod_carrito[pProd];
+                    dynamic prod = new
+                    {
+                        id_producto = prod1.id_producto,
+                        titulo = prod1.titulo,
+                        precio = prod1.precio,
+                        subtotal = prod1.subtotal - prod1.precio,
+                        cantidad = prod1.cantidad - 1,
+                        stock = prod1.stock
+                    };
+                    lista_prod_carrito[pProd] = prod;
+
+                }
+            }
+            return lista_prod_carrito;
+        }
 
 
-        }*/
+
+        public List<dynamic> sumProd(int pProd)
+        {
+            if (pProd>= 0)
+            {
+               
+                    dynamic prod1 = lista_prod_carrito[pProd];
+                    dynamic prod = new
+                    {
+                        id_producto = prod1.id_producto,
+                        titulo = prod1.titulo,
+                        precio = prod1.precio,
+                        subtotal = prod1.subtotal + prod1.precio,
+                        cantidad = prod1.cantidad + 1,
+                        stock = prod1.stock
+                    };
+                    lista_prod_carrito[pProd] = prod;
+
+                
+            }
+            return lista_prod_carrito;
+
+        }
+        public List<dynamic> delProd(int pProd)
+        {
+            if (pProd >= 0)
+            {
+                lista_prod_carrito.Remove(lista_prod_carrito[pProd]);
+                
+            }return lista_prod_carrito;
+        }
     }
 }

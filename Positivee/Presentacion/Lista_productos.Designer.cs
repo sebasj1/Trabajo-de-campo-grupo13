@@ -22,30 +22,125 @@
         private void InitializeComponent()
         {
             this.panelUsers = new System.Windows.Forms.Panel();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.rbCli = new System.Windows.Forms.RadioButton();
+            this.iconButton1 = new FontAwesome.Sharp.IconButton();
+            this.cbRol = new System.Windows.Forms.ComboBox();
+            this.iconButton2 = new FontAwesome.Sharp.IconButton();
+            this.label2 = new System.Windows.Forms.Label();
             this.LABELPRINCIPAL = new System.Windows.Forms.Label();
             this.DATAGRIDCELL = new System.Windows.Forms.DataGridView();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.btRefresh = new FontAwesome.Sharp.IconButton();
-            this.cbRol = new System.Windows.Forms.ComboBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.btnFilter = new FontAwesome.Sharp.IconButton();
             this.panelUsers.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DATAGRIDCELL)).BeginInit();
-            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panelUsers
             // 
             this.panelUsers.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.panelUsers.Controls.Add(this.groupBox2);
+            this.panelUsers.Controls.Add(this.label2);
             this.panelUsers.Controls.Add(this.LABELPRINCIPAL);
             this.panelUsers.Controls.Add(this.DATAGRIDCELL);
-            this.panelUsers.Controls.Add(this.groupBox1);
             this.panelUsers.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelUsers.Location = new System.Drawing.Point(0, 0);
             this.panelUsers.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panelUsers.Name = "panelUsers";
             this.panelUsers.Size = new System.Drawing.Size(1506, 698);
             this.panelUsers.TabIndex = 7;
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.BackColor = System.Drawing.SystemColors.HighlightText;
+            this.groupBox2.Controls.Add(this.rbCli);
+            this.groupBox2.Controls.Add(this.iconButton1);
+            this.groupBox2.Controls.Add(this.cbRol);
+            this.groupBox2.Controls.Add(this.iconButton2);
+            this.groupBox2.Location = new System.Drawing.Point(775, 29);
+            this.groupBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.groupBox2.Size = new System.Drawing.Size(719, 91);
+            this.groupBox2.TabIndex = 18;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Acciones";
+            // 
+            // rbCli
+            // 
+            this.rbCli.AutoSize = true;
+            this.rbCli.Checked = true;
+            this.rbCli.Location = new System.Drawing.Point(31, 37);
+            this.rbCli.Name = "rbCli";
+            this.rbCli.Size = new System.Drawing.Size(78, 24);
+            this.rbCli.TabIndex = 12;
+            this.rbCli.TabStop = true;
+            this.rbCli.Text = "Todos";
+            this.rbCli.UseVisualStyleBackColor = true;
+            this.rbCli.Click += new System.EventHandler(this.rbCli_CheckedChanged);
+            // 
+            // iconButton1
+            // 
+            this.iconButton1.BackColor = System.Drawing.SystemColors.Highlight;
+            this.iconButton1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.iconButton1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.iconButton1.IconChar = FontAwesome.Sharp.IconChar.None;
+            this.iconButton1.IconColor = System.Drawing.Color.Black;
+            this.iconButton1.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.iconButton1.IconSize = 30;
+            this.iconButton1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.iconButton1.Location = new System.Drawing.Point(546, 23);
+            this.iconButton1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.iconButton1.Name = "iconButton1";
+            this.iconButton1.Size = new System.Drawing.Size(158, 57);
+            this.iconButton1.TabIndex = 5;
+            this.iconButton1.Text = "Actualizar";
+            this.iconButton1.UseVisualStyleBackColor = false;
+            this.iconButton1.Click += new System.EventHandler(this.btRefresh_Click);
+            // 
+            // cbRol
+            // 
+            this.cbRol.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
+            this.cbRol.FormattingEnabled = true;
+            this.cbRol.IntegralHeight = false;
+            this.cbRol.ItemHeight = 26;
+            this.cbRol.Items.AddRange(new object[] {
+            "Todos"});
+            this.cbRol.Location = new System.Drawing.Point(143, 35);
+            this.cbRol.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.cbRol.Name = "cbRol";
+            this.cbRol.Size = new System.Drawing.Size(218, 34);
+            this.cbRol.TabIndex = 10;
+            this.cbRol.Text = "Todos";
+            this.cbRol.SelectedIndexChanged += new System.EventHandler(this.cbRol_SelectedIndexChanged);
+            this.cbRol.Click += new System.EventHandler(this.cbRol_Click);
+            // 
+            // iconButton2
+            // 
+            this.iconButton2.BackColor = System.Drawing.SystemColors.Highlight;
+            this.iconButton2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.iconButton2.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.iconButton2.IconChar = FontAwesome.Sharp.IconChar.None;
+            this.iconButton2.IconColor = System.Drawing.Color.Black;
+            this.iconButton2.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.iconButton2.IconSize = 30;
+            this.iconButton2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.iconButton2.Location = new System.Drawing.Point(380, 23);
+            this.iconButton2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.iconButton2.Name = "iconButton2";
+            this.iconButton2.Size = new System.Drawing.Size(158, 57);
+            this.iconButton2.TabIndex = 1;
+            this.iconButton2.Text = "Filtrar";
+            this.iconButton2.UseVisualStyleBackColor = false;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.label2.Location = new System.Drawing.Point(715, 64);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(54, 25);
+            this.label2.TabIndex = 17;
+            this.label2.Text = "Ver :";
             // 
             // LABELPRINCIPAL
             // 
@@ -76,82 +171,6 @@
             this.DATAGRIDCELL.TabIndex = 14;
             this.DATAGRIDCELL.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DATAGRIDCELL_CellContentDoubleClick);
             // 
-            // groupBox1
-            // 
-            this.groupBox1.BackColor = System.Drawing.SystemColors.HighlightText;
-            this.groupBox1.Controls.Add(this.btRefresh);
-            this.groupBox1.Controls.Add(this.cbRol);
-            this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Controls.Add(this.btnFilter);
-            this.groupBox1.Location = new System.Drawing.Point(775, 11);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.groupBox1.Size = new System.Drawing.Size(719, 91);
-            this.groupBox1.TabIndex = 15;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Acciones";
-            // 
-            // btRefresh
-            // 
-            this.btRefresh.BackColor = System.Drawing.SystemColors.Highlight;
-            this.btRefresh.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.btRefresh.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btRefresh.IconChar = FontAwesome.Sharp.IconChar.None;
-            this.btRefresh.IconColor = System.Drawing.Color.Black;
-            this.btRefresh.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btRefresh.IconSize = 30;
-            this.btRefresh.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btRefresh.Location = new System.Drawing.Point(499, 23);
-            this.btRefresh.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btRefresh.Name = "btRefresh";
-            this.btRefresh.Size = new System.Drawing.Size(158, 57);
-            this.btRefresh.TabIndex = 5;
-            this.btRefresh.Text = "Actualizar";
-            this.btRefresh.UseVisualStyleBackColor = false;
-            this.btRefresh.Click += new System.EventHandler(this.btRefresh_Click);
-            // 
-            // cbRol
-            // 
-            this.cbRol.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
-            this.cbRol.FormattingEnabled = true;
-            this.cbRol.IntegralHeight = false;
-            this.cbRol.ItemHeight = 26;
-            this.cbRol.Location = new System.Drawing.Point(66, 35);
-            this.cbRol.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.cbRol.Name = "cbRol";
-            this.cbRol.Size = new System.Drawing.Size(248, 34);
-            this.cbRol.TabIndex = 10;
-            this.cbRol.Text = "Todos";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.label1.Location = new System.Drawing.Point(6, 39);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(54, 25);
-            this.label1.TabIndex = 11;
-            this.label1.Text = "Ver :";
-            // 
-            // btnFilter
-            // 
-            this.btnFilter.BackColor = System.Drawing.SystemColors.Highlight;
-            this.btnFilter.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.btnFilter.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnFilter.IconChar = FontAwesome.Sharp.IconChar.None;
-            this.btnFilter.IconColor = System.Drawing.Color.Black;
-            this.btnFilter.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btnFilter.IconSize = 30;
-            this.btnFilter.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnFilter.Location = new System.Drawing.Point(333, 23);
-            this.btnFilter.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnFilter.Name = "btnFilter";
-            this.btnFilter.Size = new System.Drawing.Size(158, 57);
-            this.btnFilter.TabIndex = 1;
-            this.btnFilter.Text = "Filtrar";
-            this.btnFilter.UseVisualStyleBackColor = false;
-            // 
             // Lista_productos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -160,11 +179,12 @@
             this.Controls.Add(this.panelUsers);
             this.Name = "Lista_productos";
             this.Text = "Lista_productos";
+            this.Load += new System.EventHandler(this.Lista_productos_Load_1);
             this.panelUsers.ResumeLayout(false);
             this.panelUsers.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DATAGRIDCELL)).EndInit();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -174,10 +194,11 @@
         private System.Windows.Forms.Panel panelUsers;
         public System.Windows.Forms.Label LABELPRINCIPAL;
         public System.Windows.Forms.DataGridView DATAGRIDCELL;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private FontAwesome.Sharp.IconButton btRefresh;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.RadioButton rbCli;
+        private FontAwesome.Sharp.IconButton iconButton1;
         private System.Windows.Forms.ComboBox cbRol;
-        private System.Windows.Forms.Label label1;
-        private FontAwesome.Sharp.IconButton btnFilter;
+        private FontAwesome.Sharp.IconButton iconButton2;
+        private System.Windows.Forms.Label label2;
     }
 }

@@ -45,7 +45,10 @@ namespace Positive.Presentacion
             form.Show();
             btnActive = buttonSelected;
         }
-
+        public void mostrar_menu_editar(Editar_producto ed_pro)
+        {
+            iconSelect(btProdEd, ed_pro);
+        }
         /// <summary>
         /// //////
         /// </summary>
@@ -73,18 +76,21 @@ namespace Positive.Presentacion
         }
         private void btProdEd_Click(object sender, EventArgs e)
         {
-
+            lista.cargar_lista();
             lista.cargar_accion("edit");
             iconSelect((IconButton)sender, lista);
         }
         private void btDelProd_Click(object sender, EventArgs e)
         {
+            lista.cargar_lista();
             lista.cargar_accion("delete");
+           
             iconSelect((IconButton)sender, lista);
 
         }
         private void btRestP_Click(object sender, EventArgs e)
         {
+            lista.cargar_lista();
             lista.cargar_accion("restore");
             iconSelect((IconButton)sender, lista);
         }
@@ -104,26 +110,8 @@ namespace Positive.Presentacion
         }
       
 
-        public void seleccion_editar(Producto p_producto_editar)
-        {
-         Editar_producto editar_producto = new Editar_producto();
-            iconSelect(btProdEd, editar_producto);
-            editar_producto.cargar_datos(p_producto_editar);
-
-        }
-        public void seleccion_restaurar(string p_id)
-        {
-            Eliminar_restaurar controlador = new Eliminar_restaurar();
-            DialogResult resultado = MessageBox.Show("¿Está seguro de que desea restaurar a este producto?", "Confirmar Restauración", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-
-            if (resultado == DialogResult.Yes)
-            {
-
-                MessageBox.Show(controlador.restaurar_producto(p_id), "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-            }
-            recargar_lista("restore");
-        }
+        
+       
 
       
 

@@ -31,7 +31,7 @@ namespace Positive
         public decimal precio_venta { get; set; }
         public int id_categoria { get; set; }
         public int id_estado { get; set; }
-        public Nullable<int> stock { get; set; } 
+        public int stock { get; set; } 
 
          Seccion_productos _principal;
         string _connectionString = Conexion.get_string();
@@ -40,26 +40,36 @@ namespace Positive
         //                 string p_nombre, string p_apellido, string p_numero_documento,
         //                     int p_id_tipo_documento, string p_telefono, string p_email, Nuevo_usuario p_nuevo_usuario) {
             
-        private void INSERTCONTROL(string p_codigo,string p_titulo,string p_descripcion,
-        int p_id_categoria,int p_id_estado,decimal p_precio_compra, decimal p_precio_venta,
-            int p_stock,Nuevo_producto p_nuevo_producto)
+        public void INSERTCONTROL(string p_codigo,string p_titulo,string p_descripcion,
+        string p_id_categoria,string p_id_estado,string p_precio_compra, string p_precio_venta,
+            string p_stock,Nuevo_producto p_nuevo_producto)
         {
-
             try
             {
-                if(!FINDCOD(p_codigo) || p_codigo == "") { 
-                     if (crear_producto(p_codigo,p_titulo,p_descripcion,p_id_categoria,p_id_estado,
-                        p_precio_compra,p_precio_venta,p_stock, p_nuevo_producto) )
+                if (!FINDCOD(p_codigo) || p_codigo == ""|| p_codigo==null)
+                {
+
+                    codigo = p_codigo;//tbCodeProd.Text.Trim();
+                    titulo = p_titulo;//tbTitleProd.Text.Trim();
+                    descripcion = p_descripcion;//tbDescProd.Text;
+                    id_categoria =int.Parse( p_id_categoria);//cbCategorie.SelectedIndex+1;
+                    id_estado = int.Parse(p_id_estado);//cbStatus.SelectedIndex+1;
+                    precio_compra =decimal.Parse( p_precio_compra);// decimal.Parse( tbPriceProd.Text);
+                    precio_venta = decimal.Parse(p_precio_venta);//decimal.Parse(tbPrecV.Text); 
+                    stock = int.Parse(p_stock);//int.Parse(tbStockProd.Text.Trim());
+                    if (GUARDAR_PRODUCTO())
                     {
-                        DialogResult resp = MessageBox.Show("Se guardara el producto", "Éxito", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                        if (resp == DialogResult.Yes)
-                        {
-                            INSERTELEM();
-                            MessageBox.Show("Este producto se ha guardado correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                        }
-
+                        p_nuevo_producto.exito();
                     }
+                    else
+                    {
+                        p_nuevo_producto.fallo();
+                    }
+
+                }
+                else
+                {
+                    p_nuevo_producto.cod_ya_registrado();
                 }
             }
             catch (Exception ex)
@@ -67,26 +77,7 @@ namespace Positive
             }
 
         } 
-        private bool crear_producto(string p_codigo,string p_titulo,string p_descripcion,
-        int p_id_categoria,int p_id_estado,decimal p_precio_compra, decimal p_precio_venta,
-            int p_stock,Nuevo_producto p_nuevo_producto)
-        {
-            bool ok=false;
-            if (p_nuevo_producto.ValidateChildren(ValidationConstraints.Enabled))
-            {
-
-                    codigo = p_codigo;//tbCodeProd.Text.Trim();
-                    titulo = p_titulo;//tbTitleProd.Text.Trim();
-                    descripcion = p_descripcion;//tbDescProd.Text;
-                    id_categoria = p_id_categoria;//cbCategorie.SelectedIndex+1;
-                    id_estado = p_id_estado;//cbStatus.SelectedIndex+1;
-                    precio_compra =p_precio_compra;// decimal.Parse( tbPriceProd.Text);
-                    precio_venta = p_precio_venta;//decimal.Parse(tbPrecV.Text); 
-                    stock = p_stock;//int.Parse(tbStockProd.Text.Trim());
-                ok=true;}
-                return ok;
-        }
-
+     
                 
             
 
@@ -108,17 +99,19 @@ namespace Positive
             return exist;
         }
 
-          
 
-        
-private void INSERTELEM()
+
+        private bool GUARDAR_PRODUCTO()
         {
+            bool ok = false;
 
-            using (var db = new MySqlConnector.MySqlConnection(_connectionString))
+            try
             {
+                using (var db = new MySqlConnector.MySqlConnection(_connectionString))
+                {
 
-                var queryAdd = db.ExecuteReader(
-                                   sql: "add_product",
+                    var queryAdd = db.Execute(
+                                         sql: "add_product",
                                    param: new
                                    {
                                        @p_titulo = titulo,
@@ -131,11 +124,18 @@ private void INSERTELEM()
                                        @p_stock = stock
 
                                    },
-                                   commandType: CommandType.StoredProcedure);
+                                       commandType: CommandType.StoredProcedure);
+                    ok = true;
+                }
 
             }
+            catch (Exception e)
+            {
+                MessageBox.Show("Error inesperado" + e);
+            }
+            return ok;
         }
-
+       
         public List<dynamic> listar_productos(){
             
             try
@@ -156,7 +156,11 @@ private void INSERTELEM()
                 }
                 
              }
-
+        /// <summary>
+        /// //
+        /// </summary>
+        /// <param name="p_id"></param>
+        /// <param name="p_menu"></param>
           public void seleccion_editar(string p_id, Seccion_productos p_menu)
         {
             int ide = int.Parse(p_id);
@@ -167,7 +171,7 @@ private void INSERTELEM()
                 {
                     var PROD = db.QueryFirst(
                                sql: "search_producto_id",
-                               param: new { @p_id_usuario = p_id },
+                               param: new { @p_id_producto = ide },
                                commandType: CommandType.StoredProcedure
                     );
                     codigo = PROD.codigo;
@@ -180,7 +184,10 @@ private void INSERTELEM()
                     stock = PROD.stock;
                     titulo = PROD.titulo;
                 }
-                p_menu.seleccion_editar(this);
+                Editar_producto editar_prod = new Editar_producto();
+                editar_prod.cargar_datos(codigo,descripcion,id_categoria,id_estado,id_producto,precio_compra,precio_venta,stock,titulo);
+                p_menu.mostrar_menu_editar(editar_prod);
+
                
             }
             catch (Exception ex)
@@ -210,7 +217,7 @@ private void INSERTELEM()
 
                     if (resp == DialogResult.Yes)
                     {
-                        GUARDAR_PRODUCTO();
+                        GUARDAR_PRODUCTO_EDITADO();
                         MessageBox.Show("Este producto se ha guardado correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                 }
@@ -224,8 +231,7 @@ private void INSERTELEM()
 
         }
 
-        private void GUARDAR_PRODUCTO()
-        {
+        private void GUARDAR_PRODUCTO_EDITADO() {
 
             using (var db = new MySqlConnector.MySqlConnection(_connectionString))
             {

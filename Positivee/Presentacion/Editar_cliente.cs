@@ -83,20 +83,6 @@ namespace Positive.Presentacion
 
 
 
-        public void confirmacion()
-        {
-
-            clean();
-        }
-        public void negacion()
-        {
-            MessageBox.Show("Este cliente ya se ha registrado anteriormente.", "Fallo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-        }
-
-
-
-
-
 
 
 

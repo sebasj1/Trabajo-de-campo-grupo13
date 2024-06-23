@@ -19,30 +19,22 @@ namespace Positive.Presentacion
 {
     public partial class Editar_producto : Form
     {
-        string _connectionString = "Server=mysql-proyectois2.alwaysdata.net;Database=proyectois2_puntoventa;User Id=362639;Password=Pollito1q;";
-        Producto producto_en_editar = new Producto();
-        Seccion_productos _principal;
+         Seccion_productos _principal;
         public Editar_producto()
         {
             InitializeComponent();
         }
     
 
-        public void cargar_datos(Producto p_usuario_producto_editar)
+        public void cargar_datos(string codigo, string descripcion,int id_categoria,int id_estado,int id_producto
+            ,decimal precio_compra,decimal precio_venta,int stock, string titulo)
             {
-            producto_en_editar = p_usuario_producto_editar;
-
-
-
                 Categoria categoria = new Categoria();
                 cbCategorie.Items.Clear();
                 cbCategorie.DataSource = categoria.lista_categorias();
                 cbCategorie.DisplayMember = "descripcion";
                 cbCategorie.ValueMember = "id_categoria";
                 cbCategorie.Refresh();
-
-             
-
 
                 cbStatus.Items.Clear();
                 Estado tipo_estado = new Estado();
@@ -51,18 +43,16 @@ namespace Positive.Presentacion
                 cbStatus.ValueMember = "id_estado";
                 cbStatus.Refresh();
 
+                tbCodeProd.Text = codigo;
+                cbCategorie.SelectedIndex = id_categoria - 1;
+                cbStatus.SelectedIndex = id_estado - 1;
 
 
-                tbCodeProd.Text = producto_en_editar.codigo;
-                cbCategorie.SelectedIndex = producto_en_editar.id_categoria - 1;
-                cbStatus.SelectedIndex = producto_en_editar.id_estado - 1;
-
-
-                tbDescProd.Text = producto_en_editar.descripcion;
-                tbPrecV.Text = producto_en_editar.precio_venta.ToString();
-                tbPriceProd.Text = producto_en_editar.precio_compra.ToString();
-                tbStockProd.Text = producto_en_editar.stock.ToString();
-            tbTitleProd.Text = producto_en_editar.titulo;
+                tbDescProd.Text = descripcion;
+                tbPrecV.Text = precio_venta.ToString();
+                tbPriceProd.Text = precio_compra.ToString();
+                tbStockProd.Text = stock.ToString();
+            tbTitleProd.Text = titulo;
             }
            
 
@@ -73,41 +63,20 @@ namespace Positive.Presentacion
 
         private void btAddProd_Click(object sender, EventArgs e)
         {
-            this.AutoValidate = System.Windows.Forms.AutoValidate.Disable;
-
-
             if (this.ValidateChildren(ValidationConstraints.Enabled))
             {
-               
-                producto_en_editar.INSERTCONTROLEDIT(tbCodeProd.Text.Trim(),tbTitleProd.Text.Trim() ,tbDescProd.Text.Trim(), cbCategorie.SelectedIndex + 1, cbStatus.SelectedIndex + 1,
-                tbPriceProd.Text.Trim(), tbPrecV.Text.Trim(), tbStockProd.Text.Trim(),  this);
 
+                DialogResult resp = MessageBox.Show("Se guardara el cliente", "Éxito", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (resp == DialogResult.Yes)
+                {
+                    Producto producto_editado = new Producto();
+                    producto_editado.INSERTCONTROLEDIT(tbCodeProd.Text.Trim(), tbTitleProd.Text.Trim(), tbDescProd.Text.Trim(), cbCategorie.SelectedIndex + 1, cbStatus.SelectedIndex + 1,
+                    tbPriceProd.Text.Trim(), tbPrecV.Text.Trim(), tbStockProd.Text.Trim(), this);
+
+                }
             }
         }
-        // private void GUARDAR_PRODUCTO()
-        // {
-
-        //     using (var db = new MySqlConnector.MySqlConnection(_connectionString))
-        //     {
-
-        //         var queryAdd = db.ExecuteReader(
-        //                            sql: "edit_product",
-        //                            param: new
-        //                            {
-        //                                @p_id_producto = producto.id_producto,
-        //                                @p_titulo = producto.titulo,
-        //                                @p_descripcion = producto.descripcion,
-        //                                @p_codigo = producto.codigo,
-        //                                @p_precio_compra = producto.precio_compra,
-        //                                @p_precio_venta = producto.precio_venta,
-        //                                @p_id_categoria = producto.id_categoria,
-        //                                @p_id_estado = producto.id_estado,
-
-        //                            },
-        //                            commandType: CommandType.StoredProcedure);
-
-        //     }
-        // }
+       
 
         private void editar_producto_Load(object sender, EventArgs e)
         {
