@@ -326,12 +326,12 @@ namespace Positive.Presentacion
                 }
                 else if (e.ColumnIndex == dgvPrincipal.Columns[2].Index && scV)
                 {
-                    lista_prod_carrito = detalle_ventas.restProd(dgvPrincipal.CurrentRow.Index);
+                    lista_prod_carrito = detalle_ventas.restar_prod(dgvPrincipal.CurrentRow.Index);
                     pantallaVenta(lista_prod_carrito);
                 }
                 else if (e.ColumnIndex == dgvPrincipal.Columns[4].Index && scV)
                 {
-                    lista_prod_carrito = detalle_ventas.sumProd(dgvPrincipal.CurrentRow.Index);
+                    lista_prod_carrito = detalle_ventas.sumar_prod(dgvPrincipal.CurrentRow.Index);
                     pantallaVenta(lista_prod_carrito);
                 }
                 else if (e.ColumnIndex == dgvPrincipal.Columns[7].Index && scV)
@@ -341,7 +341,7 @@ namespace Positive.Presentacion
 
                     if (resultado == DialogResult.Yes)
                     {
-                        lista_prod_carrito = detalle_ventas.delProd(dgvPrincipal.CurrentRow.Index);
+                        lista_prod_carrito = detalle_ventas.eliminar_prod(dgvPrincipal.CurrentRow.Index);
                         pantallaVenta(lista_prod_carrito);
                     }
                 }

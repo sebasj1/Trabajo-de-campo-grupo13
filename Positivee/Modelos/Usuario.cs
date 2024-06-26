@@ -76,19 +76,19 @@ namespace Positive
             }
         }
 
-        public void INSERTCONTROL(string p_nombre_usuario, string p_password, int p_id_rol, int p_id_estado,
+        public void insertar_usuario(string p_nombre_usuario, string p_password, int p_id_rol, int p_id_estado,
                         string p_nombre, string p_apellido, string p_numero_documento,
                             int p_id_tipo_documento, string p_telefono, string p_email, Nuevo_usuario p_nuevo_usuario) {
             try
             {
-                if(!FINDDNI(p_numero_documento)){
+                if(!buscar_por_doc(p_numero_documento)){
                     if (crear_usuario(p_nombre_usuario, p_password, p_id_rol, p_id_estado,
                             p_nombre, p_apellido, p_numero_documento,
                                 p_id_tipo_documento, p_telefono, p_email, p_nuevo_usuario)) {
                         DialogResult resp = MessageBox.Show("Se guardara el usuario", "Éxito", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                         if (resp == DialogResult.Yes)
                         {
-                            INSERTELEM();
+                            insertar_usuario_nuevo();
                             MessageBox.Show("Este usuario se ha guardado correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                         }
@@ -139,7 +139,7 @@ namespace Positive
             }
             return exist;
         }*/
-         private bool FINDDNI(string dni)
+         private bool buscar_por_doc(string dni)
         {
             bool exist = false;
             using (var db = new MySqlConnector.MySqlConnection(_connectionString))
@@ -157,7 +157,7 @@ namespace Positive
             return exist;
         }
 
-    private void INSERTELEM()
+    private void insertar_usuario_nuevo()
         {
             
             using (var db = new MySqlConnector.MySqlConnection(_connectionString))
@@ -241,10 +241,10 @@ namespace Positive
             }
 
         }
-        public void INSERTCONTROLEDIT(string tbUser,int cbRol,int cbStatus, string TBNombre, string textboxApellido,
+        public void insertar_usuario_editar(string tbUser,int cbRol,int cbStatus, string TBNombre, string textboxApellido,
         string  tbDNI,int cbTDoc,string tbTel,string tbEmail,Editar_usuario p_ed) {
 
-            if (FINDDNI(tbDNI))
+            if (buscar_por_doc(tbDNI))
             {
 
                 nombre_usuario = tbUser;
@@ -262,7 +262,7 @@ namespace Positive
                 contacto.email = tbEmail;
                 if (p_ed.confirmacion_consulta())
                 {
-                    GUARDAR_USUARIO();
+                    guardar_usuario();
                     p_ed.confirmacion();
                 }
             }
@@ -273,7 +273,7 @@ namespace Positive
             }
 
            
-    private void GUARDAR_USUARIO()
+    private void guardar_usuario()
     {
 
         using (var db = new MySqlConnector.MySqlConnection(_connectionString))

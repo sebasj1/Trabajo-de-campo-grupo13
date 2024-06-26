@@ -95,20 +95,7 @@ namespace Positive.Presentacion
             iconSelect((IconButton)sender, lista);
         }
 
-        public void seleccion_eliminar(string p_id)
-        {
-            Eliminar_restaurar controlador = new Eliminar_restaurar();
-            DialogResult resultado = MessageBox.Show("¿Está seguro de que desea eliminar este producto?", "Confirmar Eliminación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-
-            if (resultado == DialogResult.Yes)
-            {
-
-                MessageBox.Show(controlador.eliminar_producto(p_id), "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-            }
-            recargar_lista("delete");
-        }
-      
+       
 
         
        

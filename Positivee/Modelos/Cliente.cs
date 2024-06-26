@@ -27,45 +27,46 @@ namespace Positive
 
         public int id_cliente { get; set; }
         public int id_estado { get; set; }
-        Seccion_clientes _principal;
-        string _connectionString = Conexion.get_string();
-        string action = "";
+        public Seccion_clientes _principal; 
+
+         string _connectionString = Conexion.get_string();
+         string action = "";
         Contacto contacto = new Contacto();
 
-        public void INSERTCONTROL(int cbStatus, string TBNombre, string textboxApellido,
-        string tbDNI, int cbTDoc, string tbTel, string tbEmail,Nuevo_cliente p_edit)
+        public void insertar_cliente(int p_estado, string p_nombre, string p_apellido,
+        string p_nro_doc, int p_tipo_doc, string p_tel, string p_email,Nuevo_cliente p_cliente_Nuevo)
         {
 
-            if (!FINDDNI(tbDNI))
+            if (!buscar_nro_doc(p_nro_doc))
             {
 
-                id_estado = cbStatus;
-                nombre = TBNombre;
-                apellido = textboxApellido;
-                numero_documento = tbDNI;
-                id_tipo_documento = cbTDoc;
-                contacto.telefono = tbTel;
-                contacto.email = tbEmail;
-                if (GUARDAR_CLIENTE())
+                id_estado = p_estado;
+                nombre = p_nombre;
+                apellido = p_apellido;
+                numero_documento = p_nro_doc;
+                id_tipo_documento = p_tipo_doc;
+                contacto.telefono = p_tel;
+                contacto.email = p_email;
+                if (guardar_cliente())
                 {
-                    p_edit.exito();
+                    p_cliente_Nuevo.exito();
                 }
                 else
                 {
-                    p_edit.fallo();
+                    p_cliente_Nuevo.fallo();
                 }
 
 
             }
             else
             {
-                p_edit.nro_ya_encontrado();
+                p_cliente_Nuevo.nro_ya_encontrado();
             }
 
         }
      
 
-         private bool FINDDNI(string dni)
+         private bool buscar_nro_doc(string dni)
         {
             bool exist = false;
             using (var db = new MySqlConnector.MySqlConnection(_connectionString))
@@ -82,7 +83,7 @@ namespace Positive
             }
             return exist;
         }
-    private bool GUARDAR_CLIENTE()
+    private bool guardar_cliente()
         {
             bool ok = false;
             try { 
@@ -100,7 +101,7 @@ namespace Positive
                                     @p_numero_documento = numero_documento,
 
 
-                                    @p_id_estado = id_estado,
+                                    @p_estado = id_estado,
                                 },
                                     commandType: CommandType.StoredProcedure);
                     ok = true;
@@ -180,10 +181,10 @@ namespace Positive
             }
 
         } 
-        public void INSERTCONTROLEDIT(int cbStatus, string TBNombre, string textboxApellido,
+        public void guardar_cliente_editado(int cbStatus, string TBNombre, string textboxApellido,
         string  tbDNI,int cbTDoc,string tbTel,string tbEmail,int  p_id_cliente,int p_id_persona,int p_id_contacto,Editar_cliente p_edit) {
 
-            if (FINDDNI(tbDNI))
+            if (buscar_nro_doc(tbDNI))
             {
                 
                 id_estado = cbStatus;
@@ -197,7 +198,7 @@ namespace Positive
                 id_contacto = p_id_contacto;
                 contacto.telefono = tbTel;
                 contacto.email = tbEmail;
-                if (GUARDAR_CLIENTE_EDITADO())
+                if (guardar_cliente_edit())
                 {
                     p_edit.exito();
                 }
@@ -214,7 +215,7 @@ namespace Positive
             }
             
         }
-  private bool GUARDAR_CLIENTE_EDITADO()
+  private bool guardar_cliente_edit()
     { bool ok = false;
 
             try { using (var db = new MySqlConnector.MySqlConnection(_connectionString))
@@ -272,9 +273,9 @@ namespace Positive
                     MessageBox.Show("No se pudo eliminar " + ex);
                 } }
           }
- public string restaurar_cliente(string p_id)
+ public void restaurar_cliente(string p_id)
         {
-            string mensaje = "";
+            
             int id = int.Parse(p_id);
             DialogResult resultado = MessageBox.Show("¿Está seguro de que desea restaurar a este cliente?", "Confirmar Restauración", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
@@ -299,7 +300,7 @@ namespace Positive
                 
             }
             
-            return mensaje;
+            
         }
 
         private List<dynamic> buscar_cliente_nro_doc(string p_nro_doc)

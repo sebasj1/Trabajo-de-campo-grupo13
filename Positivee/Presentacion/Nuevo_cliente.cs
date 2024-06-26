@@ -31,7 +31,7 @@ namespace Positive.Presentacion
 
             cbStatus.Items.Clear();
             Estado tipo_estado = new Estado();
-            cbStatus.DataSource = tipo_estado.lista_estados();
+            cbStatus.DataSource = tipo_estado.buscar_estado();
             cbStatus.DisplayMember = "descripcion";
             cbStatus.ValueMember = "id_estado";
             cbStatus.Refresh();
@@ -43,7 +43,7 @@ namespace Positive.Presentacion
             if (resp == DialogResult.Yes)
             {
                 Cliente cliente = new Cliente();
-                cliente.INSERTCONTROL(cbStatus.SelectedIndex + 1,
+                cliente.insertar_cliente(cbStatus.SelectedIndex + 1,
                     TBNombre.Text.Trim(), textboxApellido.Text.Trim(), tbDNI.Text.Trim(), cbTDoc.SelectedIndex + 1, tbTel.Text.Trim(),
                  tbEmail.Text.Trim(), this);
             }

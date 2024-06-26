@@ -22,7 +22,7 @@ namespace Positive
         public string descripcion { get; set; }
    
 
-    public List<Estado> lista_estados(){
+    public List<Estado> buscar_estado(){
         List<Estado> lista_estados=null;
          try
             {

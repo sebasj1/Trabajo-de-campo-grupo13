@@ -146,6 +146,7 @@
             this.tbPrecV.Name = "tbPrecV";
             this.tbPrecV.Size = new System.Drawing.Size(406, 35);
             this.tbPrecV.TabIndex = 42;
+            this.tbPrecV.TextChanged += new System.EventHandler(this.tbPrecV_TextChanged);
             this.tbPrecV.Validating += new System.ComponentModel.CancelEventHandler(this.tbPriceProd_Validating);
             this.tbPrecV.Validated += new System.EventHandler(this.tbPriceProd_Validated);
             // 
@@ -211,6 +212,7 @@
             this.tbPriceProd.Name = "tbPriceProd";
             this.tbPriceProd.Size = new System.Drawing.Size(406, 35);
             this.tbPriceProd.TabIndex = 36;
+            this.tbPriceProd.TextChanged += new System.EventHandler(this.tbPriceProd_TextChanged);
             this.tbPriceProd.Validating += new System.ComponentModel.CancelEventHandler(this.tbPriceProd_Validating);
             this.tbPriceProd.Validated += new System.EventHandler(this.tbPriceProd_Validated);
             // 
@@ -253,6 +255,7 @@
             this.tbStockProd.Name = "tbStockProd";
             this.tbStockProd.Size = new System.Drawing.Size(360, 35);
             this.tbStockProd.TabIndex = 18;
+            this.tbStockProd.TextChanged += new System.EventHandler(this.tbStockProd_TextChanged);
             this.tbStockProd.Validating += new System.ComponentModel.CancelEventHandler(this.tbStockProd_Validating);
             this.tbStockProd.Validated += new System.EventHandler(this.tbStockProd_Validated);
             // 

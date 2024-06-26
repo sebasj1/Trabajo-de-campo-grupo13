@@ -68,7 +68,7 @@ namespace Positive
 
         }
 
-        public List<dynamic> restProd(int pProd)
+        public List<dynamic> restar_prod(int pProd)
         {
 
             if (pProd>= 0)
@@ -94,7 +94,7 @@ namespace Positive
 
 
 
-        public List<dynamic> sumProd(int pProd)
+        public List<dynamic> sumar_prod(int pProd)
         {
             if (pProd>= 0)
             {
@@ -116,7 +116,7 @@ namespace Positive
             return lista_prod_carrito;
 
         }
-        public List<dynamic> delProd(int pProd)
+        public List<dynamic> eliminar_prod(int pProd)
         {
             if (pProd >= 0)
             {
@@ -128,6 +128,7 @@ namespace Positive
         public bool registrar_detalle_venta(int p_id_venta,List<dynamic> p_lista)
         {
             bool ok = false;
+            Producto p = new Producto();
             try
             {
                 using (var db = new MySqlConnector.MySqlConnection(_connectionString))
@@ -151,7 +152,7 @@ namespace Positive
 
                                            },
                                            commandType: CommandType.StoredProcedure);
-
+                        p.actualizar_stock(id_p, cantidad_de_p);
                         ok = true;
                     }
                 }

@@ -21,7 +21,14 @@ namespace Positive.Presentacion
         {
 
             InitializeComponent();
-           
+           /* if (!Conexion.FINDCONECTION() )
+            {
+                MessageBox.Show("Debe registrar una conexion");
+                Nueva_conexion con = new Nueva_conexion();
+                con.Show();
+            }*/
+
+
         }
 
         private void tbPassword_TextChanged(object sender, EventArgs e)
@@ -72,6 +79,12 @@ namespace Positive.Presentacion
         private void panel2_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private void iconButton1_Click(object sender, EventArgs e)
+        {
+            Nueva_conexion nc = new Nueva_conexion();
+            nc.Show();
         }
     }
     }

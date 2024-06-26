@@ -141,7 +141,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Conexion.cs" />
-    <Compile Include="Modelos\Interface1.cs" />
     <Compile Include="Presentacion\Control.cs" />
     <Compile Include="Presentacion\Editar_cliente.cs">
       <SubType>Form</SubType>
@@ -149,16 +148,8 @@
     <Compile Include="Presentacion\Editar_cliente.Designer.cs">
       <DependentUpon>Editar_cliente.cs</DependentUpon>
     </Compile>
-    <Compile Include="Presentacion\Form1.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Presentacion\Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Manejador.cs" />
     <Compile Include="Modelos\Contacto.cs" />
     <Compile Include="Modelos\Estado.cs" />
-    <Compile Include="Modelos\Producto_venta.cs" />
     <Compile Include="Modelos\Tipo_documento.cs" />
     <Compile Include="Modelos\Categoria.cs" />
     <Compile Include="Modelos\Cliente.cs" />
@@ -183,6 +174,12 @@
     </Compile>
     <Compile Include="Presentacion\Nueva_categoria.Designer.cs">
       <DependentUpon>Nueva_categoria.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\Nueva_conexion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentacion\Nueva_conexion.Designer.cs">
+      <DependentUpon>Nueva_conexion.cs</DependentUpon>
     </Compile>
     <Compile Include="Presentacion\Nuevo_cliente.cs">
       <SubType>Form</SubType>
@@ -209,10 +206,6 @@
       <DependentUpon>Cuadro_cobrar.cs</DependentUpon>
     </Compile>
     <Compile Include="Presentacion\Eliminar_restaurar.cs" />
-    <Compile Include="Presentacion\customersList.cs" />
-    <Compile Include="Presentacion\customersList.Designer.cs">
-      <DependentUpon>customersList.cs</DependentUpon>
-    </Compile>
     <Compile Include="Presentacion\Editar_producto.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -284,14 +277,14 @@
     <EmbeddedResource Include="Presentacion\Editar_cliente.resx">
       <DependentUpon>Editar_cliente.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Presentacion\Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Presentacion\Lista_clientes.resx">
       <DependentUpon>Lista_clientes.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Presentacion\Nueva_categoria.resx">
       <DependentUpon>Nueva_categoria.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentacion\Nueva_conexion.resx">
+      <DependentUpon>Nueva_conexion.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Presentacion\Nuevo_cliente.resx">
       <DependentUpon>Nuevo_cliente.cs</DependentUpon>
@@ -304,9 +297,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Presentacion\Cuadro_cobrar.resx">
       <DependentUpon>Cuadro_cobrar.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Presentacion\customersList.resx">
-      <DependentUpon>customersList.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Presentacion\Editar_producto.resx">
       <DependentUpon>Editar_producto.cs</DependentUpon>
@@ -365,9 +355,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="NewFolder1\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

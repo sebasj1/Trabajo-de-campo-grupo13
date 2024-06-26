@@ -51,7 +51,7 @@ namespace Positive.Presentacion
                     
                 cbStatus.Items.Clear();
                 Estado tipo_estado = new Estado();
-            cbStatus.DataSource = tipo_estado.lista_estados();
+            cbStatus.DataSource = tipo_estado.buscar_estado();
                 cbStatus.DisplayMember = "descripcion";
                  cbStatus.ValueMember = "id_estado";
                  cbStatus.Refresh();
@@ -81,7 +81,7 @@ namespace Positive.Presentacion
 
         private void btAddUser_Click(object sender, EventArgs e){
             Usuario usuario = new Usuario();
-           usuario.INSERTCONTROL(tbUser.Text.Trim(), tbPass.Text, cbRol.SelectedIndex + 1, cbStatus.SelectedIndex + 1,
+           usuario.insertar_usuario(tbUser.Text.Trim(), tbPass.Text, cbRol.SelectedIndex + 1, cbStatus.SelectedIndex + 1,
                TBNombre.Text.Trim(), textboxApellido.Text.Trim(),tbDNI.Text.Trim(), cbTDoc.SelectedIndex + 1 ,tbTel.Text.Trim(), 
             tbEmail.Text.Trim(),this );
         }

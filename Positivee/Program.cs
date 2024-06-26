@@ -1,4 +1,5 @@
 ﻿using Positive.Presentacion;
+using Positivee.Presentacion;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,14 +18,10 @@ namespace Positive
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Usuario us = new Usuario();
 
             Login aa = new Login();
-            us.nombre_usuario = "ss";
-            Menu_principal p = new Menu_principal();
-            us.id_rol =3;
-           Application.Run(new Pantalla_de_venta(p, us));
-           //Application.Run(new Menu_principal());
+          // Application.Run(new Login());
+            Application.Run(new Login());
         }
     }
 }

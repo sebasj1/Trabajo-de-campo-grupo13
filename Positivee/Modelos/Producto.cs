@@ -33,31 +33,29 @@ namespace Positive
         public int id_estado { get; set; }
         public int stock { get; set; } 
 
-         Seccion_productos _principal;
+        Seccion_productos _principal;
         string _connectionString = Conexion.get_string();
         string action = "";
-        //    public void INSERTCONTROL(string p_nombre_usuario, string p_password, int p_id_rol, int p_id_estado,
-        //                 string p_nombre, string p_apellido, string p_numero_documento,
-        //                     int p_id_tipo_documento, string p_telefono, string p_email, Nuevo_usuario p_nuevo_usuario) {
+       
             
-        public void INSERTCONTROL(string p_codigo,string p_titulo,string p_descripcion,
+        public void insertar_producto(string p_codigo,string p_titulo,string p_descripcion,
         string p_id_categoria,string p_id_estado,string p_precio_compra, string p_precio_venta,
             string p_stock,Nuevo_producto p_nuevo_producto)
         {
             try
             {
-                if (!FINDCOD(p_codigo) || p_codigo == ""|| p_codigo==null)
+                if (!buscar_codigo(p_codigo) || p_codigo == ""|| p_codigo==null)
                 {
 
-                    codigo = p_codigo;//tbCodeProd.Text.Trim();
-                    titulo = p_titulo;//tbTitleProd.Text.Trim();
-                    descripcion = p_descripcion;//tbDescProd.Text;
-                    id_categoria =int.Parse( p_id_categoria);//cbCategorie.SelectedIndex+1;
-                    id_estado = int.Parse(p_id_estado);//cbStatus.SelectedIndex+1;
-                    precio_compra =decimal.Parse( p_precio_compra);// decimal.Parse( tbPriceProd.Text);
-                    precio_venta = decimal.Parse(p_precio_venta);//decimal.Parse(tbPrecV.Text); 
-                    stock = int.Parse(p_stock);//int.Parse(tbStockProd.Text.Trim());
-                    if (GUARDAR_PRODUCTO())
+                    codigo = p_codigo;
+                    titulo = p_titulo;
+                    descripcion = p_descripcion;
+                    id_categoria =int.Parse( p_id_categoria);
+                    id_estado = int.Parse(p_id_estado);
+                    precio_compra =decimal.Parse( p_precio_compra);
+                    precio_venta = decimal.Parse(p_precio_venta); 
+                    stock = int.Parse(p_stock);
+                    if (guardar_producto())
                     {
                         p_nuevo_producto.exito();
                     }
@@ -81,7 +79,7 @@ namespace Positive
                 
             
 
-      private bool FINDCOD(string p_cod)
+      private bool buscar_codigo(string p_cod)
         {
             bool exist = false;
             using (var db = new MySqlConnector.MySqlConnection(_connectionString))
@@ -101,7 +99,7 @@ namespace Positive
 
 
 
-        private bool GUARDAR_PRODUCTO()
+        private bool guardar_producto()
         {
             bool ok = false;
 
@@ -117,7 +115,7 @@ namespace Positive
                                        @p_titulo = titulo,
                                        @p_descripcion = descripcion,
                                        @p_codigo = codigo,
-                                       @p_precio_compra = precio_venta,
+                                       @p_precio_compra = precio_compra,
                                        @p_precio_venta = precio_venta,
                                        @p_id_categoria = id_categoria,
                                        @p_id_estado = id_estado,
@@ -156,11 +154,7 @@ namespace Positive
                 }
                 
              }
-        /// <summary>
-        /// //
-        /// </summary>
-        /// <param name="p_id"></param>
-        /// <param name="p_menu"></param>
+       
           public void seleccion_editar(string p_id, Seccion_productos p_menu)
         {
             int ide = int.Parse(p_id);
@@ -196,14 +190,37 @@ namespace Positive
             }
 
         }
+        public void actualizar_stock(int p_id, int p_cant)
+        {
+            try
+            {
+                using (var db = new MySqlConnector.MySqlConnection(_connectionString))
+                {
+                    var PROD = db.Execute(
+                               sql: "update_product_stock",
+                               param: new { @p_id_producto =p_id,
+                                                @p_cantidad=p_cant},
+                               commandType: CommandType.StoredProcedure
+                    );
+                   
+                }
+              
 
-       
-        public void INSERTCONTROLEDIT(string p_codigo,string p_titulo,string p_descripcion,
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("No se pudo cargar " + ex);
+            }
+
+        }
+
+
+        public void insertar_producto_editado(string p_codigo,string p_titulo,string p_descripcion,
         int p_id_categoria,int p_id_estado,string p_precio_compra, string p_precio_venta,
             string p_stock,Editar_producto p_editar_producto) {
             try
             {
-                if (FINDCOD(p_codigo))
+                if (buscar_codigo(p_codigo))
                 {
                     codigo = p_codigo;//tbCodeProd.Text.Trim();
                     titulo = p_titulo;//tbTitleProd.Text.Trim();
@@ -213,14 +230,21 @@ namespace Positive
                     precio_compra = decimal.Parse(p_precio_compra);// decimal.Parse( tbPriceProd.Text);
                     precio_venta = decimal.Parse(p_precio_venta);//decimal.Parse(tbPrecV.Text); 
                     stock = int.Parse(p_stock);//int.Parse(tbStockProd.Text.Trim());
-                    DialogResult resp = MessageBox.Show("Se actualizara el producto", "Éxito", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-
-                    if (resp == DialogResult.Yes)
+                    if (guardar_producto_editado())
                     {
-                        GUARDAR_PRODUCTO_EDITADO();
-                        MessageBox.Show("Este producto se ha guardado correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        p_editar_producto.exito();
                     }
+                    else
+                    {
+                        p_editar_producto.fallo();
+                    }
+
                 }
+                else
+                {
+                    p_editar_producto.cod_no_registrado();
+                }
+
             }
 
             catch (Exception ex)
@@ -231,28 +255,37 @@ namespace Positive
 
         }
 
-        private void GUARDAR_PRODUCTO_EDITADO() {
+        private bool guardar_producto_editado() {
 
-            using (var db = new MySqlConnector.MySqlConnection(_connectionString))
+            bool ok = false;
+            try
             {
+                using (var db = new MySqlConnector.MySqlConnection(_connectionString))
+                {
 
-                var queryAdd = db.ExecuteReader(
-                                   sql: "edit_product",
-                                   param: new
-                                   {
-                                       @p_id_producto = id_producto,
-                                       @p_titulo = titulo,
-                                       @p_descripcion = descripcion,
-                                       @p_codigo = codigo,
-                                       @p_precio_compra = precio_compra,
-                                       @p_precio_venta = precio_venta,
-                                       @p_id_categoria = id_categoria,
-                                       @p_id_estado = id_estado,
+                    var queryAdd = db.ExecuteReader(
+                                       sql: "edit_product",
+                                       param: new
+                                       {
+                                           @p_id_producto = id_producto,
+                                           @p_titulo = titulo,
+                                           @p_descripcion = descripcion,
+                                           @p_codigo = codigo,
+                                           @p_precio_compra = precio_compra,
+                                           @p_precio_venta = precio_venta,
+                                           @p_id_categoria = id_categoria,
+                                           @p_id_estado = id_estado,
 
-                                   },
-                                   commandType: CommandType.StoredProcedure);
-
+                                       },
+                                       commandType: CommandType.StoredProcedure);
+                    ok = true;
+                }
             }
+            catch (Exception e)
+            {
+                MessageBox.Show("Error inesperado" + e);
+            }
+            return ok;
         }
          public void eliminar_producto(string p_id)
         {
@@ -269,7 +302,7 @@ namespace Positive
 
                         var elem_eliminado = db.Execute(
                                   sql: "delete_producto_id",
-                                  param: new { @p_id = id },
+                                  param: new { @p_id_producto = id },
                                   commandType: CommandType.StoredProcedure);
                     }
                     MessageBox.Show("Eliminado correctamente ");
@@ -279,9 +312,9 @@ namespace Positive
                     MessageBox.Show("No se pudo eliminar " + ex);
                 } }
           }
-           public string restaurar_producto(string p_id)
+           public void restaurar_producto(string p_id)
         {
-            string mensaje = "";
+           
             int id = int.Parse(p_id);
             DialogResult resultado = MessageBox.Show("¿Está seguro de que desea restaurar a este usuario?", "Confirmar Restauración", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
@@ -294,7 +327,7 @@ namespace Positive
 
                         var elem_eliminado = db.Execute(
                                    sql: "restore_producto_id",
-                                  param: new { @p_id = id },
+                                  param: new { @p_id_producto = id },
                                   commandType: CommandType.StoredProcedure);
                     }
                     MessageBox.Show("Usuario restaurado ");
@@ -306,7 +339,6 @@ namespace Positive
                 
             }
             
-            return mensaje;
         }
     
 /////seccion pantalla venta

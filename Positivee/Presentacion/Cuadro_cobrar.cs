@@ -107,7 +107,7 @@ namespace Positive.Presentacion
         private void addPago()
         {
            
-            lista_venta_medio_pago=det.calcular(total,tbMonto.Text,cbMedioP.SelectedValue.ToString(), cbMedioP.Text.ToString());
+            lista_venta_medio_pago=det.calcular_montos(total,tbMonto.Text,cbMedioP.SelectedValue.ToString(), cbMedioP.Text.ToString());
            total= det.obtener_restante();
             chargeDgv();
         }

@@ -126,7 +126,7 @@ namespace Positive.Presentacion
         {
             cbRol.Items.Clear();
             Estado tipo_estado = new Estado();
-            cbRol.DataSource = tipo_estado.lista_estados();
+            cbRol.DataSource = tipo_estado.buscar_estado();
             cbRol.DisplayMember = "descripcion";
             cbRol.ValueMember = "id_estado";
             cbRol.Refresh();

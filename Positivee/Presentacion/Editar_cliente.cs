@@ -25,7 +25,7 @@ namespace Positive.Presentacion
             DialogResult resp = MessageBox.Show("Se guardara el cliente", "Éxito", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (resp == DialogResult.Yes)
             {Cliente cliente = new Cliente();
-            cliente.INSERTCONTROLEDIT(cbStatus.SelectedIndex + 1,
+            cliente.guardar_cliente_editado (cbStatus.SelectedIndex + 1,
                 TBNombre.Text.Trim(), textboxApellido.Text.Trim(), tbDNI.Text.Trim(), cbTDoc.SelectedIndex + 1, tbTel.Text.Trim(),
              tbEmail.Text.Trim(),c_id_cliente,c_id_persona,c_id_contacto,this);
                
@@ -63,7 +63,7 @@ namespace Positive.Presentacion
 
             cbStatus.Items.Clear();
             Estado tipo_estado = new Estado();
-            cbStatus.DataSource = tipo_estado.lista_estados();
+            cbStatus.DataSource = tipo_estado.buscar_estado();
             cbStatus.DisplayMember = "descripcion";
             cbStatus.ValueMember = "id_estado";
             cbStatus.Refresh();

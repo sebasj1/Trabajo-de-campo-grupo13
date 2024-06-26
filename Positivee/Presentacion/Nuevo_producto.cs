@@ -33,14 +33,14 @@ namespace Positive.Presentacion
 
             cbCategorie.Items.Clear();
             Categoria catego = new Categoria();
-            cbCategorie.DataSource = catego.lista_categorias();
+            cbCategorie.DataSource = catego.buscar_categorias();
             cbCategorie.DisplayMember = "descripcion";
             cbCategorie.ValueMember = "id_categoria";
             cbCategorie.Refresh();
 
             cbStatus.Items.Clear();
             Estado tipo_estado = new Estado();
-            cbStatus.DataSource = tipo_estado.lista_estados();
+            cbStatus.DataSource = tipo_estado.buscar_estado();
             cbStatus.DisplayMember = "descripcion";
             cbStatus.ValueMember = "id_estado";
             cbStatus.Refresh();
@@ -50,12 +50,11 @@ namespace Positive.Presentacion
             this.AutoValidate = System.Windows.Forms.AutoValidate.Disable;
             if (this.ValidateChildren(ValidationConstraints.Enabled))
             {
-                DialogResult resp = MessageBox.Show("Se guardara el cliente", "Éxito", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                DialogResult resp = MessageBox.Show("Se guardara el producto", "Éxito", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (resp == DialogResult.Yes)
                 {
                     Producto producto = new Producto();
-                    Cliente cliente = new Cliente();
-                    producto.INSERTCONTROL(tbCodeProd.Text.Trim(), tbTitleProd.Text.Trim(), tbDescProd.Text, cbCategorie.SelectedValue.ToString(), cbStatus.SelectedValue.ToString()
+                    producto.insertar_producto(tbCodeProd.Text.Trim(), tbTitleProd.Text.Trim(), tbDescProd.Text, cbCategorie.SelectedValue.ToString(), cbStatus.SelectedValue.ToString()
                            , tbPriceProd.Text, tbPrecV.Text, tbStockProd.Text.Trim(), this);
                 }
             }
@@ -67,7 +66,7 @@ namespace Positive.Presentacion
         }
         public void fallo()
         {
-            MessageBox.Show("No se pudo realizar la actualización.", "Fallo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show("No se pudo realizar.", "Fallo", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
         public void cod_ya_registrado()
         {
@@ -179,6 +178,30 @@ namespace Positive.Presentacion
             errorProvider1.SetError(tbStockProd, "");
         }
 
-        
+        private void tbPriceProd_TextChanged(object sender, EventArgs e)
+        { decimal resultado;
+            if(!decimal.TryParse(tbPriceProd.Text,out resultado))
+            {
+                tbPriceProd.Text = "";
+            }
+        }
+
+        private void tbPrecV_TextChanged(object sender, EventArgs e)
+        {
+            decimal resultado;
+            if (!decimal.TryParse(tbPrecV.Text, out resultado))
+            {
+                tbPrecV.Text = "";
+            }
+        }
+
+        private void tbStockProd_TextChanged(object sender, EventArgs e)
+        {
+            int resultado;
+            if (!int.TryParse(tbStockProd.Text, out resultado))
+            {
+                tbStockProd.Text = "";
+            }
+        }
     }
 }

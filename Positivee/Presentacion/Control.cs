@@ -18,7 +18,7 @@ public static class Control{
      
      private static Menu_principal _principal;
      private static Pantalla_de_venta screen;
-    private static string _connectionString = Conexion.get_string(); 
+    
 
 //selecicionaa el icono
  
@@ -56,7 +56,8 @@ public static class Control{
          }
      public static void cargar_iconos_menu()
         {
-        IEnumerable<string> Permissions = obtener_permisos();
+        Permiso permisos = new Permiso();
+        IEnumerable<string> Permissions = permisos.obtener_permisos(usuarioLogueado);
             //iconSelect((IconMenuItem)_principal.Usuarios, new Seccion_usuarios());
             _principal.AutoScaleMode = AutoScaleMode.Dpi;
             _principal.cargar_datos_usuario(usuarioLogueado.nombre_usuario.ToString());
@@ -79,19 +80,7 @@ public static class Control{
 
         }
 
-    public static IEnumerable<string> obtener_permisos()
-    {
-        IEnumerable<string> Permissions;
-        using (var db = new MySqlConnector.MySqlConnection(_connectionString))
-        {
-
-            Permissions = db.Query<string>(
-                      sql: "user_permissions",
-                      param: new { p_rol = usuarioLogueado.id_rol },
-                      commandType: CommandType.StoredProcedure);
-        }
-        return Permissions;
-    }
+   
 
 
 public static void pantalla_venta(){

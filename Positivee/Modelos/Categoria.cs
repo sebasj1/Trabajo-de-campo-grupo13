@@ -26,7 +26,7 @@ namespace Positive
         public string descripcion { get; set; }
         public int id_estado { get; set; }
 
-        public List<Categoria> lista_categorias()
+        public List<Categoria> buscar_categorias()
         {
             List<Categoria> lista_estados = null;
             try

@@ -31,14 +31,14 @@ namespace Positive.Presentacion
             {
                 Categoria categoria = new Categoria();
                 cbCategorie.Items.Clear();
-                cbCategorie.DataSource = categoria.lista_categorias();
+                cbCategorie.DataSource = categoria.buscar_categorias();
                 cbCategorie.DisplayMember = "descripcion";
                 cbCategorie.ValueMember = "id_categoria";
                 cbCategorie.Refresh();
 
                 cbStatus.Items.Clear();
                 Estado tipo_estado = new Estado();
-                cbStatus.DataSource = tipo_estado.lista_estados();
+                cbStatus.DataSource = tipo_estado.buscar_estado();
                 cbStatus.DisplayMember = "descripcion";
                 cbStatus.ValueMember = "id_estado";
                 cbStatus.Refresh();
@@ -66,18 +66,28 @@ namespace Positive.Presentacion
             if (this.ValidateChildren(ValidationConstraints.Enabled))
             {
 
-                DialogResult resp = MessageBox.Show("Se guardara el cliente", "Éxito", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                DialogResult resp = MessageBox.Show("Se guardara el producto", "Éxito", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (resp == DialogResult.Yes)
                 {
                     Producto producto_editado = new Producto();
-                    producto_editado.INSERTCONTROLEDIT(tbCodeProd.Text.Trim(), tbTitleProd.Text.Trim(), tbDescProd.Text.Trim(), cbCategorie.SelectedIndex + 1, cbStatus.SelectedIndex + 1,
+                    producto_editado.insertar_producto_editado(tbCodeProd.Text.Trim(), tbTitleProd.Text.Trim(), tbDescProd.Text.Trim(), cbCategorie.SelectedIndex + 1, cbStatus.SelectedIndex + 1,
                     tbPriceProd.Text.Trim(), tbPrecV.Text.Trim(), tbStockProd.Text.Trim(), this);
 
                 }
             }
         }
-       
-
+        public void exito()
+        {
+            MessageBox.Show("Se ha guardado correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+        public void fallo()
+        {
+            MessageBox.Show("No se pudo realizar la actualización.", "Fallo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+        public void cod_no_registrado()
+        {
+            MessageBox.Show("Este codigo de producto no está registrado.", "Fallo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
         private void editar_producto_Load(object sender, EventArgs e)
         {
 
@@ -108,14 +118,14 @@ namespace Positive.Presentacion
         }
 
         private void tbPriceProd_Validating(object sender, CancelEventArgs e)
-        {
+        {decimal _;
 
             if (int.Parse(tbPriceProd.Text) < 0 || !decimal.TryParse(tbPriceProd.Text, out _))
             {
                 e.Cancel = true;
                 errorProvider1.SetError(tbPriceProd, "Ingresar valores numericos");
             }
-            else if (tbPriceProd.Text == "")
+            else if (tbPriceProd.Text == "0")
             {
                 tbPriceProd.Text = "0";
             }
@@ -132,7 +142,7 @@ namespace Positive.Presentacion
 
         private void tbStockProd_Validating(object sender, CancelEventArgs e)
         {
-
+            int _;
             if (tbStockProd.Text == "" || !Int32.TryParse(tbStockProd.Text, out _))
             {
                 e.Cancel = true;
@@ -145,5 +155,34 @@ namespace Positive.Presentacion
             errorProvider1.SetError(tbStockProd, "");
         }
 
+        private void tbPriceProd_TextChanged(object sender, EventArgs e)
+        {
+
+           
+            decimal resultado;
+            if (!decimal.TryParse(tbPriceProd.Text, out resultado))
+            {
+                tbPriceProd.Text = "";
+            }
+            
+        }
+
+        private void tbPrecV_TextChanged(object sender, EventArgs e)
+        { decimal resultado;
+            if (!decimal.TryParse(tbPrecV.Text, out resultado))
+            {
+                tbPrecV.Text = "";
+            }
+
+        }
+
+        private void tbStockProd_TextChanged(object sender, EventArgs e)
+        {
+            int resultado;
+            if (!int.TryParse(tbStockProd.Text, out resultado))
+            {
+                tbStockProd.Text = "";
+            }
+        }
     }
 }

@@ -28,7 +28,7 @@ namespace Positive
 
         List<dynamic> lista_vmp = new List<dynamic>();
         string _connectionString = Conexion.get_string();
-        public List<dynamic> calcular(decimal p_total, string p_tbMonto, string p_mp, string p_desc_mp)
+        public List<dynamic> calcular_montos(decimal p_total, string p_tbMonto, string p_mp, string p_desc_mp)
         {
             decimal total = p_total;//500
 

@@ -58,11 +58,9 @@ C:\Users\Matias\source\repos\Positivee\Positivee\bin\Debug\System.Threading.Task
 C:\Users\Matias\source\repos\Positivee\Positivee\obj\Debug\Positive.csproj.Up2Date
 C:\Users\Matias\source\repos\Positivee\Positivee\obj\Debug\Positivee.exe
 C:\Users\Matias\source\repos\Positivee\Positivee\obj\Debug\Positivee.pdb
-C:\Users\Matias\source\repos\Positivee\Positivee\obj\Debug\Positivee.Presentacion.customersList.resources
 C:\Users\Matias\source\repos\Positivee\Positivee\obj\Debug\Positive.Presentacion.editar_usuario.resources
 C:\Users\Matias\source\repos\Positivee\Positivee\obj\Debug\Positive.Presentacion.Lista_productos.resources
 C:\Users\Matias\source\repos\Positivee\Positivee\obj\Debug\Positivee.Presentacion.Lista_venta.resources
-C:\Users\Matias\source\repos\Positivee\Positivee\obj\Debug\Positive.Presentacion.Form1.resources
 C:\Users\Matias\source\repos\Positivee\Positivee\obj\Debug\Positive.Presentacion.Nueva_categoria.resources
 C:\Users\Matias\source\repos\Positivee\Positivee\obj\Debug\Positive.Presentacion.Nuevo_producto.resources
 C:\Users\Matias\source\repos\Positivee\Positivee\obj\Debug\Positive.Presentacion.Nuevo_usuario.resources
@@ -78,3 +76,4 @@ C:\Users\Matias\source\repos\Positivee\Positivee\obj\Debug\Positive.Presentacion
 C:\Users\Matias\source\repos\Positivee\Positivee\obj\Debug\Positive.Presentacion.Seccion_clientes.resources
 C:\Users\Matias\source\repos\Positivee\Positivee\obj\Debug\Positive.Presentacion.Editar_producto.resources
 C:\Users\Matias\source\repos\Positivee\Positivee\obj\Debug\Positive.Presentacion.Editar_cliente.resources
+C:\Users\Matias\source\repos\Positivee\Positivee\obj\Debug\Positive.Presentacion.Nueva_conexion.resources

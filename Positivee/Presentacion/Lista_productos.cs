@@ -31,7 +31,7 @@ namespace Positive.Presentacion
             LISTLOAD = producto_action.listar_productos();
             cbRol.Items.Clear();
             Categoria tipo_estado = new Categoria();
-            cbRol.DataSource = tipo_estado.lista_categorias();
+            cbRol.DataSource = tipo_estado.buscar_categorias();
             cbRol.DisplayMember = "descripcion";
             cbRol.ValueMember = "id_estado"; 
             cbRol.DropDownStyle = ComboBoxStyle.DropDownList;
