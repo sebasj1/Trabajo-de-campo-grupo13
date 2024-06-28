@@ -59,5 +59,54 @@ using System.Diagnostics.Contracts;
             return id;
         }
 
+        public List<dynamic> listar_ventas()
+        {
+
+            try
+            {
+                using (var db = new MySqlConnector.MySqlConnection(_connectionString))
+                {
+                    var LISTLOAD = db.Query(
+                                  sql: "all_sales",
+                                  commandType: CommandType.StoredProcedure);
+
+                    List<dynamic> listado_usuarios = LISTLOAD.ToList();
+
+                    return listado_usuarios;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("No se pudo cargar datos" + ex);
+                return null;
+            }
+
+        }
+        public void eliminar_venta(string p_id)
+        {
+
+            int id = int.Parse(p_id);
+            DialogResult resultado = MessageBox.Show("¿Está seguro de que desea eliminar esta venta?", "Confirmar anulación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (resultado == DialogResult.Yes)
+            {
+                try
+                {
+                    using (var db = new MySqlConnector.MySqlConnection(_connectionString))
+                    {
+
+                        var elem_eliminado = db.Execute(
+                                  sql: "delete_sale_id",
+                                  param: new { @p_id = id },
+                                  commandType: CommandType.StoredProcedure);
+                    }
+                    MessageBox.Show("Venta anulada ");
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("No se pudo eliminar " + ex);
+                }
+            }
+        }
     } 
 }

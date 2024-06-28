@@ -33,7 +33,7 @@ namespace Positive.Presentacion
         public decimal total = 0;
         private Venta venta;
         private bool screenProd = true;
-        private int id_cliente;
+        private int id_cliente=-1;
         private string nombre_cliente;
         private string apellido_cliente;
         private string numero_documento;
@@ -50,7 +50,7 @@ namespace Positive.Presentacion
             InitializeComponent();
             usuarioLog = pUser;
             //*
-            usuarioLog.id_usuario = 1;
+            usuarioLog.id_usuario = pUser.id_usuario;
             frmMainPrincipal = pfrmMain;
             //frmMainPrincipal.screenSaleShow(pfrmMain, this);
 
@@ -96,7 +96,7 @@ namespace Positive.Presentacion
             DialogResult resul = MessageBox.Show("¿Desea cerrar todas las ventanas?", "Cerrar ventanas", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (resul == DialogResult.Yes)
             {
-                Control.cerrar_todo(e);
+                Control.cerrar_todo();
             }
             else
             {
@@ -359,6 +359,11 @@ namespace Positive.Presentacion
       
         private void btOk_Click_1(object sender, EventArgs e)
         {
+            if (id_cliente == -1)
+            {
+                MessageBox.Show("No se han cargado un cliente");
+
+            }
             if (total != 0)
             {
 

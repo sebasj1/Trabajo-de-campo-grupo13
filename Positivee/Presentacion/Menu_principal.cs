@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Dapper;
 using FontAwesome.Sharp;
+using Positivee.Presentacion;
 
 namespace Positive.Presentacion
 {
@@ -123,7 +124,7 @@ private void iconSelect2(IconMenuItem menuSelected, Form form)
 
 private void frmMain_FormClosing(object sender, FormClosingEventArgs e)
 {
-   Control.cerrar_todo(e);
+   Control.cerrar_todo();
 }
 
 private void Cuadro_venta_Click(object sender, EventArgs e)
@@ -135,6 +136,20 @@ private void Cuadro_venta_Click(object sender, EventArgs e)
         private void Clientes_Click(object sender, EventArgs e)
         {
             iconSelect((IconMenuItem)sender, new Seccion_clientes());
+        }
+
+        private void Ventas_Click(object sender, EventArgs e)
+        {
+            iconSelect((IconMenuItem)sender, new Seccion_ventas());
+        }
+
+        private void Cerrar_sesion_Click(object sender, EventArgs e)
+        {
+            DialogResult resul = MessageBox.Show("¿Está seguro de cerrar sesión?", "Cerrar sesión", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+            if (resul == DialogResult.OK)
+            {
+                Control.cerrar_todo();
+            }
         }
     }
 

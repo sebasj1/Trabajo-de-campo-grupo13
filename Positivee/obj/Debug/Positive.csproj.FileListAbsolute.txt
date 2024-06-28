@@ -77,3 +77,5 @@ C:\Users\Matias\source\repos\Positivee\Positivee\obj\Debug\Positive.Presentacion
 C:\Users\Matias\source\repos\Positivee\Positivee\obj\Debug\Positive.Presentacion.Editar_producto.resources
 C:\Users\Matias\source\repos\Positivee\Positivee\obj\Debug\Positive.Presentacion.Editar_cliente.resources
 C:\Users\Matias\source\repos\Positivee\Positivee\obj\Debug\Positive.Presentacion.Nueva_conexion.resources
+C:\Users\Matias\source\repos\Positivee\Positivee\obj\Debug\Positivee.Presentacion.Lista_ventas.resources
+C:\Users\Matias\source\repos\Positivee\Positivee\obj\Debug\Positivee.Presentacion.Seccion_ventas.resources

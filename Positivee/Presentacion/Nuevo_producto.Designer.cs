@@ -147,8 +147,8 @@
             this.tbPrecV.Size = new System.Drawing.Size(406, 35);
             this.tbPrecV.TabIndex = 42;
             this.tbPrecV.TextChanged += new System.EventHandler(this.tbPrecV_TextChanged);
-            this.tbPrecV.Validating += new System.ComponentModel.CancelEventHandler(this.tbPriceProd_Validating);
-            this.tbPrecV.Validated += new System.EventHandler(this.tbPriceProd_Validated);
+            this.tbPrecV.Validating += new System.ComponentModel.CancelEventHandler(this.tbPrecV_Validating);
+            this.tbPrecV.Validated += new System.EventHandler(this.tbPrecV_Validated);
             // 
             // label5
             // 
@@ -277,16 +277,17 @@
             this.tbTitleProd.Name = "tbTitleProd";
             this.tbTitleProd.Size = new System.Drawing.Size(424, 35);
             this.tbTitleProd.TabIndex = 7;
+            this.tbTitleProd.TextChanged += new System.EventHandler(this.tbTitleProd_TextChanged);
             this.tbTitleProd.Validating += new System.ComponentModel.CancelEventHandler(this.tbTitleProd_Validating);
             this.tbTitleProd.Validated += new System.EventHandler(this.tbTitleProd_Validated);
             // 
             // tbDescProd
             // 
             this.tbDescProd.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbDescProd.Location = new System.Drawing.Point(150, 97);
+            this.tbDescProd.Location = new System.Drawing.Point(167, 97);
             this.tbDescProd.Multiline = true;
             this.tbDescProd.Name = "tbDescProd";
-            this.tbDescProd.Size = new System.Drawing.Size(436, 90);
+            this.tbDescProd.Size = new System.Drawing.Size(419, 90);
             this.tbDescProd.TabIndex = 6;
             // 
             // LApellido

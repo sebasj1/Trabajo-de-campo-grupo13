@@ -47,7 +47,7 @@ namespace Positive.Presentacion
         }
         private void btAddProd_Click_1(object sender, EventArgs e)
         {
-            this.AutoValidate = System.Windows.Forms.AutoValidate.Disable;
+            
             if (this.ValidateChildren(ValidationConstraints.Enabled))
             {
                 DialogResult resp = MessageBox.Show("Se guardara el producto", "Éxito", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
@@ -121,7 +121,8 @@ namespace Positive.Presentacion
 
             if (tbTitleProd.Text == "")
             {
-                e.Cancel = true;
+                e.Cancel = true; 
+                tbTitleProd.Select(0, tbTitleProd.Text.Length);
                 errorProvider1.SetError(tbTitleProd, "Ingresar Titulo");
             }
         }
@@ -133,7 +134,12 @@ namespace Positive.Presentacion
 
         private void tbCodeProd_Validating(object sender, CancelEventArgs e)
         {
-           
+            if (!Int16.TryParse(tbCodeProd.Text, out _)&& tbCodeProd.TextLength!=0)
+            {
+                e.Cancel = true;
+                tbCodeProd.Select(0, tbCodeProd.Text.Length);
+                errorProvider1.SetError(tbCodeProd, "Ingresar valores numericos");
+            }
         }
 
         private void tbCodeProd_Validated(object sender, EventArgs e)
@@ -143,19 +149,17 @@ namespace Positive.Presentacion
 
         private void tbPriceProd_Validating(object sender, CancelEventArgs e)
         {
-
-            if (int.Parse(tbPriceProd.Text) <0 || !decimal.TryParse( tbPriceProd.Text,out _))
-            {
-                e.Cancel = true;
-                errorProvider1.SetError(tbPriceProd, "Ingresar valores numericos");
-            }else if (tbPriceProd.Text == "")
+            if (tbPriceProd.Text == "")
             {
                 tbPriceProd.Text = "0";
             }
-            else if (tbPrecV.Text == "")
+            else if (!decimal.TryParse(tbPriceProd.Text, out _) || (decimal.TryParse(tbPriceProd.Text, out _) && decimal.Parse(tbPriceProd.Text) < 0))
             {
-                tbPrecV.Text = "0";
+                tbPriceProd.Select(0, tbPriceProd.Text.Length);
+                e.Cancel = true;
+                errorProvider1.SetError(tbPriceProd, "Ingresar valores numericos positivos");
             }
+
         }
 
         private void tbPriceProd_Validated(object sender, EventArgs e)
@@ -166,11 +170,12 @@ namespace Positive.Presentacion
         private void tbStockProd_Validating(object sender, CancelEventArgs e)
         {
 
-            if (tbStockProd.Text == "" || !Int32.TryParse(tbStockProd.Text, out _))
+            if (tbStockProd.Text == "" || (!Int32.TryParse(tbStockProd.Text, out _)||((Int32.TryParse(tbStockProd.Text, out _) &&Int32.Parse(tbStockProd.Text)<0))))
             {
                 e.Cancel = true;
                 errorProvider1.SetError(tbStockProd, "Ingresar valores numericos");
             }
+            
         }
 
         private void tbStockProd_Validated(object sender, EventArgs e)
@@ -179,29 +184,44 @@ namespace Positive.Presentacion
         }
 
         private void tbPriceProd_TextChanged(object sender, EventArgs e)
-        { decimal resultado;
-            if(!decimal.TryParse(tbPriceProd.Text,out resultado))
-            {
-                tbPriceProd.Text = "";
-            }
+        {
         }
 
         private void tbPrecV_TextChanged(object sender, EventArgs e)
         {
-            decimal resultado;
-            if (!decimal.TryParse(tbPrecV.Text, out resultado))
-            {
-                tbPrecV.Text = "";
-            }
         }
 
         private void tbStockProd_TextChanged(object sender, EventArgs e)
         {
-            int resultado;
-            if (!int.TryParse(tbStockProd.Text, out resultado))
+            if (tbPrecV.TextLength == 0)
             {
-                tbStockProd.Text = "";
+                tbPrecV.Text = "0";
             }
+
+        }
+
+        private void tbTitleProd_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tbPrecV_Validating(object sender, CancelEventArgs e)
+        {if (tbPrecV.Text == "")
+            {
+                tbPrecV.Text = "0";
+            }
+            else if (!decimal.TryParse(tbPrecV.Text, out _) ||(decimal.TryParse(tbPrecV.Text, out _) && decimal.Parse(tbPrecV.Text) < 0))
+            {
+                tbPrecV.Select(0, tbPrecV.Text.Length);
+                e.Cancel = true;
+                errorProvider1.SetError(tbPrecV, "Ingresar valores numericos positivos");
+            } 
+        }
+
+        private void tbPrecV_Validated(object sender, EventArgs e)
+        {
+            errorProvider1.SetError(tbPrecV, "");
+
         }
     }
 }

@@ -169,6 +169,12 @@
     <Compile Include="Presentacion\Lista_clientes.Designer.cs">
       <DependentUpon>Lista_clientes.cs</DependentUpon>
     </Compile>
+    <Compile Include="Presentacion\Lista_ventas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentacion\Lista_ventas.Designer.cs">
+      <DependentUpon>Lista_ventas.cs</DependentUpon>
+    </Compile>
     <Compile Include="Presentacion\Nueva_categoria.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -272,6 +278,12 @@
     <Compile Include="Presentacion\Pantalla_de_venta.Designer.cs">
       <DependentUpon>Pantalla_de_venta.cs</DependentUpon>
     </Compile>
+    <Compile Include="Presentacion\Seccion_ventas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentacion\Seccion_ventas.Designer.cs">
+      <DependentUpon>Seccion_ventas.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Presentacion\Editar_cliente.resx">
@@ -279,6 +291,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Presentacion\Lista_clientes.resx">
       <DependentUpon>Lista_clientes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentacion\Lista_ventas.resx">
+      <DependentUpon>Lista_ventas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Presentacion\Nueva_categoria.resx">
       <DependentUpon>Nueva_categoria.cs</DependentUpon>
@@ -330,6 +345,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Presentacion\Pantalla_de_venta.resx">
       <DependentUpon>Pantalla_de_venta.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentacion\Seccion_ventas.resx">
+      <DependentUpon>Seccion_ventas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

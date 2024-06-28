@@ -93,17 +93,12 @@ public static void pantalla_venta(){
             screen.Hide();
 }
 
-     public static void cerrar_todo(FormClosingEventArgs e){
+     public static void cerrar_todo(){
             DialogResult resul = MessageBox.Show("¿Desea cerrar la aplicación?", "Cerrar ventana", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
    if (resul == DialogResult.Yes)
    {
        screen.Dispose();
        _principal.Dispose();
-   }
-   else
-
-   {
-       e.Cancel = true;
    }
         }
 

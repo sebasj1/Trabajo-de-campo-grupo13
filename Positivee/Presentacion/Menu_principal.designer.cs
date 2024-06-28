@@ -29,8 +29,6 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            FontAwesome.Sharp.IconMenuItem Reportes;
-            FontAwesome.Sharp.IconMenuItem Copia_de_seguridad;
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.menuStrip2 = new System.Windows.Forms.MenuStrip();
             this.Cuadro_venta = new FontAwesome.Sharp.IconMenuItem();
@@ -47,40 +45,8 @@
             this.labelUsuario = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            Reportes = new FontAwesome.Sharp.IconMenuItem();
-            Copia_de_seguridad = new FontAwesome.Sharp.IconMenuItem();
             this.menuStrip2.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // Reportes
-            // 
-            Reportes.AutoSize = false;
-            Reportes.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            Reportes.IconChar = FontAwesome.Sharp.IconChar.BarChart;
-            Reportes.IconColor = System.Drawing.Color.Black;
-            Reportes.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            Reportes.IconSize = 60;
-            Reportes.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            Reportes.MergeAction = System.Windows.Forms.MergeAction.Insert;
-            Reportes.Name = "Reportes";
-            Reportes.Overflow = System.Windows.Forms.ToolStripItemOverflow.AsNeeded;
-            Reportes.Size = new System.Drawing.Size(125, 101);
-            Reportes.Text = "Reportes";
-            Reportes.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            // 
-            // Copia_de_seguridad
-            // 
-            Copia_de_seguridad.AutoSize = false;
-            Copia_de_seguridad.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            Copia_de_seguridad.IconChar = FontAwesome.Sharp.IconChar.Download;
-            Copia_de_seguridad.IconColor = System.Drawing.Color.Black;
-            Copia_de_seguridad.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            Copia_de_seguridad.IconSize = 60;
-            Copia_de_seguridad.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            Copia_de_seguridad.Name = "Copia_de_seguridad";
-            Copia_de_seguridad.Size = new System.Drawing.Size(180, 101);
-            Copia_de_seguridad.Text = "Copia de seguridad";
-            Copia_de_seguridad.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             // 
             // menuStrip1
             // 
@@ -108,8 +74,6 @@
             this.Productos,
             this.Ventas,
             this.Clientes,
-            Reportes,
-            Copia_de_seguridad,
             this.Cerrar_sesion});
             this.menuStrip2.Location = new System.Drawing.Point(0, 109);
             this.menuStrip2.Name = "menuStrip2";
@@ -177,6 +141,7 @@
             this.Ventas.Size = new System.Drawing.Size(125, 101);
             this.Ventas.Text = "Ventas";
             this.Ventas.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.Ventas.Click += new System.EventHandler(this.Ventas_Click);
             // 
             // Clientes
             // 
@@ -206,6 +171,7 @@
             this.Cerrar_sesion.Size = new System.Drawing.Size(182, 101);
             this.Cerrar_sesion.Text = "Cerrar sesión";
             this.Cerrar_sesion.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.Cerrar_sesion.Click += new System.EventHandler(this.Cerrar_sesion_Click);
             // 
             // label1
             // 
